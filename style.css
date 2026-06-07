@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════════
+   WRENLO — Shared Stylesheet
+   Used by: index.html, survey.html,
+            privacy.html, terms.html, 404.html
+   ═══════════════════════════════════════════ */
+
+:root {
+  --ink:       #1a1714;
+  --ink2:      #2e2b27;
+  --ink3:      #433f3a;
+  --muted:     #7a746c;
+  --faint:     #b5b0a8;
+  --rule:      rgba(26,23,20,0.1);
+  --cream:     #faf8f4;
+  --paper:     #f4f1eb;
+  --amber:     #c8770a;
+  --amber-lt:  #fdf3e3;
+  --amber-mid: #e8a020;
+  --green:     #1e6b43;
+  --green-lt:  #e8f5ee;
+  --red:       #c0392b;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 60px;
+  background: rgba(250,248,244,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+}
+.nav-inner {
+  width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; letter-spacing: -0.02em;
+  color: var(--ink); text-decoration: none;
+}
+.logo span { color: var(--amber); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 400;
+  color: var(--muted); text-decoration: none; transition: color .15s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--ink) !important; color: var(--cream) !important;
+  padding: 8px 20px; border-radius: 3px;
+  font-weight: 500 !important; font-size: 13px !important;
+  transition: background .15s !important;
+}
+.nav-cta:hover { background: var(--amber) !important; }
+
+/* LAYOUT */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 5%; }
+.page-body { padding-top: 60px; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 3px;
+  font-size: 15px; font-weight: 500;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all .15s; letter-spacing: .01em;
+}
+.btn-primary { background: var(--amber); color: var(--cream); }
+.btn-primary:hover { background: var(--amber-mid); transform: translateY(-1px); }
+.btn-outline-dark {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--rule);
+}
+.btn-outline-dark:hover { border-color: var(--ink); }
+
+/* SECTION TYPOGRAPHY */
+.eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 12px;
+  display: block;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.08; letter-spacing: -.02em;
+  color: var(--ink); margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--amber); }
+.section-sub {
+  font-size: 17px; font-weight: 300;
+  color: var(--muted); max-width: 540px; line-height: 1.75;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink2);
+  border-top: 1px solid rgba(250,248,244,.06);
+  padding: 40px 5%;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--cream); text-decoration: none; }
+.footer-logo span { color: var(--amber); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: rgba(250,248,244,.3); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: rgba(250,248,244,.6); }
+.footer-copy { font-size: 12px; color: rgba(250,248,244,.2); }
+
+/* UTILITY */
+.text-amber { color: var(--amber); }
+.text-muted { color: var(--muted); }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-32 { margin-top: 32px; }
+.mt-48 { margin-top: 48px; }
+.mt-64 { margin-top: 64px; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+}

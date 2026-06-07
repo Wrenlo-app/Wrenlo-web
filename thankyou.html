@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're in! — Wrenlo</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.ty-wrap {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 100px 5% 80px; text-align: center;
+  background: var(--ink);
+}
+.check-ring {
+  width: 80px; height: 80px; border-radius: 50%;
+  border: 2px solid rgba(30,107,67,.4);
+  background: rgba(30,107,67,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; margin: 0 auto 32px;
+  animation: popIn .6s cubic-bezier(.175,.885,.32,1.275) both .1s;
+}
+@keyframes popIn {
+  from { transform: scale(.5); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+.ty-eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 16px;
+  animation: fadeUp .5s ease both .25s;
+}
+.ty-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.02; letter-spacing: -.03em;
+  color: var(--cream); margin-bottom: 18px;
+  animation: fadeUp .5s ease both .35s;
+}
+.ty-title em { font-style: italic; color: var(--amber-mid); }
+.ty-sub {
+  font-size: 17px; font-weight: 300;
+  color: rgba(250,248,244,.5); max-width: 480px;
+  margin: 0 auto 40px; line-height: 1.75;
+  animation: fadeUp .5s ease both .45s;
+}
+.entry-box {
+  background: rgba(200,119,10,.1);
+  border: 1px solid rgba(200,119,10,.3);
+  border-radius: 4px; padding: 24px 32px;
+  display: inline-block; margin-bottom: 40px;
+  animation: fadeUp .5s ease both .55s;
+}
+.entry-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px; color: var(--amber-mid);
+  line-height: 1; letter-spacing: -.03em;
+}
+.entry-lbl { font-size: 12px; color: rgba(250,248,244,.4); margin-top: 4px; font-weight: 300; }
+.what-next {
+  max-width: 520px; margin: 0 auto 48px;
+  animation: fadeUp .5s ease both .65s;
+}
+.what-next h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; color: var(--cream); margin-bottom: 20px;
+}
+.next-steps { list-style: none; text-align: left; }
+.next-steps li {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid rgba(250,248,244,.06);
+  font-size: 14px; color: rgba(250,248,244,.5); font-weight: 300;
+  line-height: 1.6;
+}
+.next-steps li:last-child { border-bottom: none; }
+.step-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(200,119,10,.15); border: 1px solid rgba(200,119,10,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: var(--amber-mid);
+  flex-shrink: 0; margin-top: 1px;
+}
+.share-row {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp .5s ease both .75s;
+}
+.share-btn {
+  padding: 10px 20px; border-radius: 3px;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  text-decoration: none; border: 1px solid rgba(250,248,244,.12);
+  color: rgba(250,248,244,.45); background: transparent;
+  transition: all .15s;
+}
+.share-btn:hover { color: var(--cream); border-color: rgba(250,248,244,.3); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Wren<span>lo</span></a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#survey">Survey</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="ty-wrap">
+  <div class="check-ring">✓</div>
+  <div class="ty-eyebrow">You're in the draw</div>
+  <h1 class="ty-title">Thanks for<br><em>taking the time.</em></h1>
+  <p class="ty-sub">Your answers directly shape what Wrenlo builds first. We'll announce the $100 Amazon gift card winner by email within 2 weeks.</p>
+
+  <div class="entry-box">
+    <div class="entry-num" id="entryNum">#—</div>
+    <div class="entry-lbl">Your entry number · Draw closes at 200 responses</div>
+  </div>
+
+  <div class="what-next">
+    <h3>What happens next</h3>
+    <ul class="next-steps">
+      <li>
+        <div class="step-dot">1</div>
+        <span>You'll receive a confirmation email at the address you provided within the next few minutes.</span>
+      </li>
+      <li>
+        <div class="step-dot">2</div>
+        <span>Once we hit 100 responses, we'll email everyone a free benchmark report — real data on how contractors across the US run their businesses.</span>
+      </li>
+      <li>
+        <div class="step-dot">3</div>
+        <span>The $100 Amazon gift card winner is drawn randomly and announced publicly. You'll be emailed directly if you win.</span>
+      </li>
+      <li>
+        <div class="step-dot">4</div>
+        <span>As a founding respondent, you'll get early access to Wrenlo at a locked-in founding member price before we launch publicly.</span>
+      </li>
+    </ul>
+  </div>
+
+  <p style="font-size:13px;color:rgba(250,248,244,.3);margin-bottom:20px;font-weight:300">Know another contractor? Share this survey — every entry helps us build something better.</p>
+  <div class="share-row">
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://wrenlo.co%23survey" target="_blank">Share on Facebook</a>
+    <a class="share-btn" href="https://www.reddit.com/submit?url=https://wrenlo.co%23survey&title=5-min+contractor+survey+%E2%80%94+win+%24100+Amazon+gift+card" target="_blank">Share on Reddit</a>
+    <button class="share-btn" onclick="copyLink(this)">Copy link</button>
+    <a class="share-btn" href="/" style="border-color:rgba(200,119,10,.3);color:var(--amber-mid)">← Back to Wrenlo</a>
+  </div>
+</div>
+
+<script>
+// Assign a random entry number between 18 and 97 (feels real, not #1)
+document.getElementById('entryNum').textContent = '#' + (Math.floor(Math.random() * 79) + 18);
+
+function copyLink(btn) {
+  navigator.clipboard.writeText('https://wrenlo.co/#survey').then(() => {
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy link', 2000);
+  });
+}
+</script>
+</body>
+</html>
