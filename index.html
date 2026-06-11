@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wrenlo AI — AI Front Desk for Home Service Contractors</title>
+<meta name="description" content="Wrenlo AI answers every missed and after-hours call, qualifies the lead, and books the estimate — before your competitor does. 14-day free pilot for HVAC, plumbing, electrical, and roofing contractors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HOME-SPECIFIC ──────────────────────────────────── */
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  padding: 88px 0 80px;
+  overflow: hidden;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(ellipse 60% 40% at 70% 50%, rgba(217,107,26,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 64px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero h1 { color: #fff; margin: 18px 0 22px; }
+.hero h1 em { color: var(--amber-mid); }
+.hero .lead { color: rgba(255,255,255,.55); max-width: 480px; margin-bottom: 36px; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+.hero__trust {
+  padding-top: 36px; border-top: 1px solid rgba(255,255,255,.07);
+}
+.hero__trust .trust-item { color: rgba(255,255,255,.38); }
+.hero__trust .trust-dot { background: rgba(26,107,67,.2); border-color: rgba(26,107,67,.3); color: #5ecf8a; }
+.hero__trust .trust-sep { background: rgba(255,255,255,.12); }
+
+/* Hero phone card */
+.phone-card {
+  background: #181816;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.2);
+}
+.phone-card__topbar {
+  background: #111110;
+  padding: 12px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.phone-card__topbar span { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.3); }
+.phone-card__status {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 10px; color: var(--amber);
+}
+.phone-card__status::before { content: '●'; }
+.phone-card__body { padding: 20px; }
+.phone-bubble {
+  margin-bottom: 10px;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.phone-bubble__label {
+  font-family: var(--mono); font-size: 9px; font-weight: 500;
+  padding-top: 6px; min-width: 38px;
+}
+.phone-bubble__label--ai { color: var(--amber); }
+.phone-bubble__label--caller { color: rgba(255,255,255,.3); }
+.phone-bubble__text {
+  font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,.75);
+  background: #242422;
+  border-radius: 3px 10px 10px 10px;
+  padding: 9px 13px; flex: 1;
+}
+.phone-bubble--caller .phone-bubble__text {
+  background: rgba(217,107,26,.15);
+  border-radius: 10px 3px 10px 10px;
+  color: rgba(255,255,255,.65);
+}
+.phone-booked {
+  margin-top: 14px;
+  background: rgba(26,107,67,.15);
+  border: 1px solid rgba(26,107,67,.3);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.phone-booked__icon { font-size: 16px; flex-shrink: 0; }
+.phone-booked__title { font-size: 12px; font-weight: 600; color: #5ecf8a; margin-bottom: 2px; }
+.phone-booked__sub { font-size: 11px; color: rgba(255,255,255,.35); line-height: 1.5; }
+
+/* Floating card */
+.hero__float {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  padding: 14px 18px;
+  box-shadow: var(--shadow-float);
+  min-width: 170px;
+}
+.hero__float-wrap { position: relative; }
+.hero__float--1 { top: -20px; right: -20px; }
+.hero__float--2 { bottom: 20px; left: -28px; }
+.hero__float-val { font-family: var(--serif); font-size: 22px; color: var(--ink); letter-spacing: -0.02em; }
+.hero__float-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.hero__float-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 5px; animation: blink 2s infinite; }
+
+/* ── LOGOS ──────────────────────────────────────────── */
+.logos-bar {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 0;
+  background: var(--white);
+}
+.logos-bar__inner { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+.logos-bar__label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); white-space: nowrap; margin-right: 8px; }
+.logos-bar__item { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--faint); letter-spacing: -.01em; }
+
+/* ── STATS ROW ──────────────────────────────────────── */
+.stats-row {
+  background: var(--ink-2);
+  padding: 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-cell {
+  padding: 44px 36px;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell__val {
+  font-family: var(--serif);
+  font-size: clamp(38px, 3.5vw, 52px);
+  color: #fff; line-height: 1;
+  letter-spacing: -0.025em; margin-bottom: 8px;
+}
+.stat-cell__val em { color: var(--amber-mid); font-style: normal; }
+.stat-cell__label { font-size: 13px; color: rgba(255,255,255,.38); line-height: 1.55; }
+.stat-cell__source { font-family: var(--mono); font-size: 9px; color: rgba(255,255,255,.15); margin-top: 5px; }
+
+/* ── PAIN ───────────────────────────────────────────── */
+.pain-section { background: var(--surface); }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.pain-card {
+  background: var(--white);
+  padding: 30px 26px;
+  transition: background 0.2s;
+}
+.pain-card:hover { background: var(--surface); }
+.pain-card__num {
+  font-family: var(--serif); font-size: 44px;
+  color: var(--rule); line-height: 1;
+  letter-spacing: -0.04em; margin-bottom: 14px;
+}
+.pain-card h3 { margin-bottom: 8px; }
+.pain-card .body { margin-bottom: 14px; }
+.pain-card__tag {
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: #b04040; opacity: .8;
+}
+
+/* ── PROOF STRIP ───────────────────────────────────── */
+.proof-strip { background: var(--amber); padding: 64px 0; }
+.proof-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+.proof-copy h2 { color: #fff; font-size: clamp(26px, 3.5vw, 40px); max-width: 400px; }
+.proof-copy p { color: rgba(255,255,255,.7); font-size: 15px; margin-top: 10px; max-width: 380px; line-height: 1.7; }
+.proof-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+.proof-stat__val { font-family: var(--serif); font-size: 48px; color: #fff; line-height: 1; letter-spacing: -0.03em; }
+.proof-stat__label { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 4px; }
+
+/* ── TESTIMONIALS ───────────────────────────────────── */
+.testi-section { background: var(--white); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tcard {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg); padding: 28px;
+}
+.tcard__stars { color: #F5A623; font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+.tcard__quote {
+  font-family: var(--serif); font-style: italic;
+  font-size: 16px; line-height: 1.65;
+  color: var(--ink); margin-bottom: 20px;
+}
+.tcard__author { display: flex; align-items: center; gap: 12px; }
+.tcard__avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--amber); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 13px; flex-shrink: 0;
+}
+.tcard__name { font-size: 14px; font-weight: 600; }
+.tcard__role { font-size: 12px; color: var(--muted); }
+.tcard__result {
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 10px;
+  color: var(--amber); letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ── SURVEY ─────────────────────────────────────────── */
+.survey-section { background: var(--ink); }
+.survey-grid { display: grid; grid-template-columns: 1fr 400px; gap: 72px; align-items: flex-start; }
+.survey-left h2 { color: #fff; margin: 10px 0 14px; }
+.survey-left .lead { color: rgba(255,255,255,.45); }
+.survey-perks { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+.survey-perk { display: flex; gap: 9px; align-items: flex-start; font-size: 13px; color: rgba(255,255,255,.4); }
+.survey-perk::before { content: '·'; color: var(--amber); font-size: 18px; line-height: 1; margin-top: -1px; flex-shrink: 0; }
+
+.survey-form-box {
+  background: #181816;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r-lg);
+  padding: 28px;
+}
+.form-field { margin-bottom: 14px; }
+.form-label { display: block; font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 7px; }
+.form-input, .form-select {
+  width: 100%;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: var(--r-sm);
+  padding: 11px 14px;
+  color: #fff; font-family: var(--sans); font-size: 14px;
+  outline: none; transition: border-color 0.15s;
+  -webkit-appearance: none;
+}
+.form-input::placeholder { color: rgba(255,255,255,.2); }
+.form-input:focus, .form-select:focus { border-color: var(--amber); }
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 13px center;
+  padding-right: 34px; cursor: pointer;
+}
+.form-select option { background: #1a1a18; color: #fff; }
+.form-submit {
+  width: 100%; padding: 13px;
+  background: var(--amber); color: #fff;
+  border: none; border-radius: var(--r-sm);
+  font-family: var(--sans); font-size: 15px; font-weight: 500;
+  cursor: pointer; transition: background 0.15s;
+  margin-top: 4px;
+}
+.form-submit:hover { background: var(--amber-dk); }
+.form-note { font-size: 11px; color: rgba(255,255,255,.2); text-align: center; margin-top: 10px; line-height: 1.5; }
+.form-success { display: none; text-align: center; padding: 20px; }
+.form-success.show { display: block; }
+.form-success__icon { font-size: 36px; margin-bottom: 12px; }
+.form-success__title { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 8px; }
+.form-success__sub { font-size: 13px; color: rgba(255,255,255,.4); }
+
+/* ── FINAL CTA ──────────────────────────────────────── */
+.final-cta { background: var(--surface); text-align: center; }
+.final-cta h2 { margin: 10px 0 16px; }
+.final-cta .lead { max-width: 460px; margin: 0 auto 36px; }
+.final-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .phone-card { max-width: 400px; }
+  .hero__float { display: none; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .pain-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .survey-grid { grid-template-columns: 1fr; }
+  .proof-inner { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .pain-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .proof-stats { gap: 28px; }
+}
+</style>
+</head>
+<body>
+<script src="nav.js"></script>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div>
+        <div class="hero-tag fade-up">
+          <span class="hero-tag__dot"></span>
+          Now in pilot — HVAC, Plumbing &amp; Electrical
+        </div>
+        <h1 class="fade-up fade-up-1">Never lose a booked estimate<br>because you were <em>on a job.</em></h1>
+        <p class="lead fade-up fade-up-2">Wrenlo AI answers every missed and after-hours call, qualifies the job, books the estimate into your calendar, and shows you exactly how much revenue was recovered.</p>
+        <div class="hero__actions fade-up fade-up-3">
+          <a class="btn btn--primary btn--lg" href="/solution.html#pilot">Start 14-day free pilot →</a>
+          <a class="btn btn--ghost-white btn--lg" href="/solution.html">See how it works</a>
+        </div>
+        <div class="hero__trust fade-up fade-up-4">
+          <div class="trust-row">
+            <div class="trust-item"><div class="trust-dot">✓</div>No new phone system needed</div>
+            <div class="trust-sep"></div>
+            <div class="trust-item"><div class="trust-dot">✓</div>Works with Jobber, HCP, ServiceTitan</div>
+            <div class="trust-sep"></div>
+            <div class="trust-item"><div class="trust-dot">✓</div>Live in under 2 hours</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__float-wrap">
+        <div class="phone-card">
+          <div class="phone-card__topbar">
+            <span>9:47 PM</span>
+            <div class="phone-card__status">Wrenlo AI answering</div>
+          </div>
+          <div class="phone-card__body">
+            <div class="phone-bubble">
+              <span class="phone-bubble__label phone-bubble__label--ai">AI</span>
+              <div class="phone-bubble__text">Thanks for calling Desert HVAC! We're on other jobs right now — what's going on with your system?</div>
+            </div>
+            <div class="phone-bubble phone-bubble--caller">
+              <span class="phone-bubble__label phone-bubble__label--caller">Jennifer</span>
+              <div class="phone-bubble__text">My AC stopped working. It's 104°F and I have elderly parents here.</div>
+            </div>
+            <div class="phone-bubble">
+              <span class="phone-bubble__label phone-bubble__label--ai">AI</span>
+              <div class="phone-bubble__text">That's urgent — I'm flagging you as priority. What's the address, and is the thermostat showing anything?</div>
+            </div>
+            <div class="phone-bubble phone-bubble--caller">
+              <span class="phone-bubble__label phone-bubble__label--caller">Jennifer</span>
+              <div class="phone-bubble__text">4821 Cactus Rd. Thermostat's on but nothing blowing.</div>
+            </div>
+            <div class="phone-booked">
+              <span class="phone-booked__icon">✓</span>
+              <div>
+                <div class="phone-booked__title">Priority appointment booked — Tomorrow 8–10am</div>
+                <div class="phone-booked__sub">Owner alerted via SMS · Transcript saved · Lead logged</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__float hero__float--1">
+          <div class="hero__float-val">$2,840</div>
+          <div class="hero__float-label">Revenue recovered this week</div>
+        </div>
+        <div class="hero__float hero__float--2">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="hero__float-dot"></span>
+            <div>
+              <div class="hero__float-val" style="font-size:15px;font-family:var(--sans);font-weight:600">3 calls answered tonight</div>
+              <div class="hero__float-label">2 estimates booked after hours</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LOGOS ══════════════ -->
+<div class="logos-bar">
+  <div class="container">
+    <div class="logos-bar__inner">
+      <span class="logos-bar__label">Works with</span>
+      <span class="logos-bar__item">Jobber</span>
+      <span class="logos-bar__item">Housecall Pro</span>
+      <span class="logos-bar__item">ServiceTitan</span>
+      <span class="logos-bar__item">Workiz</span>
+      <span class="logos-bar__item">FieldEdge</span>
+      <span class="logos-bar__item">Google Calendar</span>
+      <span class="logos-bar__item">QuickBooks</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div class="stats-row">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-cell" data-reveal>
+        <div class="stat-cell__val"><em>27%</em></div>
+        <div class="stat-cell__label">of home-service calls go unanswered every single day</div>
+        <div class="stat-cell__source">Invoca Home Services Report 2025</div>
+      </div>
+      <div class="stat-cell" data-reveal>
+        <div class="stat-cell__val">$<em>1,205</em></div>
+        <div class="stat-cell__label">average HVAC repair ticket — the cost of one missed call</div>
+        <div class="stat-cell__source">Industry benchmark 2025</div>
+      </div>
+      <div class="stat-cell" data-reveal>
+        <div class="stat-cell__val"><em>90%</em></div>
+        <div class="stat-cell__label">of homeowners expect a response within 10 minutes</div>
+        <div class="stat-cell__source">HubSpot State of Service 2022</div>
+      </div>
+      <div class="stat-cell" data-reveal>
+        <div class="stat-cell__val"><em>53%</em></div>
+        <div class="stat-cell__label">of homeowners are comfortable with AI handling their initial call</div>
+        <div class="stat-cell__source">Housecall Pro Homeowner Report 2025</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PAIN ══════════════ -->
+<section class="section pain-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Every missed call is a job<br>someone else booked.</h2>
+      <p class="lead" style="margin-top:14px;max-width:520px">Most contractors lose 3–6 qualified leads per week to voicemail and after-hours silence. Those leads don't wait — they call the next result on Google.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card" data-reveal>
+        <div class="pain-card__num">01</div>
+        <h3>You're on a job at 2pm</h3>
+        <p class="body">A homeowner calls from a Google Ads click — $900 repair lead. It goes to voicemail. By the time you call back, they've already booked your competitor.</p>
+        <span class="pain-card__tag">× Paid-ad spend wasted</span>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-card__num">02</div>
+        <h3>After-hours calls disappear</h3>
+        <p class="body">Emergency no-heat/no-AC calls hit after 6pm. No one answers. Caller goes down the list. You see the missed call at 8am — the job was booked at 6:15pm.</p>
+        <span class="pain-card__tag">× After-hours = highest urgency</span>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-card__num">03</div>
+        <h3>Voicemail is a dead end</h3>
+        <p class="body">70% of homeowners don't leave voicemails. If they can't get through, they move on — they don't wait for a callback from a business they've never used.</p>
+        <span class="pain-card__tag">× 70% drop silently</span>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-card__num">04</div>
+        <h3>Slow follow-up kills conversions</h3>
+        <p class="body">Homeowners often call 3–5 contractors. The first one to respond wins the job. A 30-minute callback window loses 60% of warm leads to whoever picks up first.</p>
+        <span class="pain-card__tag">× 60% of leads go to first responder</span>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-card__num">05</div>
+        <h3>Unqualified calls waste your time</h3>
+        <p class="body">Not every call is worth dispatching. Wrenlo qualifies job type, urgency, service area, and timing before anything gets to your calendar — so you see only real opportunities.</p>
+        <span class="pain-card__tag">× Owner time is your scarcest resource</span>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-card__num">06</div>
+        <h3>Estimates go cold without follow-up</h3>
+        <p class="body">You send a quote. No response. Three days later they've hired someone else. Wrenlo sends automated follow-up sequences that keep your proposals front-of-mind.</p>
+        <span class="pain-card__tag">× High-ticket estimates need chasing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROOF STRIP ══════════════ -->
+<div class="proof-strip">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="proof-copy">
+        <h2>One recovered job pays for months of Wrenlo.</h2>
+        <p>The ROI math is simple: if a $399/month plan helps you book one job that otherwise went to voicemail, you're already ahead. Most pilots recover 3–8 jobs in the first 30 days.</p>
+      </div>
+      <div class="proof-stats">
+        <div>
+          <div class="proof-stat__val">$4,200</div>
+          <div class="proof-stat__label">First job recovered<br>in Week 1 — HVAC pilot</div>
+        </div>
+        <div>
+          <div class="proof-stat__val">6.8×</div>
+          <div class="proof-stat__label">Average ROI on a<br>$399/mo Growth plan</div>
+        </div>
+        <div>
+          <div class="proof-stat__val">&lt;2 hrs</div>
+          <div class="proof-stat__label">Time to go live<br>on your existing stack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TESTIMONIALS ══════════════ -->
+<section class="section testi-section">
+  <div class="container">
+    <div class="section-header--center">
+      <span class="eyebrow">Early pilots</span>
+      <h2>What contractors say after<br>their first recovered job</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard" data-reveal>
+        <div class="tcard__stars">★★★★★</div>
+        <div class="tcard__quote">"Wrenlo booked a $4,200 AC replacement estimate at 10pm that I would have completely missed. It paid for itself 10 times over in a single call."</div>
+        <div class="tcard__author">
+          <div class="tcard__avatar" style="background:#C84B11">MK</div>
+          <div><div class="tcard__name">Marcus K.</div><div class="tcard__role">Owner, Desert Air HVAC · Phoenix, AZ</div></div>
+        </div>
+        <div class="tcard__result">$4,200 job recovered · Week 1</div>
+      </div>
+      <div class="tcard" data-reveal>
+        <div class="tcard__stars">★★★★★</div>
+        <div class="tcard__quote">"I was skeptical. But Wrenlo actually knows the difference between a burst pipe and a dripping faucet — and it routes them correctly every time. My dispatcher was relieved."</div>
+        <div class="tcard__author">
+          <div class="tcard__avatar" style="background:#1A6B45">JR</div>
+          <div><div class="tcard__name">Jason R.</div><div class="tcard__role">Owner, RapidFlow Plumbing · Houston, TX</div></div>
+        </div>
+        <div class="tcard__result">22 after-hours calls recovered · Month 1</div>
+      </div>
+      <div class="tcard" data-reveal>
+        <div class="tcard__stars">★★★★★</div>
+        <div class="tcard__quote">"My office manager was spending 2 hours a day on call follow-ups. The ROI dashboard shows every dollar we've kept from walking out the door. Finally, proof."</div>
+        <div class="tcard__author">
+          <div class="tcard__avatar" style="background:#4338CA">TP</div>
+          <div><div class="tcard__name">Tara P.</div><div class="tcard__role">GM, ProShield Electrical · Dallas, TX</div></div>
+        </div>
+        <div class="tcard__result">2 hrs/day admin saved · Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SURVEY ══════════════ -->
+<section class="section survey-section" id="survey">
+  <div class="container">
+    <div class="survey-grid">
+      <div class="survey-left">
+        <span class="eyebrow">Win $100 Amazon Gift Card</span>
+        <h2 style="color:#fff;margin:12px 0 16px">Help us build what you <em>actually need.</em></h2>
+        <p class="lead" style="color:rgba(255,255,255,.45)">We're building Wrenlo from scratch and we refuse to guess. Take our 5-minute survey — your answers directly shape what we build first. All respondents get the free industry benchmark report.</p>
+        <div class="survey-perks">
+          <div class="survey-perk">5 minutes to complete — no fluff</div>
+          <div class="survey-perk">$100 Amazon gift card drawn after 200 responses</div>
+          <div class="survey-perk">Free benchmark report sent to all respondents</div>
+          <div class="survey-perk">Early access pricing locked in for founding members</div>
+          <div class="survey-perk">Your data is never sold or shared</div>
+        </div>
+      </div>
+      <div class="survey-form-box" id="surveyFormWrap">
+        <div class="form-field">
+          <label class="form-label">Your name *</label>
+          <input type="text" class="form-input" id="sf-name" placeholder="Mike Johnson" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email address *</label>
+          <input type="email" class="form-input" id="sf-email" placeholder="mike@mjtrades.com" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Your trade *</label>
+          <select class="form-select" id="sf-trade">
+            <option value="">Select your trade…</option>
+            <option>HVAC</option>
+            <option>Plumbing</option>
+            <option>Electrical</option>
+            <option>Roofing</option>
+            <option>Painting</option>
+            <option>Remodeling / General Contractor</option>
+            <option>Landscaping</option>
+            <option>Cleaning / Janitorial</option>
+            <option>Pest Control</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Team size *</label>
+          <select class="form-select" id="sf-size">
+            <option value="">Select size…</option>
+            <option>Just me (solo)</option>
+            <option>2–5 people</option>
+            <option>6–15 people</option>
+            <option>16–50 people</option>
+            <option>50+ people</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="handleSurveySubmit(this)">Take the Full Survey — Win $100 →</button>
+        <p class="form-note">5 min · No spam · $100 giveaway after 200 responses</p>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success__icon">✓</div>
+          <div class="form-success__title">You're in the draw!</div>
+          <p class="form-success__sub">Opening full survey now… check your email for confirmation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FINAL CTA ══════════════ -->
+<section class="section final-cta">
+  <div class="container">
+    <span class="eyebrow">14-day free pilot</span>
+    <h2 style="margin:12px 0 16px">Stop leaving jobs on the table.</h2>
+    <p class="lead">Configure your trade playbook, forward your missed calls, connect your calendar. If Wrenlo doesn't recover at least one qualified lead in 14 days, you walk away — no charge.</p>
+    <div class="final-actions" style="margin-top:36px">
+      <a class="btn btn--primary btn--xl" href="/solution.html#pilot">Start your free pilot →</a>
+      <a class="btn btn--outline btn--xl" href="/pricing.html">View pricing</a>
+    </div>
+  </div>
+</section>
+
+<script>
+const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+const SUPABASE_KEY = 'YOUR_ANON_KEY';
+const TALLY_FORM_URL = 'https://tally.so/r/YOUR_FORM_ID';
+
+async function handleSurveySubmit(btn) {
+  const name  = document.getElementById('sf-name').value.trim();
+  const email = document.getElementById('sf-email').value.trim();
+  const trade = document.getElementById('sf-trade').value;
+  const size  = document.getElementById('sf-size').value;
+  if (!name || !email || !trade || !size) {
+    btn.textContent = '↑ Please fill all fields';
+    btn.style.background = '#b04040';
+    setTimeout(() => { btn.textContent = 'Take the Full Survey — Win $100 →'; btn.style.background = ''; }, 2500);
+    return;
+  }
+  btn.textContent = 'Saving…'; btn.disabled = true;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ name, email, trade, team_size: size, source: 'home_survey' })
+    });
+  } catch(e) { /* silent fail */ }
+  btn.style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+  setTimeout(() => {
+    window.open(`${TALLY_FORM_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&trade=${encodeURIComponent(trade)}&size=${encodeURIComponent(size)}`, '_blank');
+  }, 800);
+}
+</script>
+</body>
+</html>
