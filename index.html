@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wrenlo AI — AI Front Desk for HVAC & Plumbing Contractors</title>
+<meta name="description" content="Wrenlo answers missed and after-hours calls, qualifies the job, books approved estimates, and shows how much revenue was recovered. Built for HVAC and plumbing contractors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HOME-ONLY STYLES ── */
+.hero {
+  padding:80px 0 72px;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:200px; opacity:.6; z-index:0;
+}
+.hero::after {
+  content:''; position:absolute; top:-200px; right:-200px;
+  width:700px; height:700px;
+  background:radial-gradient(circle,rgba(255,107,43,.1) 0%,transparent 70%);
+  pointer-events:none; z-index:0;
+}
+.hero .container { position:relative; z-index:1 }
+.hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center }
+
+.hero h1 {
+  font-family:var(--serif);
+  font-size:clamp(40px,5.5vw,68px);
+  line-height:1.04; letter-spacing:-.025em;
+  margin-bottom:22px; font-weight:400;
+}
+.hero h1 em { font-style:italic; color:var(--orange) }
+.hero-sub {
+  font-size:17px; line-height:1.7;
+  color:var(--text-soft); max-width:460px; margin-bottom:36px; font-weight:300;
+}
+.hero-actions { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px }
+.hero-trust {
+  display:flex; flex-wrap:wrap; gap:10px 20px;
+  padding-top:28px; border-top:1px solid var(--border);
+}
+.trust-item { display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--text-faint) }
+.trust-check {
+  width:15px; height:15px; border-radius:50%;
+  background:var(--orange-lt);
+  display:flex; align-items:center; justify-content:center;
+  font-size:8px; color:var(--orange); flex-shrink:0; font-weight:700;
+}
+
+/* Call mock */
+.call-mock {
+  background:var(--card); border:1px solid var(--border-s); border-radius:var(--r-lg);
+  overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.3);
+}
+.mock-header {
+  background:#1A1A18; padding:14px 18px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.mock-dots { display:flex; gap:5px }
+.mock-dot  { width:9px; height:9px; border-radius:50% }
+.mock-title { font-family:var(--mono); font-size:10px; color:var(--text-faint); letter-spacing:.06em; flex:1; text-align:center }
+.mock-body { padding:20px }
+.call-status {
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:10px; color:var(--orange); letter-spacing:.08em; text-transform:uppercase;
+  margin-bottom:14px; padding:8px 12px;
+  background:var(--orange-glow); border:1px solid rgba(255,107,43,.15); border-radius:6px;
+}
+.call-status-dot { width:6px; height:6px; border-radius:50%; background:var(--orange); animation:pulse 1.5s infinite }
+.caller-name { font-size:17px; font-weight:600; margin-bottom:3px }
+.caller-meta { font-size:12px; color:var(--text-faint); margin-bottom:16px }
+.transcript  { display:flex; flex-direction:column; gap:9px; margin-bottom:14px }
+.t-row { display:flex; gap:8px; align-items:flex-start }
+.t-who { font-family:var(--mono); font-size:9px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; min-width:44px; padding-top:8px; flex-shrink:0 }
+.t-who.ai     { color:var(--orange) }
+.t-who.caller { color:var(--text-faint) }
+.t-bubble {
+  background:#222220; border-radius:4px 10px 10px 10px;
+  padding:8px 12px; font-size:13px; line-height:1.55; color:var(--text); max-width:100%;
+}
+.t-row.caller-row { flex-direction:row-reverse }
+.t-row.caller-row .t-bubble { background:#2A2A28; border-radius:10px 4px 10px 10px; color:rgba(255,255,255,.8) }
+.mock-result {
+  background:var(--green-bg); border:1px solid rgba(34,197,94,.2); border-radius:8px;
+  padding:12px 14px; display:flex; align-items:flex-start; gap:10px;
+}
+.mock-result-icon { font-size:16px; flex-shrink:0; margin-top:1px }
+.mock-result-text { font-size:12px; color:var(--green); font-weight:500; line-height:1.5 }
+.mock-result-sub  { font-size:11px; color:rgba(34,197,94,.6); margin-top:3px }
+
+/* Float cards */
+.hero-visual { position:relative }
+.float-card {
+  position:absolute; background:var(--card2); border:1px solid var(--border-s);
+  border-radius:var(--r); padding:12px 16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:2;
+}
+.float-top    { top:-18px; right:-18px }
+.float-bottom { bottom:20px; left:-20px }
+.float-val    { font-family:var(--serif); font-size:22px; color:var(--text) }
+.float-val span { color:var(--orange) }
+.float-lbl    { font-size:11px; color:var(--text-faint); margin-top:2px; max-width:180px; line-height:1.4 }
+.float-live   { display:flex; align-items:center; gap:8px }
+.float-dot    { width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; flex-shrink:0 }
+.float-live-label .float-val  { font-size:15px; font-weight:600; font-family:var(--sans) }
+
+/* Stats */
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr) }
+.stat-cell  { padding:48px 36px; border-right:1px solid var(--border) }
+.stat-cell:last-child { border-right:none }
+.stat-val   { font-family:var(--serif); font-size:clamp(36px,4vw,52px); line-height:1; letter-spacing:-.02em; margin-bottom:8px }
+.stat-val em { color:var(--orange); font-style:normal }
+.stat-lbl   { font-size:13px; color:var(--text-soft); line-height:1.55; font-weight:300 }
+.stat-src   { font-family:var(--mono); font-size:10px; color:var(--text-faint); margin-top:6px; letter-spacing:.04em }
+
+/* Problem grid */
+.problem-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border);
+  border:1px solid var(--border); border-radius:var(--r-lg); overflow:hidden; margin-top:56px;
+}
+.prob-card { background:var(--bg); padding:30px 26px; transition:background .2s }
+.prob-card:hover { background:var(--card) }
+.prob-num  { font-family:var(--mono); font-size:11px; font-weight:500; color:var(--text-faint); letter-spacing:.08em; margin-bottom:12px }
+.prob-card h3 { font-size:16px; font-weight:600; margin-bottom:8px; line-height:1.3 }
+.prob-card p  { font-size:13.5px; color:var(--text-soft); line-height:1.65; font-weight:300 }
+.prob-tag  {
+  display:inline-block; margin-top:12px;
+  font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--red); background:var(--red-bg); padding:3px 9px; border-radius:4px;
+}
+
+/* Nav grid */
+.nav-pages { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:56px }
+.nav-page-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg); padding:28px;
+  transition:border-color .2s, transform .15s; display:block;
+}
+.nav-page-card:hover { border-color:rgba(255,107,43,.3); transform:translateY(-2px) }
+.npc-eyebrow { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--orange); margin-bottom:10px }
+.npc-title   { font-size:17px; font-weight:600; margin-bottom:8px }
+.npc-sub     { font-size:13px; color:var(--text-soft); line-height:1.65; font-weight:300; margin-bottom:16px }
+.npc-arrow   { font-size:13px; color:var(--orange) }
+
+@media(max-width:900px){
+  .hero-grid { grid-template-columns:1fr }
+  .hero-visual { display:none }
+  .stats-grid { grid-template-columns:1fr 1fr }
+  .stat-cell  { border-right:none; border-bottom:1px solid var(--border) }
+  .problem-grid { grid-template-columns:1fr }
+  .nav-pages  { grid-template-columns:1fr }
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-N3CWJVFYFG");
+</script>
+</head>
+<body>
+
+<!-- ANN BAR -->
+<div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l3-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>
+      Wrenlo
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/product">Product</a>
+      <a class="nav-link" href="/pricing">Pricing</a>
+      <a class="nav-link" href="/why-us">Why Wrenlo</a>
+      <a class="nav-link" href="/our-story">Our Story</a>
+      <a class="nav-link" href="/survey">Survey</a>
+    </div>
+    <div class="nav-ctas">
+      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Missed-Call Audit">Free Audit</a>
+      <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a>
+    </div>
+    <button class="hamburger" onclick="openMenu()">☰</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <a class="mobile-link" href="/product"   onclick="closeMenu()">Product</a>
+  <a class="mobile-link" href="/pricing"   onclick="closeMenu()">Pricing</a>
+  <a class="mobile-link" href="/why-us"    onclick="closeMenu()">Why Wrenlo</a>
+  <a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a>
+  <a class="mobile-link" href="/survey"    onclick="closeMenu()">Survey</a>
+  <div class="mobile-menu-ctas">
+    <a class="btn btn-ghost btn-full"   href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
+    <a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot Request">Book Pilot Call</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="stat-pill"><span class="stat-pill-dot"></span>Now in pilot — HVAC · Plumbing · Electrical</div>
+        <h1>Stop losing jobs because<br>you were <em>on another job.</em></h1>
+        <p class="hero-sub">Wrenlo answers every missed and after-hours call, qualifies the lead, separates emergencies from routine work, books approved estimates, and shows exactly how much revenue was recovered — without replacing the tools you already use.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Start 14-Day Free Pilot →</a>
+          <a class="btn btn-ghost btn-lg" href="/product">See how it works</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><div class="trust-check">✓</div>No new phone system</div>
+          <div class="trust-item"><div class="trust-check">✓</div>Works with Jobber, HCP, ServiceTitan</div>
+          <div class="trust-item"><div class="trust-check">✓</div>Live in under 2 hours</div>
+          <div class="trust-item"><div class="trust-check">✓</div>Cancel anytime</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="float-card float-top">
+          <div class="float-val"><span>$2,840</span></div>
+          <div class="float-lbl">Average weekly revenue recovered across pilots</div>
+        </div>
+        <div class="call-mock">
+          <div class="mock-header">
+            <div class="mock-dots">
+              <div class="mock-dot" style="background:#FF5F57"></div>
+              <div class="mock-dot" style="background:#FEBC2E"></div>
+              <div class="mock-dot" style="background:#28C840"></div>
+            </div>
+            <div class="mock-title">Wrenlo AI — Live Call</div>
+          </div>
+          <div class="mock-body">
+            <div class="call-status"><div class="call-status-dot"></div>Incoming call · After hours · 10:47 PM</div>
+            <div class="caller-name">Homeowner · Phoenix, AZ</div>
+            <div class="caller-meta">Mobile · Missed call — forwarded to Wrenlo</div>
+            <div class="transcript">
+              <div class="t-row">
+                <span class="t-who ai">Wrenlo</span>
+                <div class="t-bubble">Hi, thanks for calling! I'm the team's AI assistant — everyone's on jobs right now. What's going on with your system today?</div>
+              </div>
+              <div class="t-row caller-row">
+                <span class="t-who caller">Caller</span>
+                <div class="t-bubble">My AC stopped working. It's 103 degrees and I have two little kids.</div>
+              </div>
+              <div class="t-row">
+                <span class="t-who ai">Wrenlo</span>
+                <div class="t-bubble" id="typing-bubble">Flagging this as <strong>priority</strong>. What's your address and system age?</div>
+              </div>
+            </div>
+            <div class="mock-result">
+              <div class="mock-result-icon">✓</div>
+              <div>
+                <div class="mock-result-text">Emergency classified · Owner alerted · 8am slot held</div>
+                <div class="mock-result-sub">Transcript saved · Est. job value: $1,200+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card float-bottom">
+          <div class="float-live">
+            <div class="float-dot"></div>
+            <div class="float-live-label">
+              <div class="float-val">120+ contractors</div>
+              <div class="float-lbl">in pilot across the US</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOGOS ══ -->
+<div class="logos-bar" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="logos-inner">
+      <span class="logos-label">Works with</span>
+      <span class="logo-item">Jobber</span>
+      <span class="logo-item">Housecall Pro</span>
+      <span class="logo-item">ServiceTitan</span>
+      <span class="logo-item">Workiz</span>
+      <span class="logo-item">Google Calendar</span>
+      <span class="logo-item">QuickBooks</span>
+      <span class="logo-item">FieldEdge</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STATS ══ -->
+<div style="background:var(--bg2)">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-cell reveal"><div class="stat-val"><em>27%</em></div><div class="stat-lbl">of home-service calls go unanswered every day</div><div class="stat-src">Invoca Home Services Report 2025</div></div>
+      <div class="stat-cell reveal"><div class="stat-val">$<em>1,205</em></div><div class="stat-lbl">average HVAC repair ticket — cost of one missed call</div><div class="stat-src">Industry benchmark 2025</div></div>
+      <div class="stat-cell reveal"><div class="stat-val"><em>90%</em></div><div class="stat-lbl">of homeowners expect a response within 10 minutes</div><div class="stat-src">HubSpot State of Service 2022</div></div>
+      <div class="stat-cell reveal"><div class="stat-val"><em>53%</em></div><div class="stat-lbl">of homeowners are comfortable with AI on their initial call</div><div class="stat-src">Housecall Pro Report 2025</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROBLEM ══ -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2 class="sec-title">Every missed call is a job<br><em>someone else can book.</em></h2>
+      <p class="sec-sub">Built for contractors spending real money on leads — and watching them slip through the cracks after hours.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="prob-card"><div class="prob-num">01</div><h3>Calls missed while on jobs</h3><p>Paid-search and referral leads go to voicemail while you're driving, installing, or talking to another customer.</p><span class="prob-tag">× Lost marketing spend</span></div>
+      <div class="prob-card"><div class="prob-num">02</div><h3>After-hours calls disappear</h3><p>No-heat, no-cool, and burst pipe calls often happen at 9pm. Most homeowners won't call back in the morning.</p><span class="prob-tag">× Peak season revenue lost</span></div>
+      <div class="prob-card"><div class="prob-num">03</div><h3>Voicemail doesn't convert</h3><p>Many homeowners don't leave messages. They open Google, call the next contractor, and book with them instead.</p><span class="prob-tag">× Caller moves on in minutes</span></div>
+      <div class="prob-card"><div class="prob-num">04</div><h3>Slow callbacks cost jobs</h3><p>The first contractor to respond usually wins. A 30-minute callback window puts you behind two competitors.</p><span class="prob-tag">× 90% expect ≤10 min response</span></div>
+      <div class="prob-card"><div class="prob-num">05</div><h3>Unqualified calls waste owner time</h3><p>Without intake, you're screening on your own time, on every call, instead of being on the job.</p><span class="prob-tag">× Owner time drain</span></div>
+      <div class="prob-card"><div class="prob-num">06</div><h3>Ad spend leaks out</h3><p>Every Google Ad, LSA, or Angi lead that goes unanswered makes your cost per acquisition harder to justify.</p><span class="prob-tag">× CAC rises with every miss</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAGE NAV ══ -->
+<section class="section" style="background:var(--card)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">Explore Wrenlo</span>
+      <h2 class="sec-title">Everything you need to know<br><em>before starting your pilot.</em></h2>
+    </div>
+    <div class="nav-pages">
+      <a class="nav-page-card reveal" href="/product">
+        <div class="npc-eyebrow">Product</div>
+        <div class="npc-title">How Wrenlo works</div>
+        <div class="npc-sub">AI call answering, missed-call text-back, emergency classification, booking, follow-up, and revenue tracking — explained in detail.</div>
+        <div class="npc-arrow">Explore the product →</div>
+      </a>
+      <a class="nav-page-card reveal" href="/pricing">
+        <div class="npc-eyebrow">Pricing</div>
+        <div class="npc-title">Simple, honest pricing</div>
+        <div class="npc-sub">Starter at $199/mo, Growth at $399/mo, Pro at $799/mo. Setup fee credited to Month 1. No per-minute surprises.</div>
+        <div class="npc-arrow">See pricing →</div>
+      </a>
+      <a class="nav-page-card reveal" href="/why-us">
+        <div class="npc-eyebrow">Why Wrenlo</div>
+        <div class="npc-title">How we compare</div>
+        <div class="npc-sub">Side-by-side vs. generic AI receptionists, human answering services, and FSM built-in features.</div>
+        <div class="npc-arrow">See the comparison →</div>
+      </a>
+      <a class="nav-page-card reveal" href="/our-story">
+        <div class="npc-eyebrow">Our Story</div>
+        <div class="npc-title">Why we built this</div>
+        <div class="npc-sub">We saw the missed-call problem firsthand. Wrenlo is the product we wish existed for contractors we know.</div>
+        <div class="npc-arrow">Read our story →</div>
+      </a>
+      <a class="nav-page-card reveal" href="/survey">
+        <div class="npc-eyebrow">Founding Survey</div>
+        <div class="npc-title">Shape the product</div>
+        <div class="npc-sub">5-minute survey. Your answers directly shape what we build next. Win a $100 Amazon gift card.</div>
+        <div class="npc-arrow">Take the survey →</div>
+      </a>
+      <a class="nav-page-card reveal" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request" style="background:var(--orange-lt);border-color:rgba(255,107,43,.25)">
+        <div class="npc-eyebrow" style="color:var(--orange)">14-Day Pilot</div>
+        <div class="npc-title">Start your free pilot</div>
+        <div class="npc-sub">One phone line, one playbook, one booking workflow. If Wrenlo doesn't recover a qualified lead, you don't continue.</div>
+        <div class="npc-arrow">Book pilot call →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<section class="section--tight" style="background:var(--bg2)">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Stop leaving booked jobs<br>on <em>voicemail.</em></h2>
+        <p>One recovered emergency call typically pays for months of Wrenlo. Start with a free 14-day pilot — no long-term commitment.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a class="btn btn-white btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a>
+        <a class="btn" href="mailto:hello@wrenlo.co?subject=Free Audit" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)">Get Free Missed-Call Audit</a>
+        <span class="cta-note">$299 setup · credited to Month 1 · cancel anytime</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors. Built to capture the revenue that walks out the door after hours.</p></div>
+      <div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div>
+      <div><div class="footer-col-title">Industries</div><div class="footer-links"><a class="footer-link" href="/survey">HVAC</a><a class="footer-link" href="/survey">Plumbing</a><a class="footer-link" href="/survey">Electrical</a><a class="footer-link" href="/survey">Roofing</a><a class="footer-link" href="/survey">Garage Door</a><a class="footer-link" href="/survey">Pest Control</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span>
+      <span class="footer-copy">Built for contractors who are done missing jobs</span>
+    </div>
+  </div>
+</footer>
+
+<script src="wrenlo.js"></script>
+<script>
+document.getElementById('typing-bubble').style.transition = 'opacity .4s';
+const phrases = [
+  "Flagging this as <strong>priority</strong>. What's your address and system age?",
+  "Got it — I'll hold a priority slot and alert the owner now.",
+  "Understood. Address and I'll take it from there."
+];
+let pi = 0;
+setInterval(() => {
+  const el = document.getElementById('typing-bubble');
+  if (!el) return;
+  el.style.opacity = '0';
+  setTimeout(() => { pi = (pi+1)%phrases.length; el.innerHTML = phrases[pi]; el.style.opacity = '1'; }, 400);
+}, 4000);
+</script>
+</body>
+</html>

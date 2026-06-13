@@ -101,18 +101,50 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-N3CWJVFYFG");
+</script>
 </head>
 <body>
+<div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
+
 <nav>
   <div class="nav-inner">
-    <a href="/" class="logo">Wren<span>lo</span></a>
-    <ul class="nav-links">
-      <li><a href="/#features">Features</a></li>
-      <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/#survey">Survey</a></li>
-    </ul>
+    <a href="/" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l3-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>
+      Wrenlo
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/product">Product</a>
+      <a class="nav-link" href="/pricing">Pricing</a>
+      <a class="nav-link" href="/why-us">Why Wrenlo</a>
+      <a class="nav-link" href="/our-story">Our Story</a>
+      <a class="nav-link" href="/survey">Survey</a>
+    </div>
+    <div class="nav-ctas">
+      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Missed-Call Audit">Free Audit</a>
+      <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a>
+    </div>
+    <button class="hamburger" onclick="openMenu()">☰</button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <a class="mobile-link" href="/product"   onclick="closeMenu()">Product</a>
+  <a class="mobile-link" href="/pricing"   onclick="closeMenu()">Pricing</a>
+  <a class="mobile-link" href="/why-us"    onclick="closeMenu()">Why Wrenlo</a>
+  <a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a>
+  <a class="mobile-link" href="/survey"    onclick="closeMenu()">Survey</a>
+  <div class="mobile-menu-ctas">
+    <a class="btn btn-ghost btn-full"   href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
+    <a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot Request">Book Pilot Call</a>
+  </div>
+</div>
 
 <div class="ty-wrap">
   <div class="check-ring">✓</div>
@@ -167,5 +199,6 @@ function copyLink(btn) {
   });
 }
 </script>
+<script src="wrenlo.js"></script>
 </body>
 </html>
