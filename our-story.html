@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Wrenlo AI | Built by People Who've Seen the Problem Firsthand</title>
+<meta name="description" content="Wrenlo was built by two founders with 16+ years of combined experience in home services and SMB operations. We saw the missed-call problem before we built the solution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N3CWJVFYFG');
+</script>
+
+<style>
+/* ── PAGE-SPECIFIC: OUR STORY ── */
+
+/* Origin section */
+.origin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 64px;
+}
+.origin-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.origin-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-soft);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.origin-text p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.origin-pull {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.8vw, 30px);
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: var(--text);
+  border-left: 2px solid var(--orange);
+  padding-left: 24px;
+  margin: 32px 0;
+}
+.origin-pull em { font-style: italic; color: var(--orange) }
+
+/* Founder cards */
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 56px;
+}
+.founder-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.founder-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+}
+.founder-initial {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: var(--orange-lt);
+  border: 1px solid rgba(255,107,43,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.founder-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.founder-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 20px;
+}
+.founder-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-soft);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.founder-card p:last-child { margin-bottom: 0 }
+.founder-stat {
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+}
+.fstat-val {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.fstat-val em { color: var(--orange); font-style: normal }
+.fstat-lbl {
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 300;
+  line-height: 1.4;
+  max-width: 120px;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 56px;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.tl-item {
+  display: flex;
+  gap: 28px;
+  padding: 0 0 40px 0;
+  position: relative;
+}
+.tl-item:last-child { padding-bottom: 0 }
+.tl-dot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.tl-dot.active {
+  background: var(--orange-lt);
+  border-color: rgba(255,107,43,.3);
+}
+.tl-body {
+  padding-top: 14px;
+}
+.tl-year {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+.tl-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.tl-body p {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* Credibility bar */
+.cred-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-top: 56px;
+}
+.cred-cell {
+  background: var(--bg);
+  padding: 32px 28px;
+}
+.cred-val {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+.cred-val em { color: var(--orange); font-style: normal }
+.cred-lbl {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* Mission box */
+.mission-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 56px;
+  margin-top: 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mission-box::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,107,43,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mission-box .eyebrow { margin-bottom: 20px; display: block }
+.mission-box h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -.025em;
+  margin-bottom: 20px;
+}
+.mission-box h2 em { font-style: italic; color: var(--orange) }
+.mission-box p {
+  font-size: 16px;
+  color: var(--text-soft);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 580px;
+  margin: 0 auto 32px;
+}
+
+/* Values */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.value-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px;
+}
+.value-icon {
+  font-size: 22px;
+  margin-bottom: 12px;
+  display: block;
+}
+.value-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.value-desc {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .origin-grid { grid-template-columns: 1fr; gap: 40px }
+  .founders-grid { grid-template-columns: 1fr }
+  .cred-bar { grid-template-columns: 1fr 1fr }
+  .values-grid { grid-template-columns: 1fr }
+  .mission-box { padding: 36px 24px }
+  .timeline::before { left: 24px }
+  .tl-dot { width: 48px; height: 48px; font-size: 18px }
+}
+</style>
+</head>
+<body>
+
+<div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l3-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>
+      Wrenlo
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="/product">Product</a>
+      <a class="nav-link" href="/pricing">Pricing</a>
+      <a class="nav-link" href="/why-us">Why Wrenlo</a>
+      <a class="nav-link active" href="/our-story">Our Story</a>
+      <a class="nav-link" href="/survey">Survey</a>
+    </div>
+    <div class="nav-ctas">
+      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Missed-Call Audit">Free Audit</a>
+      <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a>
+    </div>
+    <button class="hamburger" onclick="openMenu()">☰</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <a class="mobile-link" href="/product"    onclick="closeMenu()">Product</a>
+  <a class="mobile-link" href="/pricing"    onclick="closeMenu()">Pricing</a>
+  <a class="mobile-link" href="/why-us"     onclick="closeMenu()">Why Wrenlo</a>
+  <a class="mobile-link" href="/our-story"  onclick="closeMenu()">Our Story</a>
+  <a class="mobile-link" href="/survey"     onclick="closeMenu()">Survey</a>
+  <div class="mobile-menu-ctas">
+    <a class="btn btn-ghost btn-full"   href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
+    <a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot Request">Book Pilot Call</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Our Story</span>
+    <h1>We didn't read about this problem.<br><em>We lived it.</em></h1>
+    <p>Wrenlo was built by two founders with 16+ combined years of experience working inside and alongside home-service businesses — one who grew up in one, and one who spent a decade watching small businesses get ignored by the tools built to serve them.</p>
+    <div class="page-hero-actions">
+      <a class="btn btn-primary btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Start Free Pilot →</a>
+      <a class="btn btn-ghost btn-lg" href="/product">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header">
+      <span class="eyebrow">Where it started</span>
+      <h2 class="sec-title">A family business, a brother<br>who never stopped <em>working.</em></h2>
+    </div>
+    <div class="origin-grid reveal">
+      <div class="origin-text">
+        <div class="origin-label">Shivendra's background</div>
+        <p>Shivendra grew up watching his family run a small home-service business. His brother was the one who built it from scratch — skilled at the trade, trusted by customers, and completely consumed by the work. Not just the field work. The phone calls. The scheduling. The follow-ups. The back-and-forth with customers who needed quotes. The admin that never seemed to end.</p>
+        <p>His brother was good at the business. <strong>He just never had time to grow it.</strong> Weekends that were supposed to be off turned into catch-up time for voicemails. Family dinners were interrupted by calls he couldn't afford to miss. Every missed call was a calculation — answer and stop what you're doing, or let it go and hope they call back.</p>
+        <div class="origin-pull">
+          "He wasn't failing at running a business. He was succeeding at it — <em>while doing every job that should have had a person behind it.</em>"
+        </div>
+        <p>Shivendra carried that observation into his career. He went on to work directly with multiple home-service businesses, helping them grow. And the same pattern appeared everywhere: contractors spending real money on Google Ads, referral networks, and Angi listings — then losing a substantial portion of those leads to voicemail, slow callbacks, and after-hours silence.</p>
+        <p>The money was going out. The calls weren't all coming back.</p>
+      </div>
+      <div class="origin-text">
+        <div class="origin-label">What the numbers revealed</div>
+        <p>Working across multiple businesses gave Shivendra a view that individual operators rarely get: the comparison. One HVAC company would convert 40% of its inbound calls into booked estimates. Another, nearly identical in service quality and market, converted barely 20%. The difference wasn't the technicians. It wasn't the pricing. It was response time and coverage.</p>
+        <p>The businesses that answered every call — or followed up within minutes — consistently won more jobs from the same marketing spend. <strong>The ones that didn't answer were quietly losing revenue they had already paid to generate.</strong></p>
+        <p>The fix seemed obvious: hire someone to answer calls. But for a two-person shop or a five-person crew, a full-time receptionist is a significant fixed cost for variable lead flow. A generic answering service takes messages but doesn't understand what a broken heat exchanger means or whether a leaking pipe is an emergency. The gap wasn't staffing. It was intelligence.</p>
+        <p>That's the gap Wrenlo was designed to close.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER CARDS -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">The founders</span>
+      <h2 class="sec-title">16+ years of combined experience.<br><em>One shared conviction.</em></h2>
+      <p class="sec-sub">We built Wrenlo because we knew exactly what the problem cost — in revenue, in owner time, and in the kind of burnout that doesn't show up on any balance sheet.</p>
+    </div>
+    <div class="founders-grid reveal">
+      <div class="founder-card">
+        <div class="founder-initial">S</div>
+        <div class="founder-name">Shivendra</div>
+        <div class="founder-role">Co-Founder · Home Services & GTM</div>
+        <p>Grew up in a family-run home-service business and watched firsthand how a skilled trade operator can build a loyal customer base — while being stretched thin by admin work that never stops.</p>
+        <p>Spent years consulting with HVAC, plumbing, electrical, and residential service businesses across the U.S., helping them grow revenue and improve operations. Saw the same pattern repeat: contractors spending on lead generation and losing a significant portion of those leads to response gaps and missed follow-ups.</p>
+        <p>At Wrenlo, Shivendra leads product direction, go-to-market strategy, and the contractor relationships that make our trade playbooks accurate.</p>
+        <div class="founder-stat">
+          <div>
+            <div class="fstat-val"><em>8</em>+</div>
+            <div class="fstat-lbl">years in home services & business growth</div>
+          </div>
+          <div>
+            <div class="fstat-val"><em>50</em>+</div>
+            <div class="fstat-lbl">contractor businesses worked with directly</div>
+          </div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <div class="founder-initial">A</div>
+        <div class="founder-name">Ashwini</div>
+        <div class="founder-role">Co-Founder · Product & Operations</div>
+        <p>Spent nearly a decade embedded with small and medium-scale businesses across multiple industries, building and scaling operational systems. Noticed a consistent pattern: the software tools that dominated the market were architected for enterprise needs — and retrofitted, poorly, for the businesses that needed help most.</p>
+        <p>Small businesses weren't asking for less powerful software. They were asking for software that actually fit how they worked — lean teams, fast decisions, no IT department. Most vendors treated SMBs as a downmarket segment rather than a distinct customer with distinct needs. That gap became the starting point.</p>
+        <p>At Wrenlo, Ashwini leads the product, infrastructure, and the systems that make contractor onboarding fast and reliable.</p>
+        <div class="founder-stat">
+          <div>
+            <div class="fstat-val"><em>8</em>+</div>
+            <div class="fstat-lbl">years in SMB product & operations</div>
+          </div>
+          <div>
+            <div class="fstat-val"><em>30</em>+</div>
+            <div class="fstat-lbl">SMBs supported across industries</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SHARED INSIGHT -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header">
+      <span class="eyebrow">The shared insight</span>
+      <h2 class="sec-title">Two different vantage points.<br><em>The same conclusion.</em></h2>
+    </div>
+    <div class="origin-grid reveal">
+      <div class="origin-text">
+        <p>Shivendra had seen the revenue leak from the outside — watching contractors pay for leads that never converted because nobody was available to answer. Ashwini had seen the tooling gap from the inside — watching small businesses adopt software built for companies ten times their size, then blame themselves when it didn't fit.</p>
+        <p>When they compared notes, the picture was clear. <strong>Home-service contractors didn't need a new field-service management platform.</strong> Jobber, Housecall Pro, ServiceTitan, and Workiz already handle scheduling, dispatch, invoicing, and CRM well. The gap wasn't operations. The gap was the first 10 minutes of every customer interaction.</p>
+        <div class="origin-pull">
+          "The call is already ringing. The lead is already there. <em>The only question is whether someone — or something — answers it."</em>
+        </div>
+        <p>Every contractor we spoke to during our research described the same problem in slightly different words. The plumber who missed a $3,000 burst-pipe call because he was under a sink. The HVAC owner who lost a replacement estimate to a competitor who answered 8 minutes faster. The electrician who found out — three months later — that a customer had called for a panel upgrade and never left a voicemail.</p>
+      </div>
+      <div class="origin-text">
+        <p>Ashwini's insight was on the tooling side. The solutions that existed for this problem were either too generic or too expensive. Generic AI receptionists could answer a call and take a message — but they didn't know the difference between a no-heat emergency and a routine maintenance request. Human answering services cost $300–$600 a month and produced the same unstructured message pad output.</p>
+        <p>Neither option booked anything. Neither option understood the trade. Neither option told the contractor how much revenue it recovered.</p>
+        <p><strong>Wrenlo was designed to do all three.</strong> Answer calls with trade-specific intelligence. Book the right next step into the contractor's existing calendar or FSM. Show the owner exactly how much revenue was protected — in a dashboard that speaks the language of jobs, not call minutes.</p>
+        <p>That's the product we wish had existed for every contractor we've worked with. That's why we built it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-header">
+      <span class="eyebrow">How we got here</span>
+      <h2 class="sec-title">The path from<br><em>observation to product.</em></h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot">🏠</div>
+        <div class="tl-body">
+          <div class="tl-year">The beginning</div>
+          <div class="tl-title">A family business and a phone that never stopped ringing</div>
+          <p>Shivendra watches his brother build a home-service business from scratch — and spend as much time chasing calls and admin as he does doing the actual work. The first observation: skilled tradespeople are not failing at business. They're just doing two jobs at once.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">📊</div>
+        <div class="tl-body">
+          <div class="tl-year">Years in the field</div>
+          <div class="tl-title">Working with contractors across trades and markets</div>
+          <p>Shivendra works directly with HVAC, plumbing, electrical, roofing, and residential service businesses across the U.S. The pattern is consistent: contractors spending on Google Ads and lead marketplaces, then losing 20–30% of those leads to missed calls and slow follow-up. The revenue leak isn't visible on the P&L. It's invisible — which makes it worse.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🔧</div>
+        <div class="tl-body">
+          <div class="tl-year">The SMB tooling gap</div>
+          <div class="tl-title">Ashwini sees the same problem from a different angle</div>
+          <p>Working with SMBs across industries, Ashwini sees how consistently small businesses are underserved by software built for enterprise scale. The solutions that exist are either too complex, too expensive, or require an IT team to configure. The businesses that need help most are the ones the market treats as an afterthought.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot active">⚡</div>
+        <div class="tl-body">
+          <div class="tl-year">The product insight</div>
+          <div class="tl-title">The gap is the first 10 minutes — not the whole stack</div>
+          <p>The two founders compare notes. The problem isn't field-service management. Jobber, Housecall Pro, and ServiceTitan handle operations well. The under-served gap is earlier: answering every call, qualifying the lead with trade-specific intelligence, booking the right next step, and showing the owner what it was worth. Wrenlo takes shape.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot active">🚀</div>
+        <div class="tl-body">
+          <div class="tl-year">Today</div>
+          <div class="tl-title">In pilot with contractors across HVAC, plumbing, electrical, and more</div>
+          <p>Wrenlo is live in pilot with contractors across multiple trades and markets. Every pilot account gets a trade-specific playbook, owner-defined booking rules, and a revenue dashboard that shows exactly how many calls were recovered and what they were worth. We are building this product in close partnership with the contractors who need it most.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY BAR -->
+<div style="background:var(--bg)">
+  <div class="container">
+    <div class="cred-bar reveal">
+      <div class="cred-cell">
+        <div class="cred-val"><em>16</em>+</div>
+        <div class="cred-lbl">Combined years of experience in home services and SMB product</div>
+      </div>
+      <div class="cred-cell">
+        <div class="cred-val"><em>80</em>+</div>
+        <div class="cred-lbl">Businesses worked with directly before writing the first line of code</div>
+      </div>
+      <div class="cred-val-cell cred-cell">
+        <div class="cred-val"><em>27</em>%</div>
+        <div class="cred-lbl">Of home-service calls go unanswered — the gap Wrenlo was built to close</div>
+      </div>
+      <div class="cred-cell">
+        <div class="cred-val"><em>0</em></div>
+        <div class="cred-lbl">Venture funding. Bootstrapped by design. Profitable only when our customers are.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">How we operate</span>
+      <h2 class="sec-title">The principles behind<br><em>every product decision.</em></h2>
+    </div>
+    <div class="values-grid reveal">
+      <div class="value-card">
+        <span class="value-icon">🎯</span>
+        <div class="value-title">Outcomes over features</div>
+        <div class="value-desc">Contractors don't want AI. They want fewer missed calls, more booked estimates, and less owner interruption. Every feature we build is measured against those outcomes — not against a feature checklist.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🔌</span>
+        <div class="value-title">Works with your tools — not instead of them</div>
+        <div class="value-desc">Jobber, Housecall Pro, ServiceTitan, and Google Calendar are already running your operations. Wrenlo integrates with them as the front-office layer. We don't ask you to replace what's working.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🔍</span>
+        <div class="value-title">Visible and auditable by default</div>
+        <div class="value-desc">Every call gets a transcript. Every automated action gets an audit trail. Owners can see exactly what Wrenlo said, what it booked, and what it flagged. No black boxes.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🏗️</span>
+        <div class="value-title">Built narrow and deep — not wide and thin</div>
+        <div class="value-desc">We build specifically for residential home-service contractors — not every SMB, not every trade, not enterprise facilities management. Depth of fit beats breadth of coverage.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">💰</span>
+        <div class="value-title">Bootstrapped means we win when you win</div>
+        <div class="value-desc">No venture funding means no growth-at-all-costs pressure. We are profitable only when our customers stay and expand. That aligns our incentives directly with your results.</div>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">📞</span>
+        <div class="value-title">Safety and trust are non-negotiable</div>
+        <div class="value-desc">Emergency scripts escalate — they don't troubleshoot. Booking rules require owner approval. Consent and opt-out handling are built in from day one, not added later as compliance afterthoughts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION BOX -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="mission-box reveal">
+      <span class="eyebrow">Our mission</span>
+      <h2>Every contractor deserves a front desk<br>that works as hard as <em>they do.</em></h2>
+      <p>Skilled tradespeople shouldn't have to choose between doing the job and answering the call. Wrenlo exists to make that choice unnecessary — by ensuring every inbound lead gets a qualified, intelligent response, every hour of every day, without adding headcount or replacing the tools already in use.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-primary btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Start Your Free Pilot →</a>
+        <a class="btn btn-ghost btn-lg" href="/survey">Take our founding survey</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Wrenlo AI</div>
+        <p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors. Built to capture the revenue that walks out the door after hours.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a class="footer-link" href="/product">Product</a>
+          <a class="footer-link" href="/pricing">Pricing</a>
+          <a class="footer-link" href="/why-us">Why Wrenlo</a>
+          <a class="footer-link" href="/our-story">Our Story</a>
+          <a class="footer-link" href="/survey">Survey</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <div class="footer-links">
+          <a class="footer-link" href="/survey">HVAC</a>
+          <a class="footer-link" href="/survey">Plumbing</a>
+          <a class="footer-link" href="/survey">Electrical</a>
+          <a class="footer-link" href="/survey">Roofing</a>
+          <a class="footer-link" href="/survey">Garage Door</a>
+          <a class="footer-link" href="/survey">Pest Control</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <a class="footer-link" href="/our-story">Our Story</a>
+          <a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a>
+          <a class="footer-link" href="/privacy">Privacy Policy</a>
+          <a class="footer-link" href="/terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span>
+      <span class="footer-copy">Built for contractors who are done missing jobs</span>
+    </div>
+  </div>
+</footer>
+
+<script src="wrenlo.js"></script>
+</body>
+</html>
