@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Wrenlo — vs Generic AI Receptionists, Answering Services & FSM Tools</title>
+<meta name="description" content="See how Wrenlo compares to generic AI receptionists, human answering services, and built-in FSM features. Trade-specific intake, emergency classification, and real revenue attribution.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N3CWJVFYFG');
+</script>
+<style>
+/* Fold 2 differentiator cards */
+.diff-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:56px }
+.diff-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--r-lg); padding:28px;
+}
+.diff-card.featured {
+  background:var(--orange-lt); border-color:rgba(255,107,43,.3);
+}
+.diff-vs   { font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); margin-bottom:12px }
+.diff-card.featured .diff-vs { color:var(--orange) }
+.diff-card h3 { font-size:17px; font-weight:600; margin-bottom:10px }
+.diff-card p  { font-size:13px; color:var(--text-soft); line-height:1.7; font-weight:300 }
+.diff-card.featured p { color:var(--text-soft) }
+.diff-points { margin-top:16px; display:flex; flex-direction:column; gap:7px }
+.diff-point  { display:flex; gap:8px; font-size:13px; color:var(--text-soft); align-items:flex-start }
+.diff-point-icon { flex-shrink:0; margin-top:1px; font-size:13px }
+
+/* Fold 3 — scenario walk-throughs */
+.scenario-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:36px }
+.stab {
+  font-size:13px; font-weight:500; padding:8px 18px; border-radius:100px;
+  border:1px solid var(--border); cursor:pointer; transition:all .15s;
+  color:var(--text-soft); background:transparent;
+}
+.stab.active, .stab:hover { background:var(--orange); color:#fff; border-color:var(--orange) }
+.scenario-panel { display:none }
+.scenario-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:32px }
+.scenario-left  { background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg); padding:28px }
+.scenario-right { background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg); padding:28px }
+.scenario-label { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px }
+.scenario-label.bad  { color:var(--red) }
+.scenario-label.good { color:var(--green) }
+.scenario-step { display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start }
+.scenario-step:last-child { border-bottom:none }
+.scenario-step-icon { font-size:16px; flex-shrink:0; margin-top:1px }
+.scenario-step p { font-size:13px; color:var(--text-soft); line-height:1.55; font-weight:300 }
+.scenario-step strong { color:var(--text); font-weight:500 }
+.scenario-result { margin-top:14px; padding:12px 14px; border-radius:7px; font-size:13px; font-weight:500 }
+.result-bad  { background:var(--red-bg); color:var(--red) }
+.result-good { background:var(--green-bg); color:var(--green) }
+
+/* Fold 4 — objections */
+.obj-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px }
+.obj-card { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:24px }
+.obj-q { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text) }
+.obj-a { font-size:13px; color:var(--text-soft); line-height:1.7; font-weight:300 }
+
+@media(max-width:900px){
+  .diff-grid { grid-template-columns:1fr }
+  .scenario-panel.active { grid-template-columns:1fr }
+  .obj-grid { grid-template-columns:1fr }
+}
+</style>
+</head>
+<body>
+<div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
+<nav><div class="nav-inner">
+  <a href="/" class="logo"><div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l3-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>Wrenlo</a>
+  <div class="nav-links"><a class="nav-link" href="/product">Product</a><a class="nav-link" href="/pricing">Pricing</a><a class="nav-link" href="/why-us">Why Wrenlo</a><a class="nav-link" href="/our-story">Our Story</a><a class="nav-link" href="/survey">Survey</a></div>
+  <div class="nav-ctas"><a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a><a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a></div>
+  <button class="hamburger" onclick="openMenu()">☰</button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="closeMenu()">✕</button><a class="mobile-link" href="/product" onclick="closeMenu()">Product</a><a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a><a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a><a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a><a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a><div class="mobile-menu-ctas"><a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a><a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot">Book Pilot Call</a></div></div>
+
+<!-- FOLD 1 — HERO + COMPARISON TABLE -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Why Wrenlo</span>
+    <h1>Built for the trade,<br>not for <em>generic SMBs.</em></h1>
+    <p>Generic AI receptionists answer calls. Human answering services take messages. FSM platforms manage operations. Wrenlo does what none of them do: recover booked estimates with trade-specific intelligence.</p>
+    <div class="page-hero-actions">
+      <a class="btn btn-primary btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Start Free Pilot →</a>
+      <a class="btn btn-ghost btn-lg" href="/pricing">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">Side-by-side</span>
+      <h2 class="sec-title">How Wrenlo compares to<br><em>every alternative.</em></h2>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;min-width:200px"></th>
+            <th class="wrenlo-col">Wrenlo AI</th>
+            <th>Generic AI Receptionist</th>
+            <th>Human Answering Service</th>
+            <th>FSM Built-in Feature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-label">Missed-call text-back</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="partial">Partial</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td class="row-label">After-hours AI answering</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="partial">Partial</span></td></tr>
+          <tr><td class="row-label">Trade-specific intake</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="partial">Partial</span></td></tr>
+          <tr><td class="row-label">Emergency classification</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td class="row-label">Owner-approved booking rules</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="row-label">Books into your existing FSM</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td>Is the FSM</td></tr>
+          <tr><td class="row-label">Revenue recovered dashboard</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td class="row-label">Quote follow-up sequences</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="partial">Partial</span></td></tr>
+          <tr><td class="row-label">Human backup option</td><td class="wrenlo-col"><span class="check">✓ Pro</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td class="row-label">Works without replacing FSM</td><td class="wrenlo-col"><span class="check">✓</span></td><td><span class="partial">Partial</span></td><td><span class="check">✓</span></td><td>Requires FSM</td></tr>
+          <tr><td class="row-label">Typical monthly cost</td><td class="wrenlo-col" style="color:var(--orange);font-weight:600">$199–$799</td><td>$50–$150</td><td>$300–$800</td><td>Included in FSM</td></tr>
+          <tr><td class="row-label">ROI attribution</td><td class="wrenlo-col"><span class="check">✓ Calculated</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOLD 2 — DIFFERENTIATOR DEEP DIVE -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">The real differences</span>
+      <h2 class="sec-title">Why each alternative<br><em>falls short for contractors.</em></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-vs">vs. Generic AI Receptionist</div>
+        <h3>Answers calls. Doesn't understand your trade.</h3>
+        <p>Generic AI receptionists are built for all SMBs — dental offices, law firms, salons, contractors. They use the same script for everyone. They don't know the difference between a no-AC emergency and a maintenance tune-up, or a burst pipe and a dripping faucet. That means misclassified leads, wrong routing, and missed urgency.</p>
+        <div class="diff-points">
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>No emergency vs. routine classification</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>Generic intake — not trade-specific</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>No revenue attribution</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>No FSM integration</div>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-vs">vs. Human Answering Service</div>
+        <h3>Takes messages. Doesn't book jobs.</h3>
+        <p>Live answering services can handle complex conversations — but they take a message and stop there. No booking, no follow-up, no qualification, no ROI tracking. And they charge per minute, which means seasonal spikes in HVAC or storm damage roofing can make your monthly bill unpredictable. Plus they don't know your trade any better than a generic AI does.</p>
+        <div class="diff-points">
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>Per-minute pricing — unpredictable cost</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>Takes messages, rarely books directly</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>No follow-up after the call</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--red)">✕</span>No missed-call text-back</div>
+        </div>
+      </div>
+      <div class="diff-card featured">
+        <div class="diff-vs">Wrenlo</div>
+        <h3>Qualifies the job. Books the estimate. Shows what was recovered.</h3>
+        <p>Wrenlo is built specifically for residential home-service contractors. Trade-specific scripts for HVAC, plumbing, electrical, roofing, and more. Emergency classification in the first 30 seconds. Owner-approved booking rules. Revenue attribution that ties every answered call to a dollar outcome.</p>
+        <div class="diff-points">
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--green)">✓</span>Trade-specific intake, pre-loaded by vertical</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--green)">✓</span>Emergency vs. routine in under 30 seconds</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--green)">✓</span>Books into your existing calendar / FSM</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--green)">✓</span>Revenue dashboard — calculated, not implied</div>
+          <div class="diff-point"><span class="diff-point-icon" style="color:var(--green)">✓</span>Flat monthly pricing — no per-minute spikes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FSM comparison callout -->
+    <div class="callout reveal" style="margin-top:24px">
+      <div class="callout-title">What about Jobber Receptionist or Housecall Pro's AI features?</div>
+      <p>FSM-native receptionist features are designed to work within their own platform. They handle basic call answering for existing customers but don't offer missed-call text-back to callers who hung up, trade-specific emergency classification, revenue attribution by lead source, or quote follow-up sequences. Wrenlo plugs into Jobber, HCP, ServiceTitan, and Workiz as a front-office layer — it feeds leads into your FSM rather than competing with it. If you use Jobber, Wrenlo makes Jobber work better.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOLD 3 — SCENARIO WALKTHROUGH -->
+<section class="section" style="background:var(--card)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">Real scenarios</span>
+      <h2 class="sec-title">What actually happens when<br><em>a call comes in at 9pm.</em></h2>
+      <p class="sec-sub">Same homeowner. Same call. Different outcome depending on what you have in place.</p>
+    </div>
+    <div class="scenario-tabs">
+      <button class="stab active" onclick="showScenario('hvac', this)">No AC at 9pm</button>
+      <button class="stab" onclick="showScenario('leak', this)">Burst pipe midnight</button>
+      <button class="stab" onclick="showScenario('estimate', this)">Roof estimate request</button>
+      <button class="stab" onclick="showScenario('busy', this)">Call during install</button>
+    </div>
+
+    <!-- HVAC -->
+    <div class="scenario-panel active" id="sc-hvac">
+      <div class="scenario-left">
+        <div class="scenario-label bad">Without Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">📞</div><p><strong>9:04 PM</strong> — Homeowner calls. You're at dinner. Phone rings, goes to voicemail.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🔇</div><p><strong>9:04 PM</strong> — Homeowner doesn't leave a message. Too hot, two kids, needs help now.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📱</div><p><strong>9:05 PM</strong> — Opens Google, calls the next contractor. They answer.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📅</div><p><strong>9:08 PM</strong> — Competitor books the job for 8am tomorrow.</p></div>
+        <div class="scenario-result result-bad">Job lost. $1,200–$4,000 gone. You never knew it called.</div>
+      </div>
+      <div class="scenario-right">
+        <div class="scenario-label good">With Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">📞</div><p><strong>9:04 PM</strong> — Call forwarded to Wrenlo. Answered in under 5 seconds.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🤖</div><p><strong>9:04 PM</strong> — Wrenlo asks system type, age, symptoms. Classifies as <strong>emergency — no AC, 103°F, children present</strong>.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🚨</div><p><strong>9:05 PM</strong> — Owner receives SMS alert with caller name, address, and urgency summary.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📅</div><p><strong>9:06 PM</strong> — Priority slot held for 8am. Confirmation texted to homeowner.</p></div>
+        <div class="scenario-result result-good">Job captured. Revenue protected. Owner decides whether to call back tonight.</div>
+      </div>
+    </div>
+
+    <!-- Burst pipe -->
+    <div class="scenario-panel" id="sc-leak">
+      <div class="scenario-left">
+        <div class="scenario-label bad">Without Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">📞</div><p><strong>Midnight</strong> — Homeowner calls. Water everywhere under kitchen sink.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🔇</div><p>Voicemail. Homeowner panics, hangs up immediately.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📱</div><p>Searches "emergency plumber near me." Calls someone else who advertises 24/7.</p></div>
+        <div class="scenario-result result-bad">Emergency job — often $800–$2,500 — goes to a competitor with better after-hours coverage.</div>
+      </div>
+      <div class="scenario-right">
+        <div class="scenario-label good">With Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">📞</div><p><strong>Midnight</strong> — Call forwarded to Wrenlo. Answered immediately.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🤖</div><p>Wrenlo asks: active water? Can you shut it off? Confirms address. Classifies as <strong>emergency dispatch</strong>.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🚨</div><p>Owner alerted by SMS with full situation summary. Homeowner told someone will call within 10 minutes.</p></div>
+        <div class="scenario-result result-good">Emergency captured. Owner decides next step. Homeowner stays with you instead of searching further.</div>
+      </div>
+    </div>
+
+    <!-- Estimate -->
+    <div class="scenario-panel" id="sc-estimate">
+      <div class="scenario-left">
+        <div class="scenario-label bad">Without Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">📞</div><p>Homeowner calls Friday at 6pm for a full roof replacement estimate. Goes to voicemail.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📝</div><p>Leaves a vague message: "Hi, want to get a quote on my roof." No address, no roof age, no context.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">⏰</div><p>You call back Monday. They already have 3 estimates. You're competing from behind.</p></div>
+        <div class="scenario-result result-bad">High-ticket estimate ($8,000–$25,000) started cold. You're already the 4th call they took.</div>
+      </div>
+      <div class="scenario-right">
+        <div class="scenario-label good">With Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">📞</div><p>Friday 6pm — call answered. Wrenlo collects address, roof age, material, storm damage, insurance interest, and photo availability.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📅</div><p>Estimate appointment booked for Monday 9am. Confirmation + photo request texted to homeowner.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🔁</div><p>Follow-up sent Saturday if no photos received. Reminder sent Sunday evening.</p></div>
+        <div class="scenario-result result-good">Your estimator arrives Monday with context. You're first on site, fully prepared.</div>
+      </div>
+    </div>
+
+    <!-- Busy -->
+    <div class="scenario-panel" id="sc-busy">
+      <div class="scenario-left">
+        <div class="scenario-label bad">Without Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">🔧</div><p>You're under a house replacing a water heater. Phone rings twice. Can't answer.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🔇</div><p>No voicemail left. Caller was a Google Ads click — $35 in ad spend, zero conversion.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">📱</div><p>You finish 90 minutes later, check missed calls, have no idea who it was or what they needed.</p></div>
+        <div class="scenario-result result-bad">$35 ad spend wasted. Lead gone. No way to recover.</div>
+      </div>
+      <div class="scenario-right">
+        <div class="scenario-label good">With Wrenlo</div>
+        <div class="scenario-step"><div class="scenario-step-icon">🔧</div><p>You're under a house. Call missed. Forwarded to Wrenlo in under 5 seconds.</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">⚡</div><p>Missed-call text-back fires within 30 seconds: "Hi, this is [Business] — sorry we missed you! What can we help with?"</p></div>
+        <div class="scenario-step"><div class="scenario-step-icon">🤖</div><p>Caller replies by text. Wrenlo qualifies over SMS. Books next available service window.</p></div>
+        <div class="scenario-result result-good">Lead captured via text. Job booked. $35 ad spend converted.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOLD 4 — OBJECTIONS -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">Common objections</span>
+      <h2 class="sec-title">Things contractors ask us<br><em>before they start.</em></h2>
+    </div>
+    <div class="obj-grid reveal">
+      <div class="obj-card"><div class="obj-q">"My customers want to talk to a real person."</div><div class="obj-a">So do we. Wrenlo introduces itself honestly as the team's AI assistant — never pretends to be human. Most homeowners (53% by one industry study) are comfortable with AI on an initial call, especially when the alternative is voicemail. For customers who want a human, Wrenlo escalates to the owner or can be set to transfer immediately. The Pro plan includes a human backup option for calls where AI isn't appropriate.</div></div>
+      <div class="obj-card"><div class="obj-q">"I already pay for Jobber/HCP — why add another tool?"</div><div class="obj-a">Jobber and Housecall Pro are excellent at running jobs you already have. Wrenlo captures the jobs that would otherwise never make it into your FSM — the calls you miss while on a job, the after-hours leads, the callers who don't leave voicemail. It feeds new jobs into your existing FSM rather than replacing it. Most contractors see positive ROI in the first week of the pilot.</div></div>
+      <div class="obj-card"><div class="obj-q">"What if Wrenlo says something wrong to a customer?"</div><div class="obj-a">Wrenlo uses constrained, pre-approved scripts — it doesn't improvise. Emergency calls escalate to the owner without autonomous troubleshooting. Safety-critical situations (gas smell, electrical sparking, structural risk) immediately route to the owner without Wrenlo attempting a response. Every call has a full transcript and audit trail in your lead inbox. You can review, edit the playbook, and tighten rules at any time.</div></div>
+      <div class="obj-card"><div class="obj-q">"I don't want to change my phone number."</div><div class="obj-a">You don't. Call forwarding redirects missed and after-hours calls to Wrenlo from your existing number — at the carrier or Google Voice level. Your customers still call the same number they always have. You can set forwarding rules: after 3 rings, after 5pm, or only on weekends. It takes about 5 minutes to configure and can be turned off instantly.</div></div>
+      <div class="obj-card"><div class="obj-q">"I'm already pretty good at calling back fast."</div><div class="obj-a">Great — but what happens at 9pm on a Tuesday when you're at your kid's game? Or when you're under a crawlspace for 3 hours on a Friday? Wrenlo covers the gaps that even the most responsive owner can't fill. It also handles the 30–40% of callers who hang up before leaving voicemail — people you never even knew called.</div></div>
+      <div class="obj-card"><div class="obj-q">"$399 a month feels expensive for a small business."</div><div class="obj-a">One recovered HVAC repair at $900 covers 2+ months of the Growth plan. One recovered replacement estimate covers the year. The ROI calculator on our pricing page lets you run your own numbers based on your actual call volume and average ticket. Most pilots in our founding cohort recover their first month's cost within the first week. If Wrenlo doesn't recover a qualified opportunity during the 14-day pilot, you don't continue.</div></div>
+    </div>
+
+    <div style="margin-top:48px;text-align:center">
+      <p style="font-size:15px;color:var(--text-soft);margin-bottom:20px">Still have a question not covered here?</p>
+      <a class="btn btn-ghost btn-lg" href="mailto:hello@wrenlo.co?subject=Question before pilot">Email us directly →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section--tight" style="background:var(--bg2)"><div class="container"><div class="cta-band reveal"><div><h2>Try it on your own<br><em>missed calls for 14 days.</em></h2><p>If Wrenlo doesn't recover at least one qualified opportunity during the pilot, you don't continue — no questions asked.</p></div><div class="cta-band-actions"><a class="btn btn-white btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a><a class="btn" href="/pricing" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)">See pricing</a><span class="cta-note">$299 setup · credited to Month 1</span></div></div></div></section>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors.</p></div><div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div><div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div><div><div class="footer-col-title">Start</div><div class="footer-links"><a class="footer-link" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a><a class="footer-link" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a><a class="footer-link" href="/survey">Founding Survey</a></div></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span><span class="footer-copy">Built for contractors who are done missing jobs</span></div></div></footer>
+<script src="wrenlo.js"></script>
+<script>
+function showScenario(id, btn) {
+  document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(b => b.classList.remove('active'));
+  document.getElementById('sc-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body></html>

@@ -1,560 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing — Wrenlo AI Front Desk for Contractors</title>
-<meta name="description" content="Wrenlo AI plans starting at $199/month. Starter, Growth, and Pro tiers. No long-term contracts. Setup fee credited to Month 1. Start with a 14-day free pilot.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Wrenlo AI</title>
+<meta name="description" content="Wrenlo pricing: Starter $199/mo, Growth $399/mo, Pro $799/mo. Setup fee credited to Month 1. No per-minute surprises.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* ── PRICING PAGE ─────────────────────────────────── */
+.billing-toggle { display:flex; align-items:center; gap:12px; font-size:13px; color:var(--text-soft) }
+.toggle-track { width:44px; height:24px; border-radius:12px; background:var(--border-s); border:1px solid var(--border-s); position:relative; cursor:pointer; transition:background .2s }
+.toggle-track.on { background:var(--orange); border-color:var(--orange) }
+.toggle-knob { width:18px; height:18px; border-radius:50%; background:#fff; position:absolute; top:2px; left:3px; transition:transform .2s }
+.toggle-track.on .toggle-knob { transform:translateX(20px) }
+.save-badge { background:var(--orange-lt); color:var(--orange); font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; padding:2px 8px; border-radius:4px }
 
-.pricing-hero {
-  background: var(--ink);
-  padding: 80px 0 72px;
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.pricing-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(217,107,26,.12) 0%, transparent 65%);
-  pointer-events: none;
-}
-.pricing-hero .container { position: relative; z-index: 1; }
-.pricing-hero h1 { color: #fff; margin: 14px 0 18px; }
-.pricing-hero h1 em { color: var(--amber-mid); }
-.pricing-hero .lead { color: rgba(255,255,255,.45); max-width: 480px; margin: 0 auto 36px; }
-
-/* Toggle */
-.billing-toggle {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-size: 14px;
-}
-.billing-toggle input { display: none; }
-.toggle-track {
-  width: 44px; height: 24px; border-radius: 12px;
-  background: rgba(255,255,255,.12);
-  position: relative; cursor: pointer;
-  transition: background 0.2s;
-  flex-shrink: 0;
-}
-.toggle-track.on { background: var(--amber); }
-.toggle-thumb {
-  position: absolute;
-  top: 3px; left: 3px;
-  width: 18px; height: 18px; border-radius: 9px;
-  background: #fff;
-  transition: transform 0.2s ease;
-}
-.toggle-track.on .toggle-thumb { transform: translateX(20px); }
-.billing-toggle label { color: rgba(255,255,255,.5); cursor: pointer; }
-.billing-toggle label.active { color: #fff; }
-.save-pill {
-  background: rgba(26,107,67,.3);
-  border: 1px solid rgba(26,107,67,.4);
-  border-radius: 100px;
-  font-size: 11px; font-weight: 600; color: #5ecf8a;
-  padding: 3px 10px;
-}
-
-/* Plans grid */
-.plans-section { padding: 80px 0; background: var(--surface); }
-.plans-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px; align-items: start;
-}
-.plan-card {
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 18px;
-  padding: 32px 28px;
-  position: relative;
-}
-.plan-card.featured {
-  background: var(--amber);
-  border-color: var(--amber);
-  transform: scale(1.02);
-  box-shadow: 0 16px 48px rgba(217,107,26,.3);
-}
-.plan-card.featured::before {
-  content: 'Most Popular';
-  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-  background: var(--ink); color: #fff;
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 5px 16px; border-radius: 100px;
-  white-space: nowrap;
-}
-.plan-name {
-  font-family: var(--mono); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 10px;
-}
-.plan-card.featured .plan-name { color: rgba(255,255,255,.7); }
-.plan-price {
-  font-family: var(--serif);
-  font-size: 52px; line-height: 1;
-  letter-spacing: -0.025em;
-  color: var(--ink); margin-bottom: 4px;
-}
-.plan-card.featured .plan-price { color: #fff; }
-.plan-period { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
-.plan-card.featured .plan-period { color: rgba(255,255,255,.6); }
-.plan-setup {
-  font-size: 12px; color: var(--muted);
-  background: var(--surface); border-radius: 5px;
-  padding: 4px 10px; display: inline-block; margin-bottom: 24px;
-}
-.plan-card.featured .plan-setup { background: rgba(255,255,255,.15); color: rgba(255,255,255,.75); }
-.plan-hr { border: none; border-top: 1px solid var(--rule); margin: 20px 0; }
-.plan-card.featured .plan-hr { border-color: rgba(255,255,255,.2); }
-.plan-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-.plan-feat {
-  display: flex; gap: 10px; align-items: flex-start;
-  font-size: 13.5px; color: var(--muted); line-height: 1.5;
-}
-.plan-card.featured .plan-feat { color: rgba(255,255,255,.85); }
-.plan-check { color: var(--green); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-.plan-card.featured .plan-check { color: rgba(255,255,255,.9); }
-.plan-feat.dim { color: var(--faint); }
-.plan-feat.dim .plan-check { color: var(--faint); content: '—'; }
-.plan-btn { display: block; width: 100%; text-align: center; }
-.plan-card:not(.featured) .plan-btn { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
-.plan-card:not(.featured) .plan-btn:hover { border-color: var(--ink); }
-.plan-card.featured .plan-btn { background: #fff; color: var(--amber); }
-.plan-card.featured .plan-btn:hover { background: var(--amber-lt); }
-
-/* Savings note */
-.savings-note {
-  text-align: center; margin-top: 24px;
-  font-size: 13px; color: var(--muted);
-}
-.savings-note strong { color: var(--green); }
-
-/* Compare table */
-.compare-section { padding: 80px 0; background: var(--white); }
-.compare-table { width: 100%; border-collapse: collapse; margin-top: 48px; }
-.compare-table th {
-  padding: 14px 20px; text-align: left;
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 2px solid var(--rule);
-}
-.compare-table th:first-child { width: 40%; }
-.compare-table th.featured-col { color: var(--amber); }
-.compare-table td {
-  padding: 14px 20px;
-  font-size: 14px; color: var(--muted);
-  border-bottom: 1px solid var(--rule);
-  vertical-align: middle;
-}
-.compare-table td:first-child { color: var(--ink); font-weight: 500; }
-.compare-table tr:hover td { background: var(--surface); }
-.compare-table .check-yes { color: var(--green); font-weight: 700; font-size: 15px; }
-.compare-table .check-no { color: var(--faint); }
-.compare-table .check-val { color: var(--ink); font-weight: 500; }
-.compare-table .row-category td {
-  background: var(--surface);
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--faint); padding: 10px 20px;
-  border-bottom: 1px solid var(--rule);
-}
+.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:start }
+.plan { background:var(--card); border:1px solid var(--border); border-radius:var(--r-lg); padding:30px }
+.plan.featured { background:var(--orange); border-color:var(--orange); position:relative }
+.plan.featured::before { content:'Most Popular'; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--text); color:var(--bg); font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:4px 14px; border-radius:100px }
+.plan-name   { font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); margin-bottom:10px }
+.plan.featured .plan-name { color:rgba(255,255,255,.7) }
+.plan-price  { font-family:var(--serif); font-size:46px; line-height:1; letter-spacing:-.02em; margin-bottom:4px }
+.plan.featured .plan-price { color:#fff }
+.plan-period { font-size:13px; color:var(--text-soft); margin-bottom:6px }
+.plan.featured .plan-period { color:rgba(255,255,255,.6) }
+.plan-setup  { font-size:12px; background:var(--bg2); color:var(--text-faint); padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:22px }
+.plan.featured .plan-setup  { background:rgba(255,255,255,.15); color:rgba(255,255,255,.7) }
+.plan-divider { height:1px; background:var(--border); margin:18px 0 }
+.plan.featured .plan-divider { background:rgba(255,255,255,.2) }
+.plan-features { display:flex; flex-direction:column; gap:9px; margin-bottom:24px }
+.plan-feature  { display:flex; gap:9px; font-size:13px; color:var(--text-soft) }
+.plan.featured .plan-feature { color:rgba(255,255,255,.85) }
+.plan-check    { color:var(--green); flex-shrink:0; font-size:14px; margin-top:1px }
+.plan.featured .plan-check  { color:rgba(255,255,255,.9) }
+.plan .btn     { width:100%; justify-content:center }
+.plan.featured .btn-primary { background:#fff; color:var(--orange) }
+.plan.featured .btn-primary:hover { background:rgba(255,255,255,.9) }
+.plan-note { font-size:11px; color:var(--text-faint); text-align:center; margin-top:8px; line-height:1.6 }
+.plan.featured .plan-note { color:rgba(255,255,255,.5) }
 
 /* ROI calc */
-.roi-section { background: var(--surface); padding: 80px 0; }
-.roi-inner { display: grid; grid-template-columns: 1fr 480px; gap: 72px; align-items: center; }
-.roi-inner h2 { margin: 10px 0 14px; }
-.roi-inner .lead { max-width: 440px; }
-.roi-box {
-  background: var(--ink);
-  border-radius: var(--r-lg);
-  padding: 32px;
-}
-.roi-box-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 24px; }
-.roi-field { margin-bottom: 18px; }
-.roi-label { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.4); display: block; margin-bottom: 7px; letter-spacing: 0.08em; text-transform: uppercase; }
-.roi-input, .roi-select {
-  width: 100%; background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--r-sm);
-  padding: 11px 14px; color: #fff;
-  font-family: var(--sans); font-size: 15px;
-  outline: none; transition: border-color 0.15s;
-  -webkit-appearance: none;
-}
-.roi-input:focus, .roi-select:focus { border-color: var(--amber); }
-.roi-select option { background: #1a1a18; }
-.roi-result {
-  background: var(--amber); border-radius: var(--r-sm);
-  padding: 20px; margin-top: 6px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.roi-result-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.8); }
-.roi-result-sub { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 2px; }
-.roi-result-val { font-family: var(--serif); font-size: 36px; color: #fff; letter-spacing: -0.02em; }
-.roi-cta { display: block; width: 100%; text-align: center; margin-top: 16px; background: var(--white); color: var(--amber); }
-.roi-cta:hover { background: var(--amber-lt); }
+.roi-calc { background:var(--card); border:1px solid var(--border-s); border-radius:var(--r-lg); padding:32px }
+.calc-result { background:var(--orange); border-radius:8px; padding:18px 20px; margin:8px 0 16px; display:flex; justify-content:space-between; align-items:center }
+.calc-result-lbl { font-size:12px; font-weight:500; color:rgba(255,255,255,.75) }
+.calc-result-sub { font-size:11px; color:rgba(255,255,255,.5); margin-top:2px }
+.calc-result-val { font-family:var(--serif); font-size:36px; color:#fff; letter-spacing:-.02em }
 
 /* FAQ */
-.faq-section { background: var(--white); padding: 80px 0; }
-.faq-header { text-align: center; max-width: 520px; margin: 0 auto 56px; }
-.faq-list { max-width: 720px; margin: 0 auto; border-top: 1px solid var(--rule); }
-.faq-item { border-bottom: 1px solid var(--rule); }
-.faq-btn {
-  width: 100%; background: none; border: none;
-  text-align: left; padding: 22px 0;
-  display: flex; justify-content: space-between; align-items: center; gap: 20px;
-  cursor: pointer; font-family: var(--sans); font-size: 15px;
-  font-weight: 500; color: var(--ink);
-}
-.faq-btn:hover { color: var(--amber); }
-.faq-arrow { font-size: 20px; color: var(--faint); transition: transform 0.2s; flex-shrink: 0; }
-.faq-item.open .faq-arrow { transform: rotate(45deg); color: var(--amber); }
-.faq-answer { display: none; padding: 0 0 22px; font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 640px; }
-.faq-item.open .faq-answer { display: block; }
+.faq-cols { display:grid; grid-template-columns:1fr 1fr; gap:0 48px }
 
-/* Pilot bottom CTA */
-.pilot-bottom { background: var(--amber); padding: 80px 0; text-align: center; }
-.pilot-bottom h2 { color: #fff; margin: 10px 0 16px; }
-.pilot-bottom .lead { color: rgba(255,255,255,.7); max-width: 480px; margin: 0 auto 36px; }
-.pilot-bottom-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-/* Responsive */
-@media (max-width: 900px) {
-  .plans-grid { grid-template-columns: 1fr; }
-  .plan-card.featured { transform: none; }
-  .roi-inner { grid-template-columns: 1fr; }
-  .compare-table { font-size: 13px; }
-}
-@media (max-width: 600px) {
-  .compare-table th, .compare-table td { padding: 10px 12px; }
-}
+@media(max-width:900px){ .pricing-grid{grid-template-columns:1fr} .faq-cols{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
-<script src="nav.js"></script>
+<div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
+<nav><div class="nav-inner"><a href="/" class="logo"><div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l3-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>Wrenlo</a><div class="nav-links"><a class="nav-link" href="/product">Product</a><a class="nav-link" href="/pricing">Pricing</a><a class="nav-link" href="/why-us">Why Wrenlo</a><a class="nav-link" href="/our-story">Our Story</a><a class="nav-link" href="/survey">Survey</a></div><div class="nav-ctas"><a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a><a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a></div><button class="hamburger" onclick="openMenu()">☰</button></div></nav>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="closeMenu()">✕</button><a class="mobile-link" href="/product" onclick="closeMenu()">Product</a><a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a><a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a><a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a><a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a><div class="mobile-menu-ctas"><a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a><a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot">Book Pilot Call</a></div></div>
 
-<!-- HERO -->
-<section class="pricing-hero">
+<!-- FOLD 1 — HERO -->
+<section class="page-hero">
   <div class="container">
-    <span class="eyebrow fade-up">Pricing</span>
-    <h1 class="fade-up fade-up-1">One recovered job covers<br><em>months of cost.</em></h1>
-    <p class="lead fade-up fade-up-2">Simple plans. No long-term contracts. Setup fee credited toward Month 1. If your pilot doesn't recover at least one qualified lead in 14 days — you don't pay.</p>
-    <div class="fade-up fade-up-3" style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
-      <div class="billing-toggle" id="billingToggle">
-        <label id="monthly-label" class="active">Monthly</label>
-        <div class="toggle-track" id="toggleTrack" onclick="toggleBilling()">
-          <div class="toggle-thumb"></div>
-        </div>
-        <label id="annual-label">Annual <span class="save-pill">Save 20%</span></label>
-      </div>
+    <span class="eyebrow">Pricing</span>
+    <h1>One recovered job covers<br><em>months of cost.</em></h1>
+    <p>Simple plans. No per-minute billing surprises. No long-term contracts. Setup fee credited toward Month 1. Start with a 14-day free pilot.</p>
+    <div class="billing-toggle" style="margin-top:28px">
+      <span>Monthly</span>
+      <div class="toggle-track" id="billingToggle" onclick="toggleBilling()"><div class="toggle-knob"></div></div>
+      <span>Annual</span>
+      <span class="save-badge">Save 20%</span>
     </div>
   </div>
 </section>
 
-<!-- PLANS -->
-<section class="plans-section">
+<!-- FOLD 2 — PLANS -->
+<section class="section" style="background:var(--bg2)">
   <div class="container">
-    <div class="plans-grid">
-
-      <!-- STARTER -->
-      <div class="plan-card" data-reveal>
+    <div class="pricing-grid">
+      <div class="plan reveal">
         <div class="plan-name">Starter</div>
-        <div class="plan-price"><span id="p1-price">$199</span></div>
+        <div class="plan-price" data-monthly="199" data-annual="159">$199</div>
         <div class="plan-period">per month</div>
-        <div class="plan-setup">+ $299 setup (credited to Month 1)</div>
-        <hr class="plan-hr">
+        <div class="plan-setup">+ $299 setup · credited to Month 1</div>
+        <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li class="plan-feat"><span class="plan-check">✓</span>Missed-call text-back (24/7)</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>AI call answering (after-hours)</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>1 trade playbook</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Google Calendar booking</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Lead inbox &amp; transcripts</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>SMS daily digest</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Up to 200 calls / month</li>
-          <li class="plan-feat dim"><span class="plan-check">—</span>Quote follow-up sequences</li>
-          <li class="plan-feat dim"><span class="plan-check">—</span>Revenue dashboard</li>
-          <li class="plan-feat dim"><span class="plan-check">—</span>Zapier / webhook</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Missed-call text-back (24/7)</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>AI call answering (after-hours)</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Google Calendar booking</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Basic trade intake script</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Lead inbox & transcripts</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Up to 200 calls/month</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Daily lead summary emails</li>
         </ul>
-        <a class="btn btn--outline btn--lg plan-btn" href="/solution.html#pilot">Start free pilot</a>
+        <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Starter Plan Inquiry">Talk to Us</a>
+        <p class="plan-note">One $1,200 emergency job covers<br>6 months of Starter</p>
       </div>
-
-      <!-- GROWTH (featured) -->
-      <div class="plan-card featured" data-reveal>
+      <div class="plan featured reveal">
         <div class="plan-name">Growth</div>
-        <div class="plan-price"><span id="p2-price">$399</span></div>
+        <div class="plan-price" data-monthly="399" data-annual="319" style="color:#fff">$399</div>
         <div class="plan-period">per month</div>
-        <div class="plan-setup">+ $499 setup (credited to Month 1)</div>
-        <hr class="plan-hr">
+        <div class="plan-setup">+ $499 setup · credited to Month 1</div>
+        <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li class="plan-feat"><span class="plan-check">✓</span>Everything in Starter</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>24/7 AI call answering</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Trade-specific intake scripts</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Owner approval mode</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Quote follow-up sequences</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Revenue dashboard</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Zapier / webhook integration</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Emergency escalation rules</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Up to 600 calls / month</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Week-1 ROI review call</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Everything in Starter</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>24/7 AI call answering</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Trade-specific intake scripts</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Emergency classification</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Owner approval mode</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Quote follow-up sequences</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Revenue dashboard</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Zapier / webhook integration</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Up to 600 calls/month</li>
         </ul>
-        <a class="btn btn--primary btn--lg plan-btn" href="/solution.html#pilot">Start free pilot</a>
+        <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=Growth Pilot Request">Book Pilot Call</a>
+        <p class="plan-note">Most pilots recover 3–8 jobs in 30 days</p>
       </div>
-
-      <!-- PRO -->
-      <div class="plan-card" data-reveal>
+      <div class="plan reveal">
         <div class="plan-name">Pro</div>
-        <div class="plan-price"><span id="p3-price">$799</span></div>
+        <div class="plan-price" data-monthly="799" data-annual="639">$799</div>
         <div class="plan-period">per month</div>
         <div class="plan-setup">+ $1,500 setup</div>
-        <hr class="plan-hr">
+        <div class="plan-divider"></div>
         <ul class="plan-features">
-          <li class="plan-feat"><span class="plan-check">✓</span>Everything in Growth</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Multiple lines / locations</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Jobber / HCP native writeback</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>ServiceTitan integration</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Human backup concierge</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Custom reporting</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Role-based team inbox</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Unlimited calls</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Review automation</li>
-          <li class="plan-feat"><span class="plan-check">✓</span>Dedicated onboarding manager</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Everything in Growth</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Multiple lines / locations</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Jobber / HCP native writeback</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Human backup concierge</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Role-based team access</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Custom reporting</li>
+          <li class="plan-feature"><span class="plan-check">✓</span>Unlimited calls</li>
         </ul>
-        <a class="btn btn--outline btn--lg plan-btn" href="mailto:hello@wrenlo.co?subject=Pro Plan Inquiry">Book a call</a>
+        <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Pro Plan Inquiry">Talk to Us</a>
+        <p class="plan-note">For higher-volume teams & multi-location</p>
       </div>
-
     </div>
-    <p class="savings-note">Pay annually and <strong>save 20%</strong> — Starter becomes $159/mo, Growth becomes $319/mo, Pro becomes $639/mo.</p>
+    <div style="margin-top:20px;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);font-size:13px;color:var(--text-soft);text-align:center;line-height:1.6">
+      Usage limits apply to protect call quality and keep pricing predictable. No surprise per-minute billing.<br>
+      All plans include a 14-day pilot period. If Wrenlo doesn't recover a qualified opportunity, you don't continue — no questions asked.
+    </div>
   </div>
 </section>
 
-<!-- COMPARE TABLE -->
-<section class="compare-section">
+<!-- FOLD 3 — ROI CALCULATOR -->
+<section class="section" style="background:var(--bg)">
   <div class="container">
-    <div class="section-header--center">
-      <span class="eyebrow">Compare plans</span>
-      <h2>What's in each plan</h2>
-    </div>
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Starter</th>
-          <th class="featured-col">Growth ✦</th>
-          <th>Pro</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="row-category"><td colspan="4">Call Handling</td></tr>
-        <tr><td>Missed-call text-back (24/7)</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>AI call answering (after-hours)</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>AI call answering (all hours)</td><td class="check-no">—</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>Monthly call limit</td><td class="check-val">200</td><td class="check-val">600</td><td class="check-val">Unlimited</td></tr>
-        <tr><td>Multiple lines / locations</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr class="row-category"><td colspan="4">Trade Intake</td></tr>
-        <tr><td>Trade-specific intake scripts</td><td class="check-val">1 trade</td><td class="check-yes">✓ All trades</td><td class="check-yes">✓ All trades</td></tr>
-        <tr><td>Emergency escalation rules</td><td class="check-val">Basic</td><td class="check-yes">✓ Full</td><td class="check-yes">✓ Full</td></tr>
-        <tr><td>Owner approval mode (by job type)</td><td class="check-no">—</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr class="row-category"><td colspan="4">Booking &amp; Follow-Up</td></tr>
-        <tr><td>Google Calendar booking</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>Zapier / webhook writeback</td><td class="check-no">—</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>Jobber / Housecall Pro writeback</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr><td>ServiceTitan integration</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr><td>Quote follow-up sequences</td><td class="check-no">—</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>Review request automation</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr class="row-category"><td colspan="4">Reporting &amp; Support</td></tr>
-        <tr><td>Lead inbox &amp; full transcripts</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>Revenue dashboard</td><td class="check-no">—</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-        <tr><td>Custom reporting</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr><td>Human backup concierge</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr><td>Dedicated onboarding manager</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓</td></tr>
-        <tr><td>Week-1 ROI review call</td><td class="check-no">—</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ROI CALC -->
-<section class="roi-section">
-  <div class="container">
-    <div class="roi-inner">
+    <div class="two-col reveal">
       <div>
-        <span class="eyebrow">ROI calculator</span>
-        <h2 style="margin:10px 0 14px">Know your number<br>before you sign anything.</h2>
-        <p class="lead" style="margin-bottom:24px">Type in your call volume and average job value. We'll show you how much revenue you're leaving on the table — and what it costs to protect it.</p>
-        <ul class="checklist">
-          <li>Based on the industry-average 27% missed-call rate (Invoca 2025)</li>
-          <li>Wrenlo recovers 40–60% of missed calls in pilot accounts</li>
-          <li>One recovered job typically covers 2–4 months of subscription</li>
-          <li>ROI dashboard shows actual recovered revenue, not estimates</li>
-        </ul>
+        <span class="eyebrow">ROI Calculator</span>
+        <h2 class="sec-title">Know your number before<br>you sign <em>anything.</em></h2>
+        <p class="sec-sub" style="margin-bottom:24px">Type in your call volume and average ticket. We'll calculate how much revenue you're leaving on the table every month — and what it costs to stop.</p>
+        <div class="step-list">
+          <div class="step-item"><div class="step-n">1</div><div class="step-body"><span class="step-tag">Based on industry data</span><h3>27% average missed-call rate</h3><p>Invoca's 2025 Home Services report. Across HVAC, plumbing, electrical, and similar trades.</p></div></div>
+          <div class="step-item"><div class="step-n">2</div><div class="step-body"><span class="step-tag">Wrenlo pilot average</span><h3>40–60% call recovery rate</h3><p>Across pilots with missed-call text-back and after-hours answering active.</p></div></div>
+          <div class="step-item"><div class="step-n">3</div><div class="step-body"><span class="step-tag">Simple math</span><h3>One recovered job covers months</h3><p>An average HVAC repair at $1,200 covers 3 months of Growth plan. A replacement estimate at $8,000 covers the year.</p></div></div>
+        </div>
       </div>
-      <div class="roi-box" data-reveal>
-        <div class="roi-box-title">Your monthly revenue recovery estimate</div>
-        <div class="roi-field">
-          <label class="roi-label">Weekly inbound calls</label>
-          <input type="number" class="roi-input" id="roi-calls" value="40" min="1" oninput="calcROI()">
+      <div class="roi-calc">
+        <div style="font-size:15px;font-weight:600;margin-bottom:24px">Your monthly revenue recovery estimate</div>
+        <div class="form-field"><label class="form-label">Your trade</label><select class="form-select" id="roi-trade" onchange="setTradeDefaults()"><option value="hvac">HVAC</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option><option value="roofing">Roofing</option><option value="pest">Pest Control</option><option value="other">Other</option></select></div>
+        <div class="form-field"><label class="form-label">Weekly inbound calls</label><input type="number" class="form-input" id="roi-calls" value="40" min="1" oninput="calcROI()"></div>
+        <div class="form-field"><label class="form-label">Average job or estimate value ($)</label><input type="number" class="form-input" id="roi-ticket" value="900" min="1" oninput="calcROI()"></div>
+        <div class="calc-result">
+          <div><div class="calc-result-lbl">Est. monthly revenue recovered</div><div class="calc-result-sub">at 50% call recovery rate</div></div>
+          <div class="calc-result-val" id="roi-result">$1,944</div>
         </div>
-        <div class="roi-field">
-          <label class="roi-label">Average job or estimate value ($)</label>
-          <input type="number" class="roi-input" id="roi-ticket" value="900" min="1" oninput="calcROI()">
-        </div>
-        <div class="roi-field">
-          <label class="roi-label">Your trade</label>
-          <select class="roi-select" id="roi-trade" onchange="setTradeDefault()">
-            <option value="900">HVAC ($900 avg)</option>
-            <option value="380">Plumbing ($380 avg)</option>
-            <option value="490">Electrical ($490 avg)</option>
-            <option value="2400">Roofing ($2,400 avg)</option>
-            <option value="320">Garage Door ($320 avg)</option>
-            <option value="215">Pest Control ($215 avg)</option>
-            <option value="185">Cleaning ($185 avg)</option>
-            <option value="500">Other</option>
-          </select>
-        </div>
-        <div class="roi-result">
-          <div>
-            <div class="roi-result-label">Est. monthly revenue recovered</div>
-            <div class="roi-result-sub">at 50% of missed calls — conservative estimate</div>
-          </div>
-          <div class="roi-result-val" id="roi-result">$1,944</div>
-        </div>
-        <a class="btn btn--primary btn--lg roi-cta" href="/solution.html#pilot">Start your free pilot →</a>
+        <a class="btn btn-primary btn-full btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book a free pilot call →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq-section">
+<!-- FOLD 4 — FAQ -->
+<section class="section" style="background:var(--card)">
   <div class="container">
-    <div class="faq-header">
-      <span class="eyebrow">FAQ</span>
-      <h2 style="margin:10px 0 14px">Frequently asked</h2>
-      <p class="lead">Questions before you start. Honest answers.</p>
+    <div class="sec-header centered">
+      <span class="eyebrow">Pricing Questions</span>
+      <h2 class="sec-title">Everything you want to know<br>before <em>spending a dollar.</em></h2>
     </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          What does the 14-day pilot actually include?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">The pilot includes: one Wrenlo phone line configured for your missed and after-hours calls, your trade intake script set up and reviewed with you, your calendar connected with approved booking windows, emergency escalation rules, a daily lead summary via SMS or email, and a Week-1 ROI review call with the Wrenlo founding team. Setup fee is $299 and is credited toward your first month if you continue. If we don't recover at least one qualified lead in 14 days, you don't continue — no questions asked.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          Will I need a new phone number?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">No. You keep your existing business number. We configure conditional call forwarding — your calls only route to Wrenlo when you don't answer or during hours you define. Your main number stays the same, your brand stays the same, your customers never know anything changed. Takes about 10 minutes to set up on any carrier.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          Do I have to replace Jobber, Housecall Pro, or ServiceTitan?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">Not at all — that's the point. Wrenlo is a front-office layer that feeds your existing FSM, not a replacement for it. On the Starter plan, you connect Google Calendar. On Growth, you can use Zapier or webhooks to push leads into any system. On Pro, native Jobber, Housecall Pro, and ServiceTitan writebacks are included. Keep running your business on whatever you're already using.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          What happens when a caller needs a human?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">Wrenlo is designed to escalate gracefully. If a caller asks for a human, if the model detects a safety concern, or if the conversation falls outside defined parameters, it immediately offers to take a message for an urgent callback or (on Pro) transfers to a human backup concierge. No caller is ever left stranded. Every escalation is logged and flagged for owner follow-up.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          How are calls billed if I go over my plan limit?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">Overage minutes are billed at a per-minute rate tied to your plan. We notify you when you're approaching your limit so there are no surprise bills. High-volume months (HVAC summer, roofing storm season) can be pre-planned with temporary bundle upgrades. Alternatively, Pro includes unlimited calls if predictability matters more.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          Is there a long-term contract?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">No. Month-to-month on all plans. Cancel anytime with 30 days notice. Annual plans are available at a 20% discount — those do have a 12-month commitment, but you save significantly. We'd rather earn your renewal than lock you in.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          How does call recording and compliance work?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">Wrenlo configures a call recording disclosure at the start of every answered call — "This call may be recorded for quality purposes." State-specific defaults are pre-configured. All SMS follow-ups include opt-out support. TCPA consent revocation is handled automatically. Full transcripts and call summaries are stored securely and accessible only by your authorized team members. We recommend consulting with counsel if your state has specific two-party consent requirements.</div>
-      </div>
+    <div class="faq-list" style="max-width:800px;margin:48px auto 0">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What exactly does the $299 setup fee cover? <span class="faq-arrow">+</span></button><div class="faq-a">The setup fee covers configuring your call forwarding, building your trade-specific intake script, setting up your service area and booking rules, connecting your calendar, configuring owner escalation, and running a live test call before you go live. Most customers are fully configured in under 2 hours. The fee is credited in full toward your first month's subscription.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if I exceed my monthly call limit? <span class="faq-arrow">+</span></button><div class="faq-a">We notify you before you hit your cap — no surprise overages. You can upgrade your plan mid-month or purchase a usage bundle. We never cut off service without warning. Usage limits exist to protect call quality, not to create billing surprises.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I change plans after the pilot? <span class="faq-arrow">+</span></button><div class="faq-a">Yes. You can upgrade at any time — billing adjusts pro-rata. Downgrading is available at the next billing cycle. There's no long-term contract on monthly billing. Annual plans are discounted 20% and billed upfront.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What does the 14-day pilot actually include? <span class="faq-arrow">+</span></button><div class="faq-a">Full Growth plan access for 14 days: 24/7 AI call answering, missed-call text-back, trade intake, emergency classification, calendar booking, owner escalation, and daily lead summaries. We track every call and send you a full ROI report at the end. If Wrenlo doesn't recover at least one qualified lead, you don't continue and owe nothing beyond the $299 setup (which is credited anyway if you do continue).</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a contract or cancellation fee? <span class="faq-arrow">+</span></button><div class="faq-a">No contract on monthly billing. Cancel anytime — your service runs until the end of the paid period. Annual plans are non-refundable after 30 days but can be paused for seasonal businesses.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is payment collected? <span class="faq-arrow">+</span></button><div class="faq-a">Setup fees and subscriptions are collected via Stripe invoice or payment link — sent manually after your pilot call. We don't have a self-serve checkout yet. This keeps the onboarding process hands-on so you're not left configuring things alone.</div></div>
     </div>
   </div>
 </section>
 
-<!-- PILOT BOTTOM CTA -->
-<div class="pilot-bottom">
-  <div class="container">
-    <span class="eyebrow" style="color:rgba(255,255,255,.6)">No risk. No contract.</span>
-    <h2>Start recovering jobs tonight.</h2>
-    <p class="lead">14-day pilot. One trade playbook. One calendar. Forward your missed calls and see what you've been losing.</p>
-    <div class="pilot-bottom-actions">
-      <a class="btn btn--primary btn--xl" style="background:#fff;color:var(--amber)" href="/solution.html#pilot">Start free pilot →</a>
-      <a class="btn btn--ghost-white btn--xl" href="mailto:hello@wrenlo.co">Talk to the founder</a>
-    </div>
-  </div>
-</div>
+<section class="section--tight" style="background:var(--bg2)"><div class="container"><div class="cta-band reveal"><div><h2>Still not sure which plan<br>is right for <em>you?</em></h2><p>Book a 20-minute pilot call. We'll audit your current missed-call situation, recommend a plan, and configure everything if you decide to move forward.</p></div><div class="cta-band-actions"><a class="btn btn-white btn-lg" href="mailto:hello@wrenlo.co?subject=Pricing Question">Talk to Us →</a><a class="btn" href="/product" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)">See the product first</a></div></div></div></section>
 
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors.</p></div><div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div><div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div><div><div class="footer-col-title">Start</div><div class="footer-links"><a class="footer-link" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a><a class="footer-link" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a><a class="footer-link" href="/survey">Founding Survey</a></div></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span><span class="footer-copy">Built for contractors who are done missing jobs</span></div></div></footer>
+<script src="wrenlo.js"></script>
 <script>
-// Billing toggle
-let isAnnual = false;
-const prices = { monthly: ['$199','$399','$799'], annual: ['$159','$319','$639'] };
-function toggleBilling() {
-  isAnnual = !isAnnual;
-  const track = document.getElementById('toggleTrack');
-  track.classList.toggle('on', isAnnual);
-  document.getElementById('monthly-label').classList.toggle('active', !isAnnual);
-  document.getElementById('annual-label').classList.toggle('active', isAnnual);
-  const p = isAnnual ? prices.annual : prices.monthly;
-  document.getElementById('p1-price').textContent = p[0];
-  document.getElementById('p2-price').textContent = p[1];
-  document.getElementById('p3-price').textContent = p[2];
-}
-
-// ROI calc
-function setTradeDefault() {
-  const val = document.getElementById('roi-trade').value;
-  document.getElementById('roi-ticket').value = val;
-  calcROI();
-}
-function calcROI() {
-  const calls = parseFloat(document.getElementById('roi-calls').value) || 0;
-  const ticket = parseFloat(document.getElementById('roi-ticket').value) || 0;
-  const monthly = calls * 4.33;
-  const missed = monthly * 0.27;
-  const recovered = missed * 0.50;
-  const revenue = recovered * ticket;
-  document.getElementById('roi-result').textContent = '$' + Math.round(revenue).toLocaleString();
-}
+const tradeTickets={hvac:900,plumbing:380,electrical:490,roofing:2400,pest:215,other:500};
+function setTradeDefaults(){const t=document.getElementById('roi-trade').value;document.getElementById('roi-ticket').value=tradeTickets[t]||500;calcROI()}
+function calcROI(){const c=parseFloat(document.getElementById('roi-calls').value)||0,t=parseFloat(document.getElementById('roi-ticket').value)||0;document.getElementById('roi-result').textContent='$'+Math.round(c*4.33*.27*.5*t).toLocaleString()}
+let annual=false;
+function toggleBilling(){annual=!annual;document.getElementById('billingToggle').classList.toggle('on',annual);document.querySelectorAll('.plan-price').forEach(el=>el.textContent='$'+(annual?el.dataset.annual:el.dataset.monthly))}
 calcROI();
-
-// FAQ
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
-}
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  });
-});
 </script>
-</body>
-</html>
+</body></html>

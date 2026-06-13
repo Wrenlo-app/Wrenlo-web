@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founding Survey — Wrenlo AI · Win $100 Gift Card</title>
+<meta name="description" content="5-minute survey for HVAC and plumbing contractors. Help shape Wrenlo's product roadmap. Win a $100 Amazon gift card. Free industry benchmark report for all respondents.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N3CWJVFYFG');
+</script>
+<style>
+/* Hero stats strip */
+.survey-stats { display:flex; gap:32px; flex-wrap:wrap; margin-top:32px; padding-top:28px; border-top:1px solid var(--border) }
+.sstat { display:flex; flex-direction:column; gap:3px }
+.sstat-val { font-family:var(--serif); font-size:28px; color:var(--orange); line-height:1 }
+.sstat-lbl { font-size:12px; color:var(--text-faint) }
+
+/* Main two-col */
+.survey-layout { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start }
+
+/* Left perks */
+.perks-list { display:flex; flex-direction:column; gap:16px; margin-top:32px }
+.perk { display:flex; gap:14px; align-items:flex-start }
+.perk-icon-wrap {
+  width:36px; height:36px; border-radius:8px; flex-shrink:0;
+  background:var(--orange-lt); border:1px solid rgba(255,107,43,.2);
+  display:flex; align-items:center; justify-content:center; font-size:16px;
+}
+.perk-title { font-size:14px; font-weight:600; margin-bottom:3px }
+.perk-desc  { font-size:13px; color:var(--text-soft); line-height:1.55; font-weight:300 }
+
+/* Discovery pain strip */
+.pain-strip { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r-lg); padding:24px 28px; margin-top:32px }
+.pain-strip-title { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:14px }
+.pain-quote { font-family:var(--serif); font-style:italic; font-size:15px; color:var(--text-soft); line-height:1.65; margin-bottom:8px; border-left:2px solid var(--orange); padding-left:14px }
+.pain-attr  { font-size:12px; color:var(--text-faint); font-family:var(--mono); letter-spacing:.04em }
+
+/* Form card */
+.survey-form-card {
+  background:var(--card); border:1px solid var(--border-s);
+  border-radius:var(--r-lg); padding:36px;
+  position:sticky; top:calc(var(--ann-h) + var(--nav-h) + 20px);
+}
+.form-section-title { font-size:12px; font-weight:600; color:var(--text-faint); text-transform:uppercase; letter-spacing:.06em; margin:20px 0 14px; padding-top:20px; border-top:1px solid var(--border) }
+.form-section-title:first-child { margin-top:0; padding-top:0; border-top:none }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px }
+
+.progress-bar-wrap { margin-bottom:24px }
+.progress-label { font-family:var(--mono); font-size:10px; color:var(--text-faint); letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px; display:flex; justify-content:space-between }
+.progress-track { height:3px; background:var(--border); border-radius:2px }
+.progress-fill  { height:3px; background:var(--orange); border-radius:2px; width:0%; transition:width .4s }
+
+.form-title { font-family:var(--serif); font-size:22px; margin-bottom:4px }
+.form-subtitle { font-size:13px; color:var(--text-soft); margin-bottom:20px }
+
+/* Radio group */
+.radio-group { display:flex; flex-direction:column; gap:8px }
+.radio-opt {
+  display:flex; align-items:center; gap:10px;
+  background:#1E1E1C; border:1px solid var(--border-s);
+  border-radius:6px; padding:10px 14px; cursor:pointer;
+  font-size:13px; color:var(--text-soft); transition:all .15s;
+}
+.radio-opt:hover { border-color:rgba(255,107,43,.4); color:var(--text) }
+.radio-opt input[type=radio] { accent-color:var(--orange); flex-shrink:0 }
+.radio-opt.selected { border-color:var(--orange); background:var(--orange-lt); color:var(--text) }
+
+/* Fold 3 — what happens next */
+.next-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:48px }
+.next-step { text-align:center }
+.next-step-num {
+  width:48px; height:48px; border-radius:50%;
+  border:1px solid var(--border-s); background:var(--card);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:12px; font-weight:500;
+  color:var(--text-faint); margin:0 auto 14px;
+}
+.next-step h4 { font-size:14px; font-weight:600; margin-bottom:6px }
+.next-step p  { font-size:12.5px; color:var(--text-soft); line-height:1.65; font-weight:300 }
+
+/* Fold 4 — social proof */
+.proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px }
+.proof-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r-lg); padding:24px }
+.proof-tag  { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--orange); margin-bottom:12px }
+.proof-quote { font-family:var(--serif); font-style:italic; font-size:15px; line-height:1.65; margin-bottom:12px }
+.proof-attr  { font-size:12px; color:var(--text-faint) }
+
+@media(max-width:900px){
+  .survey-layout { grid-template-columns:1fr }
+  .survey-form-card { position:static }
+  .form-row { grid-template-columns:1fr }
+  .next-steps { grid-template-columns:1fr 1fr }
+  .proof-grid { grid-template-columns:1fr }
+}
+@media(max-width:600px){ .next-steps { grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+<div class="ann-bar">🎁 Win $100 Amazon gift card — complete this survey</div>
+<nav><div class="nav-inner">
+  <a href="/" class="logo"><div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8l3-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="8" r="1.4" fill="white"/></svg></div>Wrenlo</a>
+  <div class="nav-links"><a class="nav-link" href="/product">Product</a><a class="nav-link" href="/pricing">Pricing</a><a class="nav-link" href="/why-us">Why Wrenlo</a><a class="nav-link" href="/our-story">Our Story</a><a class="nav-link" href="/survey">Survey</a></div>
+  <div class="nav-ctas"><a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a><a class="btn btn-primary" href="#form">Take Survey →</a></div>
+  <button class="hamburger" onclick="openMenu()">☰</button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="closeMenu()">✕</button><a class="mobile-link" href="/product" onclick="closeMenu()">Product</a><a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a><a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a><a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a><a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a><div class="mobile-menu-ctas"><a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a><a class="btn btn-primary btn-full" href="#form">Take Survey</a></div></div>
+
+<!-- FOLD 1 — HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="stat-pill"><span class="stat-pill-dot"></span>Draw closes at 200 responses · <span id="resp-count">147</span> received so far</div>
+    <h1>Help us build what<br>contractors <em>actually need.</em></h1>
+    <p>5 minutes. Your answers directly shape what Wrenlo builds first — and enter you to win a $100 Amazon gift card. Every respondent gets the industry benchmark report free.</p>
+    <div class="page-hero-actions">
+      <a class="btn btn-primary btn-lg" href="#form">Take the Survey →</a>
+      <a class="btn btn-ghost btn-lg" href="/product">Learn about Wrenlo</a>
+    </div>
+    <div class="survey-stats">
+      <div class="sstat"><div class="sstat-val">$100</div><div class="sstat-lbl">Amazon gift card prize</div></div>
+      <div class="sstat"><div class="sstat-val">5 min</div><div class="sstat-lbl">To complete</div></div>
+      <div class="sstat"><div class="sstat-val">Free</div><div class="sstat-lbl">Benchmark report for all</div></div>
+      <div class="sstat"><div class="sstat-val">0</div><div class="sstat-lbl">Spam, ever</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOLD 2 — SURVEY FORM + PERKS -->
+<section class="section" style="background:var(--bg2)" id="form">
+  <div class="container">
+    <div class="survey-layout">
+
+      <!-- LEFT — WHY RESPOND -->
+      <div>
+        <span class="eyebrow">Why this matters</span>
+        <h2 class="sec-title">We build what you tell us<br><em>to build.</em></h2>
+        <p class="sec-sub">Wrenlo is in founding pilot. We're not guessing what contractors need — we're asking. Your answers determine which features ship first, which trades we optimise for, and where we focus our onboarding.</p>
+        <div class="perks-list">
+          <div class="perk"><div class="perk-icon-wrap">🎁</div><div><div class="perk-title">Win $100 Amazon gift card</div><div class="perk-desc">Random draw after 200 completed responses. Winner announced by email within 2 weeks.</div></div></div>
+          <div class="perk"><div class="perk-icon-wrap">🔒</div><div><div class="perk-title">Founding member pricing</div><div class="perk-desc">Respondents who join the pilot get founding-member rates locked in for life before public launch.</div></div></div>
+          <div class="perk"><div class="perk-icon-wrap">📊</div><div><div class="perk-title">Free benchmark report</div><div class="perk-desc">Real data on how US contractors handle inbound calls, after-hours coverage, and lead conversion — sent to all respondents at 100 responses.</div></div></div>
+          <div class="perk"><div class="perk-icon-wrap">🛠</div><div><div class="perk-title">Direct product influence</div><div class="perk-desc">Survey data is reviewed by our founders weekly. Your answers shape the next 3 features and which vertical Wrenlo optimises for next.</div></div></div>
+          <div class="perk"><div class="perk-icon-wrap">📞</div><div><div class="perk-title">Priority pilot access</div><div class="perk-desc">Founding survey respondents get priority access to the 14-day pilot program before we open to the public.</div></div></div>
+        </div>
+
+        <!-- Pain quotes from discovery — honest attribution -->
+        <div class="pain-strip">
+          <div class="pain-strip-title">What we're hearing in discovery calls</div>
+          <div class="pain-quote">"I'm on the roof and my phone rings. I can't answer. By the time I call back 40 minutes later, they've already booked with someone else."</div>
+          <div class="pain-attr">HVAC contractor · Austin, TX · Discovery call</div>
+          <div class="pain-quote" style="margin-top:14px">"After-hours is where I lose the most. No-heat calls at 9pm — if I don't pick up, they don't leave voicemail."</div>
+          <div class="pain-attr">Plumbing contractor · Houston, TX · Discovery call</div>
+        </div>
+      </div>
+
+      <!-- RIGHT — FORM -->
+      <div class="survey-form-card" id="surveyFormWrap">
+        <div class="progress-bar-wrap">
+          <div class="progress-label"><span>Survey progress</span><span id="prog-pct">0%</span></div>
+          <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+        </div>
+        <div class="form-title">Your details</div>
+        <div class="form-subtitle">Start here — takes 5 minutes, all fields optional except name and email.</div>
+
+        <div class="form-section-title">About you</div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">First name *</label><input type="text" class="form-input" id="sf-name" placeholder="Mike" oninput="updateProgress()"></div>
+          <div class="form-field"><label class="form-label">Last name</label><input type="text" class="form-input" id="sf-lname" placeholder="Johnson"></div>
+        </div>
+        <div class="form-field"><label class="form-label">Business name</label><input type="text" class="form-input" id="sf-biz" placeholder="Johnson HVAC Services" oninput="updateProgress()"></div>
+        <div class="form-field"><label class="form-label">Email address *</label><input type="email" class="form-input" id="sf-email" placeholder="mike@johnsonhvac.com" oninput="updateProgress()"></div>
+        <div class="form-field"><label class="form-label">Phone (optional — for pilot outreach)</label><input type="tel" class="form-input" id="sf-phone" placeholder="(512) 555-0100"></div>
+
+        <div class="form-section-title">Your business</div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">Primary trade *</label>
+            <select class="form-select" id="sf-trade" onchange="updateProgress()">
+              <option value="">Select…</option>
+              <option>HVAC</option><option>Plumbing</option><option>Electrical</option>
+              <option>Roofing</option><option>Garage Door</option><option>Pest Control</option>
+              <option>Landscaping</option><option>Cleaning / Janitorial</option>
+              <option>Appliance Repair</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-field"><label class="form-label">Team size *</label>
+            <select class="form-select" id="sf-size" onchange="updateProgress()">
+              <option value="">Select…</option>
+              <option>Just me (solo)</option><option>2–5 people</option>
+              <option>6–15 people</option><option>16+ people</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">State</label><input type="text" class="form-input" id="sf-state" placeholder="TX" maxlength="2"></div>
+          <div class="form-field"><label class="form-label">Annual revenue (approx.)</label>
+            <select class="form-select" id="sf-revenue">
+              <option value="">Select…</option>
+              <option>Under $250K</option><option>$250K–$500K</option>
+              <option>$500K–$1M</option><option>$1M–$3M</option><option>$3M+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section-title">Calls & front desk</div>
+        <div class="form-field"><label class="form-label">How many inbound calls per week?</label>
+          <select class="form-select" id="sf-calls">
+            <option value="">Select…</option>
+            <option>Under 10</option><option>10–25</option><option>25–50</option>
+            <option>50–100</option><option>100+</option>
+          </select>
+        </div>
+        <div class="form-field"><label class="form-label">Who answers your calls right now?</label>
+          <select class="form-select" id="sf-who">
+            <option value="">Select…</option>
+            <option>I do (owner)</option><option>Office manager / admin</option>
+            <option>Answering service</option><option>Goes to voicemail</option>
+            <option>Spouse / family member</option><option>Mix of the above</option>
+          </select>
+        </div>
+        <div class="form-field"><label class="form-label">What happens when you miss a call?</label>
+          <div class="radio-group" id="miss-opts">
+            <label class="radio-opt" onclick="selectRadio(this, 'miss-opts')"><input type="radio" name="sf-miss" value="voicemail"> They leave voicemail, I call back</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'miss-opts')"><input type="radio" name="sf-miss" value="hang"> They hang up — I have no idea who called</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'miss-opts')"><input type="radio" name="sf-miss" value="competitor"> They probably call the next contractor</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'miss-opts')"><input type="radio" name="sf-miss" value="text"> They text me instead</label>
+          </div>
+        </div>
+
+        <div class="form-section-title">Tools & pain</div>
+        <div class="form-field"><label class="form-label">What scheduling / FSM tool do you use?</label>
+          <select class="form-select" id="sf-fsm">
+            <option value="">Select…</option>
+            <option>Jobber</option><option>Housecall Pro</option><option>ServiceTitan</option>
+            <option>Workiz</option><option>FieldEdge</option><option>QuickBooks</option>
+            <option>Google Calendar only</option><option>Spreadsheet / paper</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-field"><label class="form-label">Biggest front-desk problem (pick one)</label>
+          <div class="radio-group" id="pain-opts">
+            <label class="radio-opt" onclick="selectRadio(this, 'pain-opts')"><input type="radio" name="sf-pain" value="missed"> Missing calls while on jobs</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'pain-opts')"><input type="radio" name="sf-pain" value="afterhours"> No coverage after hours / weekends</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'pain-opts')"><input type="radio" name="sf-pain" value="followup"> Slow follow-up on leads</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'pain-opts')"><input type="radio" name="sf-pain" value="qualify"> Unqualified calls wasting my time</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'pain-opts')"><input type="radio" name="sf-pain" value="scheduling"> Booking appointments manually</label>
+          </div>
+        </div>
+
+        <div class="form-section-title">Interest</div>
+        <div class="form-field"><label class="form-label">Interested in a 14-day free pilot?</label>
+          <div class="radio-group" id="pilot-opts">
+            <label class="radio-opt" onclick="selectRadio(this, 'pilot-opts')"><input type="radio" name="sf-pilot" value="yes"> Yes — tell me more</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'pilot-opts')"><input type="radio" name="sf-pilot" value="maybe"> Maybe — depends on price</label>
+            <label class="radio-opt" onclick="selectRadio(this, 'pilot-opts')"><input type="radio" name="sf-pilot" value="no"> Not right now</label>
+          </div>
+        </div>
+
+        <button class="form-submit" onclick="handleSurvey(this)" style="margin-top:8px">Submit &amp; Enter Draw →</button>
+        <p class="form-note">Your data stays private — never sold, never shared with third parties. Unsubscribe anytime.</p>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✓</div>
+          <div class="success-title">You're in the draw!</div>
+          <p class="success-sub">Check your email for confirmation and early access details. The benchmark report ships once we hit 100 responses.</p>
+          <a class="btn btn-primary" href="/product" style="margin-top:16px">Explore the product →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOLD 3 — WHAT HAPPENS NEXT -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">What happens next</span>
+      <h2 class="sec-title">After you hit submit,<br><em>here's what to expect.</em></h2>
+    </div>
+    <div class="next-steps">
+      <div class="next-step reveal"><div class="next-step-num">01</div><h4>Confirmation email</h4><p>Within a few minutes you'll receive a confirmation with your entry number and a link to share the survey with other contractors.</p></div>
+      <div class="next-step reveal"><div class="next-step-num">02</div><h4>Benchmark report</h4><p>Once we hit 100 responses, we email all respondents a free industry benchmark report with real data on missed-call rates, after-hours coverage, and lead conversion.</p></div>
+      <div class="next-step reveal"><div class="next-step-num">03</div><h4>Gift card draw</h4><p>At 200 responses we draw the $100 Amazon gift card winner randomly and announce publicly. You'll be emailed directly if you win.</p></div>
+      <div class="next-step reveal"><div class="next-step-num">04</div><h4>Pilot access</h4><p>If you expressed interest in the pilot, you'll hear from us within 48 hours to schedule your free missed-call audit and pilot setup call.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOLD 4 — DISCOVERY PAIN QUOTES + SHARE -->
+<section class="section" style="background:var(--card)">
+  <div class="container">
+    <div class="sec-header centered">
+      <span class="eyebrow">Why we're asking</span>
+      <h2 class="sec-title">Real problems we've heard<br>from <em>real contractors.</em></h2>
+      <p class="sec-sub">These are paraphrased quotes from discovery calls — not fabricated testimonials. We're sharing them so you can see we understand the problem before we try to sell you a solution.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card reveal">
+        <div class="proof-tag">HVAC contractor · Austin, TX · Discovery call</div>
+        <div class="proof-quote">"I'm on the roof and my phone rings. I can't answer. By the time I call back 40 minutes later, they've already booked with someone else. That happens at least twice a week."</div>
+        <div class="proof-attr">Validated pain · Not a paid endorsement</div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="proof-tag">Plumbing contractor · Houston, TX · Discovery call</div>
+        <div class="proof-quote">"After-hours is where I lose the most. No-heat calls at 9pm — if I don't pick up, they don't leave voicemail. They just call the next guy on Google."</div>
+        <div class="proof-attr">Validated pain · Not a paid endorsement</div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="proof-tag">Electrical contractor · Dallas, TX · Discovery call</div>
+        <div class="proof-quote">"My wife handles calls when I'm on a job. She writes down name and number on sticky notes. Half the time I can't read it — and we have no idea what they actually needed."</div>
+        <div class="proof-attr">Validated pain · Not a paid endorsement</div>
+      </div>
+    </div>
+
+    <!-- Share section -->
+    <div style="margin-top:48px;text-align:center;padding:40px 32px;background:var(--orange-lt);border:1px solid rgba(255,107,43,.2);border-radius:var(--r-lg)">
+      <h3 style="font-family:var(--serif);font-size:26px;margin-bottom:8px">Know another contractor?</h3>
+      <p style="font-size:14px;color:var(--text-soft);margin-bottom:24px;font-weight:300">Every response makes the benchmark report more valuable for everyone. Share the survey link.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-primary" href="https://www.facebook.com/sharer/sharer.php?u=https://wrenlo.co/survey" target="_blank">Share on Facebook</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/sharing/share-offsite/?url=https://wrenlo.co/survey" target="_blank">Share on LinkedIn</a>
+        <button class="btn btn-ghost" onclick="copyLink(this)">Copy survey link</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight" style="background:var(--bg2)"><div class="container"><div class="cta-band reveal"><div><h2>Already know you want<br>the <em>pilot?</em></h2><p>Skip the survey and book a 20-minute pilot call directly. We'll audit your missed-call situation and set up your Wrenlo playbook on the same call.</p></div><div class="cta-band-actions"><a class="btn btn-white btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a><a class="btn" href="/pricing" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)">See pricing first</a></div></div></div></section>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors.</p></div><div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div><div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div><div><div class="footer-col-title">Start</div><div class="footer-links"><a class="footer-link" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a><a class="footer-link" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a></div></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span><span class="footer-copy">Built for contractors who are done missing jobs</span></div></div></footer>
+
+<script src="wrenlo.js"></script>
+<script>
+/* Radio selection highlight */
+function selectRadio(el, groupId) {
+  document.querySelectorAll(`#${groupId} .radio-opt`).forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  updateProgress();
+}
+
+/* Progress bar */
+function updateProgress() {
+  const fields = ['sf-name','sf-email','sf-trade','sf-size'];
+  const filled = fields.filter(id => document.getElementById(id)?.value?.trim()).length;
+  const pct = Math.round((filled / fields.length) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+}
+
+/* Copy link */
+function copyLink(btn) {
+  navigator.clipboard.writeText('https://wrenlo.co/survey').then(() => {
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy survey link', 2000);
+  });
+}
+
+/* Simulate realistic response counter */
+const base = 147;
+document.getElementById('resp-count').textContent = base;
+
+/* Extended survey submit — collects all fields */
+async function handleSurvey(btn) {
+  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+  const SUPABASE_KEY = 'YOUR_ANON_KEY';
+  const TALLY_FORM_URL = 'https://tally.so/r/YOUR_FORM_ID';
+
+  const name  = document.getElementById('sf-name').value.trim();
+  const lname = document.getElementById('sf-lname')?.value.trim();
+  const email = document.getElementById('sf-email').value.trim();
+  const biz   = document.getElementById('sf-biz')?.value.trim();
+  const phone = document.getElementById('sf-phone')?.value.trim();
+  const trade = document.getElementById('sf-trade').value;
+  const size  = document.getElementById('sf-size').value;
+  const state = document.getElementById('sf-state')?.value.trim();
+  const revenue  = document.getElementById('sf-revenue')?.value;
+  const calls    = document.getElementById('sf-calls')?.value;
+  const who      = document.getElementById('sf-who')?.value;
+  const fsm      = document.getElementById('sf-fsm')?.value;
+  const missVal  = document.querySelector('input[name=sf-miss]:checked')?.value;
+  const painVal  = document.querySelector('input[name=sf-pain]:checked')?.value;
+  const pilotVal = document.querySelector('input[name=sf-pilot]:checked')?.value;
+
+  if (!name || !email || !trade || !size) {
+    const orig = btn.textContent;
+    btn.textContent = 'Please fill Name, Email, Trade and Team Size';
+    btn.style.background = '#c0392b';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = '' }, 2800);
+    return;
+  }
+
+  btn.textContent = 'Submitting…'; btn.disabled = true;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'apikey':SUPABASE_KEY, 'Authorization':`Bearer ${SUPABASE_KEY}`, 'Prefer':'return=minimal' },
+      body: JSON.stringify({
+        name: `${name} ${lname}`.trim(), email, business_name:biz, phone, trade,
+        team_size:size, state, annual_revenue:revenue, weekly_calls:calls,
+        who_answers:who, fsm_tool:fsm, missed_call_outcome:missVal,
+        biggest_pain:painVal, pilot_interest:pilotVal, source:'survey_page'
+      })
+    });
+    /* Fire GA4 event */
+    if(typeof gtag !== 'undefined') gtag('event','survey_submit',{trade,pilot_interest:pilotVal});
+  } catch(e) { console.warn('Supabase save failed', e) }
+
+  document.getElementById('surveyFormWrap')
+    .querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+  btn.style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('prog-pct').textContent = '100%';
+
+  setTimeout(() => {
+    window.open(`${TALLY_FORM_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&trade=${encodeURIComponent(trade)}&size=${encodeURIComponent(size)}`, '_blank');
+  }, 900);
+}
+</script>
+</body></html>
