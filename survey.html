@@ -20,7 +20,7 @@
 .survey-stats { display:flex; gap:32px; flex-wrap:wrap; margin-top:32px; padding-top:28px; border-top:1px solid var(--border) }
 .sstat { display:flex; flex-direction:column; gap:3px }
 .sstat-val { font-family:var(--serif); font-size:28px; color:var(--teal); line-height:1 }
-.sstat-lbl { font-size:12px; color:var(--text-faint) }
+.sstat-lbl { font-size:12px; color:rgba(255,255,255,.6) }
 
 /* Main two-col */
 .survey-layout { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start }
@@ -37,9 +37,9 @@
 .perk-desc  { font-size:13px; color:var(--text-soft); line-height:1.55; font-weight:300 }
 
 /* Discovery pain strip */
-.pain-strip { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r-lg); padding:24px 28px; margin-top:32px }
+.pain-strip { background:var(--bg2); border:1px solid var(--border-s); border-radius:var(--r-lg); padding:24px 28px; margin-top:32px }
 .pain-strip-title { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:14px }
-.pain-quote { font-family:var(--serif); font-style:italic; font-size:15px; color:var(--text-soft); line-height:1.65; margin-bottom:8px; border-left:2px solid var(--orange); padding-left:14px }
+.pain-quote { font-family:var(--serif); font-style:italic; font-size:15px; color:var(--text-soft); line-height:1.65; margin-bottom:8px; border-left:2px solid var(--teal); padding-left:14px }
 .pain-attr  { font-size:12px; color:var(--text-faint); font-family:var(--mono); letter-spacing:.04em }
 
 /* Form card */
@@ -64,11 +64,11 @@
 .radio-group { display:flex; flex-direction:column; gap:8px }
 .radio-opt {
   display:flex; align-items:center; gap:10px;
-  background:#1E1E1C; border:1px solid var(--border-s);
+  background:#fff; border:1.5px solid var(--border-s);
   border-radius:6px; padding:10px 14px; cursor:pointer;
-  font-size:13px; color:var(--text-soft); transition:all .15s;
+  font-size:13px; color:var(--navy); font-weight:500; transition:all .15s;
 }
-.radio-opt:hover { border-color:rgba(255,107,43,.4); color:var(--text) }
+.radio-opt:hover { border-color:var(--teal); color:var(--navy); background:var(--teal-lt) }
 .radio-opt input[type=radio] { accent-color:var(--teal); flex-shrink:0 }
 .radio-opt.selected { border-color:var(--teal); background:var(--teal-lt); color:var(--text) }
 
@@ -87,7 +87,7 @@
 
 /* Fold 4 — social proof */
 .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px }
-.proof-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--r-lg); padding:24px }
+.proof-card { background:var(--bg2); border:1px solid var(--border-s); border-radius:var(--r-lg); padding:24px }
 .proof-tag  { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:12px }
 .proof-quote { font-family:var(--serif); font-style:italic; font-size:15px; line-height:1.65; margin-bottom:12px }
 .proof-attr  { font-size:12px; color:var(--text-faint) }
@@ -110,7 +110,7 @@
   <div class="nav-ctas"><a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a><a class="btn btn-primary" href="#form">Take Survey →</a></div>
   <button class="hamburger" onclick="openMenu()">☰</button>
 </div></nav>
-<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="closeMenu()">✕</button><a class="mobile-link" href="/product" onclick="closeMenu()">Product</a><a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a><a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a><a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a><a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a><div class="mobile-menu-ctas"><a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a><a class="btn btn-primary btn-full" href="#form">Take Survey</a></div></div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-close" onclick="closeMenu()">✕</button><a class="mobile-link" href="/product" onclick="closeMenu()">Product</a><a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a><a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a><a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a><a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a><div class="mobile-menu-ctas"><a class="btn btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit" style="background:var(--bg2);color:#fff;border:1px solid rgba(255,255,255,.35)">Free Missed-Call Audit</a><a class="btn btn-primary btn-full" href="#form">Take Survey</a></div></div>
 
 <!-- FOLD 1 — HERO -->
 <section class="page-hero">
@@ -120,7 +120,7 @@
     <p>5 minutes. Your answers directly shape what Wrenlo builds first — and enter you to win a $100 Amazon gift card. Every respondent gets the industry benchmark report free.</p>
     <div class="page-hero-actions">
       <a class="btn btn-primary btn-lg" href="#form">Take the Survey →</a>
-      <a class="btn btn-ghost btn-lg" href="/product">Learn about Wrenlo</a>
+      <a class="btn btn-lg" href="/product" style="background:var(--bg2);color:#fff;border:1px solid rgba(255,255,255,.45)">Learn about Wrenlo</a>
     </div>
     <div class="survey-stats">
       <div class="sstat"><div class="sstat-val">$100</div><div class="sstat-lbl">Amazon gift card prize</div></div>
@@ -329,7 +329,7 @@
   </div>
 </section>
 
-<section class="section--tight" style="background:var(--bg2)"><div class="container"><div class="cta-band reveal"><div><h2>Already know you want<br>the <em>pilot?</em></h2><p>Skip the survey and book a 20-minute pilot call directly. We'll audit your missed-call situation and set up your Wrenlo playbook on the same call.</p></div><div class="cta-band-actions"><a class="btn btn-white btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a><a class="btn" href="/pricing" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)">See pricing first</a></div></div></div></section>
+<section class="section--tight" style="background:var(--bg2)"><div class="container"><div class="cta-band reveal"><div><h2>Already know you want<br>the <em>pilot?</em></h2><p>Skip the survey and book a 20-minute pilot call directly. We'll audit your missed-call situation and set up your Wrenlo playbook on the same call.</p></div><div class="cta-band-actions"><a class="btn btn-white btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a><a class="btn" href="/pricing" style="background:var(--bg3);color:#fff;border:1px solid rgba(255,255,255,.3)">See pricing first</a></div></div></div></section>
 
 <footer class="site-footer"><div class="container"><div class="footer-grid"><div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors.</p></div><div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div><div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div><div><div class="footer-col-title">Start</div><div class="footer-links"><a class="footer-link" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a><a class="footer-link" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a></div></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span><span class="footer-copy">Built for contractors who are done missing jobs</span></div></div></footer>
 
