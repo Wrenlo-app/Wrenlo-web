@@ -364,10 +364,9 @@ const base = 147;
 document.getElementById('resp-count').textContent = base;
 
 /* Extended survey submit — collects all fields */
-async function handleSurvey(btn) {
-  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-  const SUPABASE_KEY = 'YOUR_ANON_KEY';
-  const TALLY_FORM_URL = 'https://tally.so/r/YOUR_FORM_ID';
+  async function handleSurvey(btn) {
+  const SUPABASE_URL = 'https://lihkrrmmtzoqjxthewzr.supabase.co'; // same project as popup form
+  const SUPABASE_KEY = 'sb_publishable_gSalxqCkFI3UwoPVIWvyJw_pyH4slR8';                     // same anon key as popup form
 
   const name  = document.getElementById('sf-name').value.trim();
   const lname = document.getElementById('sf-lname')?.value.trim();
@@ -393,32 +392,43 @@ async function handleSurvey(btn) {
     return;
   }
 
+  const origText = btn.textContent;
   btn.textContent = 'Submitting…'; btn.disabled = true;
+
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/survey_responses`, {
       method: 'POST',
-      headers: { 'Content-Type':'application/json', 'apikey':SUPABASE_KEY, 'Authorization':`Bearer ${SUPABASE_KEY}`, 'Prefer':'return=minimal' },
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
       body: JSON.stringify({
-        name: `${name} ${lname}`.trim(), email, business_name:biz, phone, trade,
-        team_size:size, state, annual_revenue:revenue, weekly_calls:calls,
-        who_answers:who, fsm_tool:fsm, missed_call_outcome:missVal,
-        biggest_pain:painVal, pilot_interest:pilotVal, source:'survey_page'
+        name: `${name} ${lname || ''}`.trim(), email, business_name: biz, phone, trade,
+        team_size: size, state, annual_revenue: revenue, weekly_calls: calls,
+        who_answers: who, fsm_tool: fsm, missed_call_outcome: missVal,
+        biggest_pain: painVal, pilot_interest: pilotVal, source: 'survey_page'
       })
     });
-    /* Fire GA4 event */
-    if(typeof gtag !== 'undefined') gtag('event','survey_submit',{trade,pilot_interest:pilotVal});
-  } catch(e) { console.warn('Supabase save failed', e) }
 
-  document.getElementById('surveyFormWrap')
-    .querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
-  btn.style.display = 'none';
-  document.getElementById('formSuccess').classList.add('show');
-  document.getElementById('prog-fill').style.width = '100%';
-  document.getElementById('prog-pct').textContent = '100%';
+    if (!res.ok) throw new Error(`Insert failed: ${res.status}`);
+    if (typeof gtag !== 'undefined') gtag('event', 'survey_submit', { trade, pilot_interest: pilotVal });
 
-  setTimeout(() => {
-    window.open(`${TALLY_FORM_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&trade=${encodeURIComponent(trade)}&size=${encodeURIComponent(size)}`, '_blank');
-  }, 900);
+    document.getElementById('surveyFormWrap')
+      .querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+    btn.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    document.getElementById('prog-fill').style.width = '100%';
+    document.getElementById('prog-pct').textContent = '100%';
+
+  } catch (e) {
+    console.error('Survey save failed', e);
+    btn.textContent = 'Something went wrong — please try again';
+    btn.style.background = '#c0392b';
+    btn.disabled = false;
+    setTimeout(() => { btn.textContent = origText; btn.style.background = '' }, 3000);
+  }
 }
 </script>
 <script src="/wrenlo-popup.js"></script>
