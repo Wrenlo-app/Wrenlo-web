@@ -221,7 +221,7 @@
     const headings = {
       'free audit':        'Get Your Free Missed-Call Audit',
       'audit':             'Get Your Free Missed-Call Audit',
-      'talk to us':        'Let's Talk — Book a Call',
+      'talk to us':        "Let's Talk — Book a Call",
       'get started':       'Get Started with Wrenlo',
       'start free pilot':  'Start Your Free 14-Day Pilot',
       'book a free pilot call': 'Book Your Free Pilot Call',
