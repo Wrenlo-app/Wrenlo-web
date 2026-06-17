@@ -3,8 +3,8 @@
    ═══════════════════════════════════════════════ */
 
 /* CONFIG — swap before going live */
-const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-const SUPABASE_KEY = 'YOUR_ANON_KEY';
+const SUPABASE_URL = 'https://lihkrrmmtzoqjxthewzr.supabase.co';
+const SUPABASE_KEY = https://lihkrrmmtzoqjxthewzr.supabase.co';
 const TALLY_FORM_URL = 'https://tally.so/r/YOUR_FORM_ID';
 
 /* ── MOBILE MENU ── */
