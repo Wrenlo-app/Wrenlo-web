@@ -73,20 +73,20 @@
       ]
     },
     {
-      "source": "/style.css",
+      "source": "/(style|popup).css",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=3600"
         }
       ]
     },
     {
-      "source": "/wrenlo.js",
+      "source": "/(wrenlo|popup).js",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=3600"
         }
       ]
     }
