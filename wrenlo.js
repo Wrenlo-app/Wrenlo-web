@@ -4,7 +4,7 @@
 
 /* CONFIG — swap before going live */
 const SUPABASE_URL = 'https://lihkrrmmtzoqjxthewzr.supabase.co';
-const SUPABASE_KEY = https://lihkrrmmtzoqjxthewzr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_gSalxqCkFI3UwoPVIWvyJw_pyH4slR8';
 const TALLY_FORM_URL = 'https://tally.so/r/YOUR_FORM_ID';
 
 /* ── MOBILE MENU ── */
