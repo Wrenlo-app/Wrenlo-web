@@ -227,6 +227,7 @@
       'book a free pilot call': 'Book Your Free Pilot Call',
       'book pilot call':   'Book Your Free Pilot Call',
     };
+    window._wrenloCtaLabel = label;
     const key = (label || '').toLowerCase();
     let heading = 'Book Your Free 14-Day Pilot';
     for (const [k, v] of Object.entries(headings)) {
@@ -293,6 +294,7 @@
       phone:         $('wm-phone').value.trim(),
       submitted_at:  new Date().toISOString(),
       source:        window.location.href,
+  cta_label:     window._wrenloCtaLabel || '',
     };
 
     // ── Supabase insert ────────────────────────────────────────────────────
