@@ -297,8 +297,8 @@
 
     // ── Supabase insert ────────────────────────────────────────────────────
     // Replace SUPABASE_URL and SUPABASE_ANON_KEY with your actual values
-    const SUPABASE_URL  = 'https://YOUR_PROJECT.supabase.co';
-    const SUPABASE_KEY  = 'YOUR_ANON_KEY';
+    const SUPABASE_URL  = 'https://lihkrrmmtzoqjxthewzr.supabase.co';
+    const SUPABASE_KEY  = 'sb_publishable_gSalxqCkFI3UwoPVIWvyJw_pyH4slR8';
 
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/pilot_leads`, {
