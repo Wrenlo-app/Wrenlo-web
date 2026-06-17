@@ -71,6 +71,279 @@
     <a href="mailto:hello@wrenlo.co" class="nf-btn nf-btn-outline">Email us</a>
   </div>
 </div>
-<​script src="/lead-popup.js"><​/script>
+ <!-- Wrenlo CTA Popup Start -->
+<​style>
+ .wrenlo-popup-overlay {
+ position: fixed;
+ inset: 0;
+ z-index: 999999;
+ background: rgba(3, 13, 31, 0.72);
+ display: none;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+ }
+
+ .wrenlo-popup-overlay.active {
+ display: flex;
+ }
+
+ .wrenlo-popup {
+ width: 100%;
+ max-width: 460px;
+ background: hashtag#ffffff;
+ border-radius: 24px;
+ padding: 28px;
+ position: relative;
+ box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+ font-family: inherit;
+ }
+
+ .wrenlo-popup-close {
+ position: absolute;
+ top: 14px;
+ right: 18px;
+ background: transparent;
+ border: 0;
+ font-size: 28px;
+ line-height: 1;
+ cursor: pointer;
+ color: hashtag#082a5e;
+ }
+
+ .wrenlo-popup h3 {
+ margin: 0 0 8px;
+ font-size: 26px;
+ line-height: 1.15;
+ color: hashtag#082a5e;
+ }
+
+ .wrenlo-popup p {
+ margin: 0 0 20px;
+ color: hashtag#5f6f89;
+ font-size: 15px;
+ line-height: 1.5;
+ }
+
+ .wrenlo-field {
+ margin-bottom: 14px;
+ }
+
+ .wrenlo-field label {
+ display: block;
+ margin-bottom: 6px;
+ color: hashtag#082a5e;
+ font-size: 13px;
+ font-weight: 700;
+ }
+
+ .wrenlo-field input {
+ width: 100%;
+ box-sizing: border-box;
+ border: 1px solid rgba(8, 42, 94, 0.18);
+ border-radius: 12px;
+ padding: 13px 14px;
+ font-size: 15px;
+ outline: none;
+ }
+
+ .wrenlo-field input:focus {
+ border-color: hashtag#ff5a1f;
+ box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.14);
+ }
+
+ .wrenlo-popup-submit {
+ width: 100%;
+ margin-top: 8px;
+ border: 0;
+ border-radius: 999px;
+ padding: 14px 18px;
+ background: hashtag#ff5a1f;
+ color: hashtag#ffffff;
+ font-size: 15px;
+ font-weight: 800;
+ cursor: pointer;
+ }
+
+ .wrenlo-popup-submit:disabled {
+ opacity: 0.7;
+ cursor: not-allowed;
+ }
+
+ .wrenlo-popup-message {
+ margin-top: 12px;
+ color: hashtag#082a5e;
+ font-size: 14px;
+ }
+<​/style>
+
+<div class="wrenlo-popup-overlay" id="wrenloPopupOverlay">
+ <div class="wrenlo-popup">
+ <button class="wrenlo-popup-close" type="button" id="wrenloPopupClose">×</button>
+
+ <h3>Start your Wrenlo pilot</h3>
+ <p>Share your details, and we’ll help you recover missed calls and after-hours leads.</p>
+
+ <form id="wrenloPopupForm">
+ <div class="wrenlo-field">
+ <label for="wrenloLeadName">Name</label>
+ <input id="wrenloLeadName" name="name" type="text" required>
+ </div>
+
+ <div class="wrenlo-field">
+ <label for="wrenloBusinessName">Business Name</label>
+ <input id="wrenloBusinessName" name="business_name" type="text" required>
+ </div>
+
+ <div class="wrenlo-field">
+ <label for="wrenloBusinessEmail">Business Email</label>
+ <input id="wrenloBusinessEmail" name="business_email" type="email" required>
+ </div>
+
+ <div class="wrenlo-field">
+ <label for="wrenloPhoneNumber">Phone Number</label>
+ <input id="wrenloPhoneNumber" name="phone_number" type="tel" required>
+ </div>
+
+ <button class="wrenlo-popup-submit" id="wrenloPopupSubmit" type="submit">
+ Submit
+ </button>
+
+ <div class="wrenlo-popup-message" id="wrenloPopupMessage"></div>
+ </form>
+ </div>
+</div>
+
+<​script>
+ const SUPABASE_URL = "https://lihkrrmmtzoqjxthewzr.supabase.co";
+ const SUPABASE_ANON_KEY = "sb_publishable_gSalxqCkFI3UwoPVIWvyJw_pyH4slR8";
+
+ let wrenloSelectedCta = "Website CTA";
+
+ function wrenloNormalize(text) {
+ return String(text || "")
+ .replace("→", "")
+ .replace(/\s+/g, " ")
+ .trim()
+ .toLowerCase();
+ }
+
+ function wrenloIsPilotCta(text) {
+ const clean = wrenloNormalize(text);
+
+ return (
+ clean.includes("start 14-day") ||
+ clean.includes("14-day free pilot") ||
+ clean.includes("start free pilot") ||
+ clean.includes("start your free pilot") ||
+ clean.includes("book a free pilot call") ||
+ clean.includes("book pilot call") ||
+ clean.includes("free audit") ||
+ clean.includes("free missed-call audit") ||
+ clean.includes("get free missed-call audit") ||
+ clean.includes("get started") ||
+ clean.includes("talk to us")
+ );
+ }
+
+ function wrenloOpenPopup(ctaText) {
+ wrenloSelectedCta = ctaText || "Website CTA";
+ document.getElementById("wrenloPopupOverlay").classList.add("active");
+ }
+
+ function wrenloClosePopup() {
+ document.getElementById("wrenloPopupOverlay").classList.remove("active");
+ }
+
+ document.addEventListener("DOMContentLoaded", function () {
+ const overlay = document.getElementById("wrenloPopupOverlay");
+ const closeBtn = document.getElementById("wrenloPopupClose");
+ const form = document.getElementById("wrenloPopupForm");
+ const submitBtn = document.getElementById("wrenloPopupSubmit");
+ const message = document.getElementById("wrenloPopupMessage");
+
+ document.querySelectorAll("a, button").forEach(function (element) {
+ const text = element.innerText || element.textContent || "";
+
+ if (wrenloIsPilotCta(text)) {
+ element.addEventListener("click", function (event) {
+ event.preventDefault();
+ wrenloOpenPopup(text.trim());
+ });
+ }
+ });
+
+ closeBtn.addEventListener("click", wrenloClosePopup);
+
+ overlay.addEventListener("click", function (event) {
+ if (event.target === overlay) {
+ wrenloClosePopup();
+ }
+ });
+
+ document.addEventListener("keydown", function (event) {
+ if (event.key === "Escape") {
+ wrenloClosePopup();
+ }
+ });
+
+ form.addEventListener("submit", async function (event) {
+ event.preventDefault();
+
+ const payload = {
+ name: form.name.value.trim(),
+ business_name: form.business_name.value.trim(),
+ business_email: form.business_email.value.trim(),
+ phone_number: form.phone_number.value.trim(),
+ cta: wrenloSelectedCta,
+ page_url: window.location.href
+ };
+
+ if (!payload.name || !payload.business_name || !payload.business_email || !payload.phone_number) {
+ message.textContent = "Please fill all fields.";
+ return;
+ }
+
+ submitBtn.disabled = true;
+ submitBtn.textContent = "Submitting...";
+ message.textContent = "";
+
+ try {
+ const response = await fetch(SUPABASE_URL + "/rest/v1/pilot_leads", {
+ method: "POST",
+ headers: {
+ "Content-Type": "application/json",
+ "apikey": SUPABASE_ANON_KEY,
+ "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+ "Prefer": "return=minimal"
+ },
+ body: JSON.stringify(payload)
+ });
+
+ if (!response.ok) {
+ throw new Error("Supabase insert failed");
+ }
+
+ form.reset();
+ message.textContent = "Thanks — Our team will get in touch with you shortly.";
+ submitBtn.textContent = "Submitted";
+
+ setTimeout(function () {
+ submitBtn.disabled = false;
+ submitBtn.textContent = "Submit";
+ message.textContent = "";
+ wrenloClosePopup();
+ }, 1800);
+ } catch (error) {
+ submitBtn.disabled = false;
+ submitBtn.textContent = "Submit";
+ message.textContent = "Something went wrong. Please try again.";
+ console.error("Wrenlo popup error:", error);
+ }
+ });
+ });
+<​/script>
+<!-- Wrenlo CTA Popup End -->
+
 </body>
 </html>
