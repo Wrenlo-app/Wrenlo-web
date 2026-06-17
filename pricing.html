@@ -7,7 +7,7 @@
 <meta name="description" content="Wrenlo pricing: Starter $199/mo, Growth $399/mo, Pro $799/mo. Setup fee credited to Month 1.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N3CWJVFYFG");</script>
@@ -15,18 +15,18 @@
 
 .billing-toggle{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-soft)}
 .toggle-track{width:44px;height:24px;border-radius:12px;background:var(--border-s);border:1px solid var(--border-s);position:relative;cursor:pointer;transition:background .2s}
-.toggle-track.on{background:var(--teal);border-color:var(--teal)}
+.toggle-track.on{background:var(--tw-red);border-color:var(--tw-red)}
 .toggle-knob{width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:3px;transition:transform .2s}
 .toggle-track.on .toggle-knob{transform:translateX(20px)}
-.save-badge{background:var(--teal-lt);color:var(--teal-dk);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.save-badge{background:var(--tw-red-lt);color:var(--tw-red);font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
 .plan{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;transition:box-shadow .2s}
 .plan:hover{box-shadow:0 8px 32px rgba(30,41,59,.08)}
-.plan.featured{background:var(--navy);border-color:var(--navy);position:relative}
-.plan.featured::before{content:"Most Popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px}
+.plan.featured{background:var(--hero-bg);border-color:var(--navy);position:relative}
+.plan.featured::before{content:"Most Popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--tw-red);color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px}
 .plan-name{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px}
 .plan.featured .plan-name{color:rgba(255,255,255,.5)}
-.plan-price{font-family:var(--serif);font-size:46px;line-height:1;letter-spacing:-.02em;margin-bottom:4px;color:var(--navy)}
+.plan-price{font-family:var(--sans);font-size:46px;line-height:1;letter-spacing:-.02em;margin-bottom:4px;color:var(--navy)}
 .plan.featured .plan-price{color:#fff}
 .plan-period{font-size:13px;color:var(--text-soft);margin-bottom:6px}
 .plan.featured .plan-period{color:rgba(255,255,255,.5)}
@@ -38,16 +38,16 @@
 .plan-feature{display:flex;gap:9px;font-size:13px;color:var(--text-soft)}
 .plan.featured .plan-feature{color:rgba(255,255,255,.75)}
 .plan-check{color:var(--green);flex-shrink:0;font-size:14px;margin-top:1px}
-.plan.featured .plan-check{color:var(--teal)}
+.plan.featured .plan-check{color:var(--tw-red)}
 .plan .btn{width:100%;justify-content:center}
-.plan.featured .btn-teal{background:var(--teal);color:#fff}
+.plan.featured .btn-teal{background:var(--tw-red);color:#fff}
 .plan-note{font-size:11px;color:var(--text-faint);text-align:center;margin-top:8px;line-height:1.6}
 .plan.featured .plan-note{color:rgba(255,255,255,.35)}
 .roi-calc{background:var(--card);border:1px solid var(--border-s);border-radius:var(--r-lg);padding:32px;box-shadow:0 4px 24px rgba(30,41,59,.06)}
-.calc-result{background:var(--navy);border-radius:8px;padding:18px 20px;margin:8px 0 16px;display:flex;justify-content:space-between;align-items:center}
+.calc-result{background:var(--hero-bg);border-radius:8px;padding:18px 20px;margin:8px 0 16px;display:flex;justify-content:space-between;align-items:center}
 .calc-result-lbl{font-size:12px;font-weight:500;color:rgba(255,255,255,.65)}
 .calc-result-sub{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px}
-.calc-result-val{font-family:var(--serif);font-size:36px;color:var(--teal);letter-spacing:-.02em}
+.calc-result-val{font-family:var(--sans);font-size:36px;color:var(--tw-red);letter-spacing:-.02em}
 .faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
 @media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.faq-cols{grid-template-columns:1fr}}
 
@@ -137,7 +137,7 @@
           <div class="plan-feature"><span class="plan-check">✓</span>Zapier / webhook integration</div>
           <div class="plan-feature"><span class="plan-check">✓</span>Up to 400 calls/month</div>
         </div>
-        <a class="btn btn-teal btn-lg" href="mailto:hello@wrenlo.co?subject=Growth Plan - 14-Day Pilot">Start Free Pilot →</a>
+        <a class="btn btn-red btn-lg" href="mailto:hello@wrenlo.co?subject=Growth Plan - 14-Day Pilot">Start Free Pilot →</a>
         <div class="plan-note">Most popular · 4–15 tech residential service businesses</div>
       </div>
 
@@ -213,7 +213,7 @@
     <div class="cta-band reveal">
       <div><h2>Still not sure which plan<br>is right for <em>you?</em></h2><p>Book a 20-minute pilot call. We'll audit your current missed-call situation, recommend a plan, and configure everything if you decide to move forward.</p></div>
       <div class="cta-band-actions">
-        <a class="btn btn-teal btn-lg" href="mailto:hello@wrenlo.co?subject=Pricing Question">Talk to Us →</a>
+        <a class="btn btn-red btn-lg" href="mailto:hello@wrenlo.co?subject=Pricing Question">Talk to Us →</a>
         <a class="btn btn-white btn-lg" href="/product">See the product first</a>
       </div>
     </div>

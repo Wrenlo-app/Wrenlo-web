@@ -7,7 +7,7 @@
 <meta name="description" content="How Wrenlo works: AI call answering, missed-call text-back, trade-specific intake, estimate booking, follow-up sequences, and a revenue dashboard. Built for home-service contractors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N3CWJVFYFG");</script>
@@ -16,12 +16,12 @@
 .how-steps::before{content:"";position:absolute;top:26px;left:10%;right:10%;height:1px;background:var(--border)}
 .how-step{padding:0 12px;position:relative;z-index:1;text-align:center}
 .step-num{width:52px;height:52px;border-radius:50%;border:1px solid var(--border-s);background:var(--card);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text-faint);margin:0 auto 18px}
-.how-step.active .step-num{background:var(--teal);color:#fff;border-color:var(--teal);box-shadow:0 0 0 6px var(--teal-lt)}
+.how-step.active .step-num{background:var(--tw-red);color:#fff;border-color:var(--tw-red);box-shadow:0 0 0 6px var(--tw-red-lt)}
 .step-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:7px}
 .step-body{font-size:12.5px;color:var(--text-soft);line-height:1.65;font-weight:300}
 .trade-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
 .trade-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;transition:border-color .15s,box-shadow .15s}
-.trade-card:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(14,165,233,.08)}
+.trade-card:hover{border-color:var(--tw-red);box-shadow:0 4px 16px rgba(242,47,70,.08)}
 .trade-icon{font-size:26px;margin-bottom:10px}
 .trade-name{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px}
 .trade-scenarios{display:flex;flex-direction:column;gap:6px;margin-top:12px}
@@ -29,17 +29,17 @@
 .trade-scenario-tag{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:3px;flex-shrink:0;margin-top:1px}
 .tag-urgent{background:var(--red-bg);color:var(--red)}
 .tag-book{background:var(--green-bg);color:var(--green)}
-.tag-follow{background:var(--teal-lt);color:var(--teal-dk)}
+.tag-follow{background:var(--tw-red-lt);color:var(--tw-red)}
 .int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
 .int-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center;transition:border-color .15s}
-.int-card:hover{border-color:var(--teal)}
+.int-card:hover{border-color:var(--tw-red)}
 .int-logo{font-size:28px;margin-bottom:8px}
 .int-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px}
 .int-desc{font-size:11px;color:var(--text-faint);line-height:1.5}
 .int-badge{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
 .int-badge.live{background:var(--green-bg);color:var(--green)}
 .int-badge.soon{background:var(--amber-bg);color:var(--amber)}
-.int-badge.webhook{background:var(--teal-lt);color:var(--teal-dk)}
+.int-badge.webhook{background:var(--tw-red-lt);color:var(--tw-red)}
 .ctrl-table{width:100%;border-collapse:collapse;margin-top:32px}
 .ctrl-table td{padding:14px 18px;border-bottom:1px solid var(--border);font-size:13.5px;vertical-align:top}
 .ctrl-table tr:last-child td{border-bottom:none}
@@ -93,7 +93,7 @@
     <h1>Everything between the homeowner's<br>first call and <em>your calendar.</em></h1>
     <p>Four tightly integrated modules — not a replacement for your FSM, but the front-office layer that feeds it. Answers calls, qualifies leads, books estimates, and shows what revenue was captured.</p>
     <div class="page-hero-actions">
-      <a class="btn btn-teal btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Start 14-Day Pilot →</a>
+      <a class="btn btn-red btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Start 14-Day Pilot →</a>
       <a class="btn btn-white btn-lg" href="/pricing">See pricing</a>
     </div>
   </div>
@@ -174,12 +174,12 @@
       </div>
       <div>
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 16px 48px rgba(30,41,59,.08)">
-          <div style="background:var(--navy);padding:16px 20px"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.06em">WRENLO DASHBOARD · This Week</span></div>
+          <div style="background:var(--hero-bg);padding:16px 20px"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.06em">WRENLO DASHBOARD · This Week</span></div>
           <div style="padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
-            <div style="background:var(--bg2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:8px">CALLS HANDLED</div><div style="font-family:var(--serif);font-size:32px;color:var(--navy);line-height:1">47</div><div style="font-size:11px;color:var(--green);margin-top:4px">↑ 12 after-hours saves</div></div>
-            <div style="background:var(--bg2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:8px">ESTIMATES BOOKED</div><div style="font-family:var(--serif);font-size:32px;color:var(--navy);line-height:1">14</div><div style="font-size:11px;color:var(--green);margin-top:4px">↑ 30% conversion rate</div></div>
-            <div style="background:var(--teal-lt);border:1px solid rgba(14,165,233,.2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--teal-dk);letter-spacing:.06em;margin-bottom:8px">REVENUE RECOVERED</div><div style="font-family:var(--serif);font-size:32px;color:var(--teal-dk);line-height:1">$6,840</div><div style="font-size:11px;color:var(--teal);margin-top:4px">Est. based on avg ticket</div></div>
-            <div style="background:var(--bg2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:8px">MISSED-CALL SAVES</div><div style="font-family:var(--serif);font-size:32px;color:var(--navy);line-height:1">19</div><div style="font-size:11px;color:var(--green);margin-top:4px">Would have gone to voicemail</div></div>
+            <div style="background:var(--bg2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:8px">CALLS HANDLED</div><div style="font-family:var(--sans);font-size:32px;color:var(--navy);line-height:1">47</div><div style="font-size:11px;color:var(--green);margin-top:4px">↑ 12 after-hours saves</div></div>
+            <div style="background:var(--bg2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:8px">ESTIMATES BOOKED</div><div style="font-family:var(--sans);font-size:32px;color:var(--navy);line-height:1">14</div><div style="font-size:11px;color:var(--green);margin-top:4px">↑ 30% conversion rate</div></div>
+            <div style="background:var(--tw-red-lt);border:1px solid rgba(242,47,70,.2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--teal-dk);letter-spacing:.06em;margin-bottom:8px">REVENUE RECOVERED</div><div style="font-family:var(--sans);font-size:32px;color:var(--teal-dk);line-height:1">$6,840</div><div style="font-size:11px;color:var(--tw-red);margin-top:4px">Est. based on avg ticket</div></div>
+            <div style="background:var(--bg2);border-radius:8px;padding:16px"><div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:8px">MISSED-CALL SAVES</div><div style="font-family:var(--sans);font-size:32px;color:var(--navy);line-height:1">19</div><div style="font-size:11px;color:var(--green);margin-top:4px">Would have gone to voicemail</div></div>
           </div>
           <div style="padding:0 24px 24px"><div style="background:var(--green-bg);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:14px 16px;display:flex;gap:10px;align-items:center"><span style="font-size:16px">✓</span><div><div style="font-size:13px;font-weight:600;color:var(--green)">3 emergencies escalated correctly this week</div><div style="font-size:11px;color:rgba(16,185,129,.6);margin-top:2px">All routed to owner within 45 seconds · No dangerous advice given</div></div></div></div>
         </div>
@@ -257,7 +257,7 @@
     <div class="cta-band reveal">
       <div><h2>See it work on your<br><em>actual missed calls.</em></h2><p>14-day pilot. One phone line. One trade playbook. If Wrenlo doesn't recover at least one qualified opportunity, you don't continue.</p></div>
       <div class="cta-band-actions">
-        <a class="btn btn-teal btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a>
+        <a class="btn btn-red btn-lg" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call →</a>
         <a class="btn btn-white btn-lg" href="/pricing">View pricing</a>
         <span class="cta-note">$299 setup · credited to Month 1 · cancel anytime</span>
       </div>

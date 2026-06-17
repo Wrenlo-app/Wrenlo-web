@@ -3,116 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're in! — Wrenlo</title>
+<title>You're in! — Wrenlo AI</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N3CWJVFYFG");</script>
 <style>
-.ty-wrap {
-  min-height: 100vh; display: flex; flex-direction: column;
+.ty-hero {
+  background: #06033A;
+  min-height: calc(100vh - var(--ann-h) - var(--nav-h));
+  display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 100px 5% 80px; text-align: center;
-  background: var(--navy);
+  padding: 80px 24px 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
 }
+.ty-hero::before {
+  content: ''; position: absolute;
+  top: -150px; right: -150px; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(242,47,70,.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.ty-hero::after {
+  content: ''; position: absolute;
+  bottom: -100px; left: -100px; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(14,165,233,.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.ty-hero .inner { position: relative; z-index: 1; max-width: 580px }
 .check-ring {
-  width: 80px; height: 80px; border-radius: 50%;
-  border: 2px solid rgba(30,107,67,.4);
-  background: rgba(30,107,67,.12);
+  width: 72px; height: 72px; border-radius: 50%;
+  border: 2px solid rgba(16,185,129,.5);
+  background: rgba(16,185,129,.12);
   display: flex; align-items: center; justify-content: center;
-  font-size: 32px; margin: 0 auto 32px;
+  font-size: 30px; margin: 0 auto 28px;
   animation: popIn .6s cubic-bezier(.175,.885,.32,1.275) both .1s;
 }
-@keyframes popIn {
-  from { transform: scale(.5); opacity: 0; }
-  to   { transform: scale(1);  opacity: 1; }
-}
-.ty-eyebrow {
-  font-size: 11px; font-weight: 500;
+@keyframes popIn { from{transform:scale(.5);opacity:0} to{transform:scale(1);opacity:1} }
+.ty-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 16px;
+  color: #F22F46; margin-bottom: 16px;
   animation: fadeUp .5s ease both .25s;
 }
 .ty-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(40px, 6vw, 72px);
-  line-height: 1.02; letter-spacing: -.03em;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700; line-height: 1.06;
+  letter-spacing: -0.03em;
   color: #fff; margin-bottom: 18px;
   animation: fadeUp .5s ease both .35s;
 }
-.ty-title em { font-style: italic; color: var(--teal); }
+.ty-title span { color: #F22F46 }
 .ty-sub {
-  font-size: 17px; font-weight: 300;
-  color: rgba(255,255,255,.5); max-width: 480px;
-  margin: 0 auto 40px; line-height: 1.75;
+  font-size: 16px; font-weight: 400;
+  color: rgba(255,255,255,.55); max-width: 460px;
+  margin: 0 auto 36px; line-height: 1.75;
   animation: fadeUp .5s ease both .45s;
 }
 .entry-box {
-  background: rgba(14,165,233,.1);
-  border: 1px solid rgba(14,165,233,.3);
-  border-radius: 4px; padding: 24px 32px;
+  background: rgba(242,47,70,.1);
+  border: 1px solid rgba(242,47,70,.3);
+  border-radius: 8px; padding: 24px 36px;
   display: inline-block; margin-bottom: 40px;
   animation: fadeUp .5s ease both .55s;
 }
 .entry-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 56px; color: var(--teal);
-  line-height: 1; letter-spacing: -.03em;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 52px; font-weight: 700;
+  color: #F22F46; line-height: 1; letter-spacing: -0.03em;
 }
-.entry-lbl { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 4px; font-weight: 300; }
-.what-next {
-  max-width: 520px; margin: 0 auto 48px;
-  animation: fadeUp .5s ease both .65s;
-}
+.entry-lbl { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 6px; font-weight: 400 }
+.what-next { max-width: 500px; margin: 0 auto 44px; animation: fadeUp .5s ease both .65s }
 .what-next h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px; color: #fff; margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 700;
+  color: #fff; margin-bottom: 20px; letter-spacing: -0.015em;
 }
-.next-steps { list-style: none; text-align: left; }
+.next-steps { list-style: none; text-align: left }
 .next-steps li {
   display: flex; gap: 14px; align-items: flex-start;
-  padding: 14px 0; border-bottom: 1px solid rgba(250,248,244,.06);
-  font-size: 14px; color: rgba(255,255,255,.5); font-weight: 300;
-  line-height: 1.6;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: 14px; color: rgba(255,255,255,.5);
+  font-weight: 400; line-height: 1.65;
 }
-.next-steps li:last-child { border-bottom: none; }
+.next-steps li:last-child { border-bottom: none }
 .step-dot {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: rgba(14,165,233,.15); border: 1px solid rgba(14,165,233,.3);
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #F22F46; color: #fff;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600; color: var(--teal);
+  font-size: 11px; font-weight: 700;
   flex-shrink: 0; margin-top: 1px;
 }
 .share-row {
-  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  animation: fadeUp .5s ease both .75s;
+  display: flex; gap: 10px; justify-content: center;
+  flex-wrap: wrap; animation: fadeUp .5s ease both .75s;
 }
 .share-btn {
-  padding: 10px 20px; border-radius: 3px;
-  font-size: 13px; font-weight: 500; cursor: pointer;
-  text-decoration: none; border: 1px solid rgba(250,248,244,.12);
-  color: rgba(255,255,255,.45); background: transparent;
-  transition: all .15s;
+  padding: 10px 20px; border-radius: 4px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,.25);
+  color: rgba(255,255,255,.7); background: transparent;
+  transition: all .15s; font-family: 'Inter', sans-serif;
 }
-.share-btn:hover { color: #fff; border-color: rgba(255,255,255,.3); }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+.share-btn:hover { color: #fff; border-color: #fff }
+.share-btn.primary { background: #F22F46; border-color: #F22F46; color: #fff }
+.share-btn.primary:hover { background: #d41e33; border-color: #d41e33 }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-N3CWJVFYFG");
-</script>
 </head>
 <body>
 <div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
-
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">
@@ -127,7 +134,7 @@
       <a class="nav-link" href="/survey">Survey</a>
     </div>
     <div class="nav-ctas">
-      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Missed-Call Audit">Free Audit</a>
+      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a>
       <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a>
     </div>
     <button class="hamburger" onclick="openMenu()">☰</button>
@@ -135,81 +142,72 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMenu()">✕</button>
-  <a class="mobile-link" href="/product"   onclick="closeMenu()">Product</a>
-  <a class="mobile-link" href="/pricing"   onclick="closeMenu()">Pricing</a>
-  <a class="mobile-link" href="/why-us"    onclick="closeMenu()">Why Wrenlo</a>
+  <a class="mobile-link" href="/product" onclick="closeMenu()">Product</a>
+  <a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a>
+  <a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a>
   <a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a>
-  <a class="mobile-link" href="/survey"    onclick="closeMenu()">Survey</a>
+  <a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a>
   <div class="mobile-menu-ctas">
-    <a class="btn btn-ghost btn-full"   href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
+    <a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
     <a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot Request">Book Pilot Call</a>
   </div>
 </div>
 
-<div class="ty-wrap">
-  <div class="check-ring">✓</div>
-  <div class="ty-eyebrow">You're in the draw</div>
-  <h1 class="ty-title">Thanks for<br><em>taking the time.</em></h1>
-  <p class="ty-sub">Your answers directly shape what Wrenlo builds first. We'll announce the $100 Amazon gift card winner by email within 2 weeks.</p>
+<div class="ty-hero">
+  <div class="inner">
+    <div class="check-ring">✓</div>
+    <div class="ty-badge">You're in the draw</div>
+    <h1 class="ty-title">Thanks for<br><span>taking the time.</span></h1>
+    <p class="ty-sub">Your answers directly shape what Wrenlo builds first. We'll announce the $100 Amazon gift card winner by email within 2 weeks.</p>
 
-  <div class="entry-box">
-    <div class="entry-num" id="entryNum">#—</div>
-    <div class="entry-lbl">Your entry number · Draw closes at 200 responses</div>
-  </div>
+    <div class="entry-box">
+      <div class="entry-num" id="entryNum">#—</div>
+      <div class="entry-lbl">Your entry number · Draw closes at 200 responses</div>
+    </div>
 
-  <div class="what-next">
-    <h3>What happens next</h3>
-    <ul class="next-steps">
-      <li>
-        <div class="step-dot">1</div>
-        <span>You'll receive a confirmation email at the address you provided within the next few minutes.</span>
-      </li>
-      <li>
-        <div class="step-dot">2</div>
-        <span>Once we hit 100 responses, we'll email everyone a free benchmark report — real data on how contractors across the US run their businesses.</span>
-      </li>
-      <li>
-        <div class="step-dot">3</div>
-        <span>The $100 Amazon gift card winner is drawn randomly and announced publicly. You'll be emailed directly if you win.</span>
-      </li>
-      <li>
-        <div class="step-dot">4</div>
-        <span>As a founding respondent, you'll get early access to Wrenlo at a locked-in founding member price before we launch publicly.</span>
-      </li>
-    </ul>
-  </div>
+    <div class="what-next">
+      <h3>What happens next</h3>
+      <ul class="next-steps">
+        <li><div class="step-dot">1</div><span>You'll receive a confirmation email at the address you provided within the next few minutes.</span></li>
+        <li><div class="step-dot">2</div><span>Once we hit 100 responses, we'll email everyone a free benchmark report — real data on how contractors across the US run their front-office operations.</span></li>
+        <li><div class="step-dot">3</div><span>The $100 Amazon gift card winner is drawn randomly and announced publicly. You'll be emailed directly if you win.</span></li>
+        <li><div class="step-dot">4</div><span>As a founding respondent, you'll get early access to Wrenlo at a locked-in founding member price before we launch publicly.</span></li>
+      </ul>
+    </div>
 
-  <p style="font-size:13px;color:rgba(255,255,255,.3);margin-bottom:20px;font-weight:300">Know another contractor? Share this survey — every entry helps us build something better.</p>
-  <div class="share-row">
-    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://wrenlo.co%23survey" target="_blank">Share on Facebook</a>
-    <a class="share-btn" href="https://www.reddit.com/submit?url=https://wrenlo.co%23survey&title=5-min+contractor+survey+%E2%80%94+win+%24100+Amazon+gift+card" target="_blank">Share on Reddit</a>
-    <button class="share-btn" onclick="copyLink(this)">Copy link</button>
-    <a class="share-btn" href="/" style="border-color:rgba(14,165,233,.3);color:var(--teal)">← Back to Wrenlo</a>
+    <p style="font-size:13px;color:rgba(255,255,255,.3);margin-bottom:18px">Know another contractor? Share this survey — every entry helps us build something better.</p>
+    <div class="share-row">
+      <a class="share-btn primary" href="/survey">← Back to survey</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://wrenlo.co/survey" target="_blank">Share on Facebook</a>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://wrenlo.co/survey" target="_blank">Share on LinkedIn</a>
+      <button class="share-btn" onclick="copyLink(this)">Copy link</button>
+    </div>
   </div>
 </div>
 
-<script>
-// Assign a random entry number between 18 and 97 (feels real, not #1)
-document.getElementById('entryNum').textContent = '#' + (Math.floor(Math.random() * 79) + 18);
-
-function copyLink(btn) {
-  navigator.clipboard.writeText('https://wrenlo.co/#survey').then(() => {
-    btn.textContent = '✓ Copied!';
-    setTimeout(() => btn.textContent = 'Copy link', 2000);
-  });
-}
-</script>
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors.</p></div>
+      <div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors. Built to capture the revenue that walks out the door after hours.</p></div>
       <div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div>
+      <div><div class="footer-col-title">Trades</div><div class="footer-links"><a class="footer-link" href="/product">HVAC</a><a class="footer-link" href="/product">Plumbing</a><a class="footer-link" href="/product">Electrical</a><a class="footer-link" href="/product">Roofing</a><a class="footer-link" href="/product">Garage Door</a></div></div>
       <div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div>
-      <div><div class="footer-col-title">Start</div><div class="footer-links"><a class="footer-link" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a><a class="footer-link" href="/survey">Founding Survey</a></div></div>
     </div>
-    <div class="footer-bottom"><span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span><span class="footer-copy">Built for contractors who are done missing jobs</span></div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span>
+      <span class="footer-copy">Built for contractors who are done missing jobs</span>
+    </div>
   </div>
 </footer>
 <script src="wrenlo.js"></script>
+<script>
+document.getElementById('entryNum').textContent = '#' + (Math.floor(Math.random() * 79) + 18);
+function copyLink(btn) {
+  navigator.clipboard.writeText('https://wrenlo.co/survey').then(() => {
+    const o = btn.textContent; btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = o, 2000);
+  });
+}
+</script>
 </body>
 </html>

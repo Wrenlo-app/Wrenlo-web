@@ -3,53 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Wrenlo</title>
+<title>Privacy Policy — Wrenlo AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-.legal-hero {
-  background: var(--navy); padding: 100px 5% 60px;
-  border-bottom: 1px solid rgba(250,248,244,.06);
-}
-.legal-hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(36px,5vw,56px); line-height:1.05;
-  letter-spacing:-.02em; color: #fff; margin-bottom: 12px;
-}
-.legal-hero p { font-size:15px; color:rgba(255,255,255,.4); font-weight:300; }
-.legal-body { padding: 64px 5%; max-width: 780px; margin: 0 auto; }
-.legal-body h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 24px; color: var(--navy);
-  margin: 40px 0 12px; letter-spacing:-.01em;
-}
-.legal-body h2:first-child { margin-top: 0; }
-.legal-body p { font-size: 15px; color: var(--text-soft); font-weight:300; line-height:1.8; margin-bottom: 14px; }
-.legal-body ul { margin: 0 0 14px 20px; }
-.legal-body li { font-size:15px; color:var(--text-soft); font-weight:300; line-height:1.8; margin-bottom:6px; }
-.legal-body a { color: var(--teal); text-decoration: none; }
-.legal-body a:hover { text-decoration: underline; }
-.legal-rule { height:1px; background:var(--border); margin: 32px 0; }
-.last-updated {
-  font-size: 12px; color: var(--text-faint); font-weight:300;
-  margin-bottom: 40px; padding-bottom: 20px;
-  border-bottom: 1px solid var(--rule);
-}
-</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3CWJVFYFG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-N3CWJVFYFG");
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-N3CWJVFYFG");</script>
+<style>
+.legal-hero {
+  background: #06033A;
+  padding: 80px 0 56px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.legal-hero::after {
+  content: ''; position: absolute;
+  top: -120px; right: -120px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(242,47,70,.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.legal-hero .container { position: relative; z-index: 1 }
+.legal-eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: #F22F46; margin-bottom: 14px; display: block;
+}
+.legal-hero h1 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700; line-height: 1.08;
+  letter-spacing: -0.025em; color: #fff; margin-bottom: 12px;
+}
+.legal-hero p { font-size: 16px; color: rgba(255,255,255,.5); font-weight: 400; line-height: 1.6 }
+.legal-body { padding: 64px 0 80px; max-width: 760px; margin: 0 auto; padding-left: 24px; padding-right: 24px }
+.legal-body h2 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 19px; font-weight: 700; color: #1E293B;
+  margin: 40px 0 10px; letter-spacing: -0.015em;
+  border-left: 3px solid #F22F46; padding-left: 12px;
+}
+.legal-body h2:first-child { margin-top: 0 }
+.legal-body p { font-size: 15px; color: #475569; font-weight: 400; line-height: 1.8; margin-bottom: 14px }
+.legal-body ul { margin: 0 0 14px 20px }
+.legal-body li { font-size: 15px; color: #475569; font-weight: 400; line-height: 1.8; margin-bottom: 6px }
+.legal-body a { color: #F22F46; text-decoration: none }
+.legal-body a:hover { text-decoration: underline }
+.legal-body strong { color: #1E293B; font-weight: 600 }
+.legal-rule { height: 1px; background: #E2E8F0; margin: 32px 0 }
+.last-updated {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: #94A3B8;
+  background: #F8FAFC; border: 1px solid #E2E8F0;
+  border-radius: 4px; padding: 6px 12px; margin-bottom: 36px;
+}
+@media(max-width:600px) { .legal-body { padding: 48px 20px } }
+</style>
 </head>
-<body class="">
+<body>
 <div class="ann-bar">🎁 Win $100 Amazon gift card — <a href="/survey">take our 5-min founding survey</a></div>
-
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">
@@ -64,7 +79,7 @@
       <a class="nav-link" href="/survey">Survey</a>
     </div>
     <div class="nav-ctas">
-      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Missed-Call Audit">Free Audit</a>
+      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a>
       <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a>
     </div>
     <button class="hamburger" onclick="openMenu()">☰</button>
@@ -72,27 +87,27 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMenu()">✕</button>
-  <a class="mobile-link" href="/product"   onclick="closeMenu()">Product</a>
-  <a class="mobile-link" href="/pricing"   onclick="closeMenu()">Pricing</a>
-  <a class="mobile-link" href="/why-us"    onclick="closeMenu()">Why Wrenlo</a>
+  <a class="mobile-link" href="/product" onclick="closeMenu()">Product</a>
+  <a class="mobile-link" href="/pricing" onclick="closeMenu()">Pricing</a>
+  <a class="mobile-link" href="/why-us" onclick="closeMenu()">Why Wrenlo</a>
   <a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a>
-  <a class="mobile-link" href="/survey"    onclick="closeMenu()">Survey</a>
+  <a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a>
   <div class="mobile-menu-ctas">
-    <a class="btn btn-ghost btn-full"   href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
+    <a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
     <a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot Request">Book Pilot Call</a>
   </div>
 </div>
 
 <div class="legal-hero">
   <div class="container">
-    <span class="eyebrow" style="color:var(--teal)">Legal</span>
+    <span class="legal-eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
     <p>How Wrenlo collects, uses and protects your information.</p>
   </div>
 </div>
 
 <div class="legal-body">
-  <p class="last-updated">Last updated: June 2025 &nbsp;·&nbsp; Effective date: June 2025</p>
+  <p class="last-updated">Last updated: June 2025 · Effective date: June 2025</p>
 
   <h2>1. Who we are</h2>
   <p>Wrenlo ("Wrenlo", "we", "our", "us") operates the website at wrenlo.co and any related services. Our contact email is <a href="mailto:hello@wrenlo.co">hello@wrenlo.co</a>. We are committed to protecting your personal information and your right to privacy.</p>
@@ -159,14 +174,19 @@
   <p style="font-size:13px">← <a href="/">Back to Wrenlo</a> &nbsp;·&nbsp; <a href="/terms">Terms of Service</a></p>
 </div>
 
-<footer>
-  <a href="/" class="footer-logo">Wren<span>lo</span></a>
-  <div class="footer-links">
-    <a href="/privacy">Privacy Policy</a>
-    <a href="/terms">Terms of Service</a>
-    <a href="mailto:hello@wrenlo.co">hello@wrenlo.co</a>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">Wrenlo AI</div><p class="footer-brand-desc">AI front desk and lead recovery for U.S. home service contractors.</p></div>
+      <div><div class="footer-col-title">Pages</div><div class="footer-links"><a class="footer-link" href="/product">Product</a><a class="footer-link" href="/pricing">Pricing</a><a class="footer-link" href="/why-us">Why Wrenlo</a><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="/survey">Survey</a></div></div>
+      <div><div class="footer-col-title">Trades</div><div class="footer-links"><a class="footer-link" href="/product">HVAC</a><a class="footer-link" href="/product">Plumbing</a><a class="footer-link" href="/product">Electrical</a><a class="footer-link" href="/product">Roofing</a></div></div>
+      <div><div class="footer-col-title">Company</div><div class="footer-links"><a class="footer-link" href="/our-story">Our Story</a><a class="footer-link" href="mailto:hello@wrenlo.co">hello@wrenlo.co</a><a class="footer-link" href="/privacy">Privacy Policy</a><a class="footer-link" href="/terms">Terms of Service</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Wrenlo AI · wrenlo.co</span>
+      <span class="footer-copy">Built for contractors who are done missing jobs</span>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Wrenlo. All rights reserved.</div>
 </footer>
 <script src="wrenlo.js"></script>
 </body>
