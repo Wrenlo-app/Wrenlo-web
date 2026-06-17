@@ -179,8 +179,8 @@
       <div class="roi-calc">
         <div style="font-size:15px;font-weight:600;color:var(--navy);margin-bottom:24px">Your monthly revenue recovery estimate</div>
         <div class="form-field"><label class="form-label">Your trade</label><select class="form-select" id="roi-trade" onchange="setTradeDefaults()"><option value="hvac">HVAC</option><option value="plumbing">Plumbing</option><option value="electrical">Electrical</option><option value="roofing">Roofing</option><option value="pest">Pest Control</option><option value="other">Other</option></select></div>
-        <div class="form-field"><label class="form-label">Weekly inbound calls</label><input type="number" class="form-input" id="roi-calls" value="40" min="1" oninput="calcROI()"></div>
-        <div class="form-field"><label class="form-label">Average job or estimate value ($)</label><input type="number" class="form-input" id="roi-ticket" value="900" min="1" oninput="calcROI()"></div>
+        <div class="form-field"><label class="form-label">Weekly inbound calls</label><input type="number" class="form-input" id="roi-calls" value="40" min="10" oninput="calcROI()"></div>
+        <div class="form-field"><label class="form-label">Average job or estimate value ($)</label><input type="number" class="form-input" id="roi-ticket" value="900" min="10" oninput="calcROI()"></div>
         <div class="calc-result">
           <div><div class="calc-result-lbl">Est. monthly revenue recovered</div><div class="calc-result-sub">at 50% call recovery rate</div></div>
           <div class="calc-result-val" id="roi-result">$1,944</div>
