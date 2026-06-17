@@ -16,7 +16,9 @@
             <circle cx="8" cy="8" r="1.4" fill="white"/>
           </svg>
         </div>
-        Wrenlo
+        `<a href="/" class="nav-logo-link">
+  <img src="/wrenlo-logo.png" alt="Wrenlo" class="nav-logo-img">
+</a>`
       </a>
       <div class="nav__links">
         <a class="nav__link" href="/">Home</a>
