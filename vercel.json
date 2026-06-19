@@ -92,12 +92,3 @@
     }
   ]
 }
-{
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://www.wrenlo.co/$1",
-      "permanent": true
-    }
-  ]
-}
