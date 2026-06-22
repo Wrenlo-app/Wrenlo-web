@@ -79,8 +79,8 @@
       <a class="nav-link" href="/survey">Survey</a>
     </div>
     <div class="nav-ctas">
-      <a class="btn btn-ghost" href="#" onclick="wrenloPopup.open(this.textContent); return false;">Free Audit</a>
-      <a class="btn btn-primary" href="#" onclick="wrenloPopup.open(this.textContent); return false;">Book Pilot Call</a>
+      <a class="btn btn-ghost" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Audit</a>
+      <a class="btn btn-primary" href="mailto:hello@wrenlo.co?subject=14-Day Pilot Request">Book Pilot Call</a>
     </div>
     <button class="hamburger" onclick="openMenu()">☰</button>
   </div>
@@ -93,8 +93,8 @@
   <a class="mobile-link" href="/our-story" onclick="closeMenu()">Our Story</a>
   <a class="mobile-link" href="/survey" onclick="closeMenu()">Survey</a>
   <div class="mobile-menu-ctas">
-    <a class="btn btn-ghost btn-full" href="#" onclick="wrenloPopup.open(this.textContent); return false;">Free Missed-Call Audit</a>
-    <a class="btn btn-primary btn-full" href="#" onclick="wrenloPopup.open(this.textContent); return false;">Book Pilot Call</a>
+    <a class="btn btn-ghost btn-full" href="mailto:hello@wrenlo.co?subject=Free Audit">Free Missed-Call Audit</a>
+    <a class="btn btn-primary btn-full" href="mailto:hello@wrenlo.co?subject=Pilot Request">Book Pilot Call</a>
   </div>
 </div>
 
@@ -151,7 +151,13 @@
   <h2>7. Data retention</h2>
   <p>We retain survey and lead data for up to 2 years or until you request deletion. If Wrenlo ceases operations, we will notify all users and provide a data export option before deletion.</p>
 
-  <h2>8. Third-party services</h2>
+  <h2 id="sms-consent">8. SMS / Text Messaging Consent</h2>
+  <p>Wrenlo provides an automated missed-call text-back service on behalf of the home service businesses we work with (each a "Business"). If you call a Business that uses Wrenlo and your call is not immediately answered, you may receive a text message from that Business following up on your call.</p>
+  <p>By calling a Business that uses Wrenlo, you consent to receive a one-time automated text message follow-up related to that call. Message frequency varies based on your interaction with the Business. Message and data rates may apply.</p>
+  <p>You can opt out of receiving further text messages at any time by replying <strong>STOP</strong> to any message. You can reply <strong>HELP</strong> for assistance. Wrenlo and the Business will not share your mobile number with third parties for marketing purposes.</p>
+  <p>For questions about this messaging program, contact us at <a href="mailto:hello@wrenlo.co">hello@wrenlo.co</a>.</p>
+
+  <h2>9. Third-party services</h2>
   <p>We use the following third-party services, each with their own privacy policies:</p>
   <ul>
     <li><strong>Supabase</strong> — database (supabase.com/privacy)</li>
@@ -161,13 +167,13 @@
     <li><strong>Resend</strong> — transactional email (resend.com/privacy)</li>
   </ul>
 
-  <h2>9. Children's privacy</h2>
+  <h2>10. Children's privacy</h2>
   <p>Wrenlo is not directed at children under 16. We do not knowingly collect personal data from anyone under 16. If you believe we have inadvertently collected such data, contact us immediately at <a href="mailto:hello@wrenlo.co">hello@wrenlo.co</a>.</p>
 
-  <h2>10. Changes to this policy</h2>
+  <h2>11. Changes to this policy</h2>
   <p>We may update this policy as our service evolves. We will notify users of material changes via email. Continued use of Wrenlo after changes constitutes acceptance of the updated policy.</p>
 
-  <h2>11. Contact</h2>
+  <h2>12. Contact</h2>
   <p>Questions about this Privacy Policy? Email us at <a href="mailto:hello@wrenlo.co">hello@wrenlo.co</a> — a real person will reply within 1 business day.</p>
 
   <div class="legal-rule"></div>
@@ -189,6 +195,5 @@
   </div>
 </footer>
 <script src="wrenlo.js"></script>
-<script src="/wrenlo-popup.js"></script>
 </body>
 </html>
